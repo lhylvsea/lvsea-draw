@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "reviewed_at": "2026-08-11",
+  "capabilities": {
+    "_none": {
+      "decision": "not-required",
+      "reviewer": "lvsea",
+      "scope": "The bundled router only scores request text and emits JSON; it does not perform network, file-write, subprocess, or interactive operations.",
+      "reason": "The skill delegates artifact creation to separately installed tools and keeps this package's local script deterministic and permission-free.",
+      "expires_at": "2027-08-11",
+      "evidence": [
+        "scripts/route_request.py",
+        "reports/security_trust_report.md"
+      ],
+      "target_enforcement": {
+        "openai": "No runtime capability is declared; preserve metadata-only contract.",
+        "claude": "No runtime capability is declared; preserve adapter contract.",
+        "generic": "No runtime capability is declared; preserve adapter contract.",
+        "vscode": "No runtime capability is declared; preserve adapter contract."
+      }
+    }
+  }
+}

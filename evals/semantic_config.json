@@ -1,0 +1,126 @@
+{
+  "optimizer_hints": {
+    "capability": "Route, execute, and validate diagram and visualization workflows",
+    "inputs": [
+      "architecture",
+      "workflow",
+      "sequence",
+      "data flow",
+      "whiteboard",
+      "drawio",
+      "excalidraw",
+      "SVG",
+      "PNG",
+      "GIF",
+      "HTML",
+      "repository",
+      "technical report",
+      "流程图",
+      "架构图",
+      "白板",
+      "可视化",
+      "技术解读图"
+    ],
+    "trigger_actions": [
+      "draw a diagram",
+      "create a visualization",
+      "route a diagram task",
+      "make an editable diagram",
+      "create an architecture diagram",
+      "create an interactive HTML visualization",
+      "画架构图",
+      "做流程图",
+      "做可视化",
+      "生成技术解读图",
+      "生成 Draw.io",
+      "做白板"
+    ],
+    "exclusions": [
+      "summary-only requests",
+      "translation-only requests",
+      "brainstorming without building",
+      "只要总结",
+      "只做翻译",
+      "只做头脑风暴",
+      "不要生成文件"
+    ],
+    "artifacts": [
+      "editable source",
+      "HTML",
+      "SVG",
+      "PNG",
+      "GIF",
+      "Draw.io XML",
+      "Excalidraw JSON",
+      "whiteboard export",
+      "QA record"
+    ]
+  },
+  "fallback_positive_concepts": [
+    "diagram_or_visualization"
+  ],
+  "positive_concepts": {
+    "diagram_or_visualization": {
+      "weight": 1.0,
+      "phrases": [
+        "draw a diagram",
+        "architecture diagram",
+        "sequence diagram",
+        "data flow",
+        "visualization",
+        "interactive HTML",
+        "chart",
+        "dashboard",
+        "Draw.io",
+        "Excalidraw",
+        "whiteboard",
+        "SVG",
+        "PNG",
+        "GIF",
+        "流程图",
+        "架构图",
+        "时序图",
+        "数据流图",
+        "知识图谱",
+        "技术解读图",
+        "技术报告",
+        "图片组",
+        "事实台账",
+        "白板",
+        "可视化",
+        "图表",
+        "交互式 HTML",
+        "动画",
+        "动起来",
+        "画图",
+        "绘图"
+      ]
+    }
+  },
+  "negative_concepts": {
+    "document_layout_only": {
+      "weight": 0.8,
+      "exclusive": true,
+      "phrases": [
+        "报告排版",
+        "一页纸",
+        "排版成一页"
+      ]
+    },
+    "summary_only": {
+      "weight": 0.8,
+      "exclusive": true,
+      "phrases": ["summary only", "只要总结", "只看解释"]
+    },
+    "translation_only": {
+      "weight": 0.8,
+      "exclusive": true,
+      "phrases": ["translation only", "只做翻译", "翻译一下"]
+    },
+    "brainstorm_only": {
+      "weight": 0.7,
+      "exclusive": true,
+      "phrases": ["brainstorm only", "头脑风暴", "只给方向"]
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "ok": false,
+  "schema_version": "2.0",
+  "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
+  "registry_dir": "registry",
+  "package": {
+    "schema_version": "2.0",
+    "name": "lvsea-draw",
+    "version": "0.1.0",
+    "description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证。Use when users ask to 画图、制作架构图、流程图、可视化、技术解读图、动态 HTML、白板或把多个绘图 Skill 统一派发。",
+    "targets": [
+      "openai",
+      "claude",
+      "generic",
+      "agent-skills-compatible",
+      "vscode"
+    ],
+    "maturity": "production",
+    "owner": "lvsea",
+    "review_cadence": "monthly",
+    "trust_level": "local",
+    "license": "MIT",
+    "checksums": {
+      "package_sha256": ""
+    },
+    "compatibility": {
+      "openai": "missing",
+      "claude": "missing",
+      "generic": "missing",
+      "agent-skills-compatible": "missing",
+      "vscode": "missing"
+    },
+    "source": {
+      "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
+      "skill_ir": "reports\\skill-ir.json",
+      "ir_schema_version": "2.0.0",
+      "canonical_metadata": "agents/interface.yaml"
+    },
+    "artifacts": {
+      "overview_html": "reports/skill-overview.html",
+      "review_studio_html": "reports/review-studio.html",
+      "trust_report": "reports/security_trust_report.md",
+      "conformance_matrix": "reports/conformance_matrix.md",
+      "compiled_targets": "reports/compiled_targets.md",
+      "package_verification": "",
+      "install_simulation": "",
+      "adoption_drift": "reports/adoption_drift_report.md",
+      "review_waivers": "reports/review_waivers.md",
+      "review_annotations": "reports/review_annotations.md",
+      "package_metadata": "registry/packages/lvsea-draw.json"
+    },
+    "distribution": {
+      "archive_verified": false,
+      "archive_sha256": "",
+      "package_verification": "",
+      "install_simulated": false,
+      "install_simulation": ""
+    },
+    "generated_at": "2026-08-11"
+  },
+  "index": {
+    "schema_version": "2.0",
+    "generated_at": "2026-08-11",
+    "package_count": 1,
+    "packages": [
+      {
+        "name": "lvsea-draw",
+        "version": "0.1.0",
+        "maturity": "production",
+        "owner": "lvsea",
+        "targets": [
+          "openai",
+          "claude",
+          "generic",
+          "agent-skills-compatible",
+          "vscode"
+        ],
+        "package_metadata": "registry/packages/lvsea-draw.json",
+        "package_sha256": ""
+      }
+    ]
+  },
+  "failures": [
+    "Missing package checksum: checksums.package_sha256",
+    "Compatibility is not passing for target: openai",
+    "Compatibility is not passing for target: claude",
+    "Compatibility is not passing for target: generic",
+    "Compatibility is not passing for target: agent-skills-compatible",
+    "Compatibility is not passing for target: vscode"
+  ],
+  "warnings": [
+    "Recommended registry evidence is missing: reports/security_trust_report.md"
+  ],
+  "artifacts": {
+    "index": "registry\\index.json",
+    "package": "registry\\packages\\lvsea-draw.json",
+    "json": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\registry-audit.json",
+    "markdown": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\registry-audit.md"
+  }
+}

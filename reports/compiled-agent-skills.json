@@ -1,0 +1,485 @@
+{
+  "schema_version": "1.0",
+  "ok": true,
+  "generated_at": "2026-08-11",
+  "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
+  "summary": {
+    "target_count": 1,
+    "pass_count": 1,
+    "warn_count": 0,
+    "block_count": 0,
+    "failure_count": 0,
+    "warning_count": 0
+  },
+  "targets": [
+    {
+      "schema_version": "1.0",
+      "target": "agent-skills",
+      "status": "pass",
+      "compiler": {
+        "name": "yao-skill-ir-compiler",
+        "schema_version": "1.0",
+        "source": "skill-ir",
+        "ir_source": "reports\\skill-ir.json",
+        "ir_schema_version": "2.0.0"
+      },
+      "source": {
+        "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
+        "canonical_metadata": "agents/interface.yaml",
+        "declared_targets": [
+          "openai",
+          "claude",
+          "generic",
+          "agent-skills-compatible",
+          "vscode"
+        ]
+      },
+      "compiled_contract": {
+        "name": "lvsea-draw",
+        "title": "Lvsea Draw Boss",
+        "version": "0.1.0",
+        "description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证。Use when users ask to 画图、制作架构图、流程图、可视化、技术解读图、动态 HTML、白板或把多个绘图 Skill 统一派发。",
+        "job_to_be_done": "Turn broad diagram and visualization requests into a routed, validated, editable deliverable",
+        "trigger": {
+          "description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证。Use when users ask to 画图、制作架构图、流程图、可视化、技术解读图、动态 HTML、白板或把多个绘图 Skill 统一派发。",
+          "should_trigger": [
+            "画一张有证据的系统架构图并保留可编辑源文件",
+            "把这段流程做成可继续修改的 Draw.io XML",
+            "把这个仓库转成代码知识图谱和技术解读图",
+            "生成一个交互式 HTML 图表组件",
+            "把这篇技术报告拆成 16:9 图片组并建立事实台账",
+            "用白板先梳理安全生产异常闭环",
+            "把 SVG 生成 GIF 并做几何和视觉验收"
+          ],
+          "should_not_trigger": [
+            "只要总结一下流程图是什么",
+            "翻译一下这段画图说明",
+            "不要生成文件，只给我几个头脑风暴方向",
+            "只看一下这张已有图片，不要修改",
+            "Do not claim facts, runtime topology, browser interaction, MCP availability, or visual quality without evidence"
+          ],
+          "edge_cases": [
+            "我要做一个复杂的 React 图编辑器，但还没有决定用什么库",
+            "帮我把报告排版成一页纸，里面需要一张流程图"
+          ]
+        },
+        "workflow": {
+          "steps": [
+            "Understand the request.",
+            "Execute the main task.",
+            "Validate the result."
+          ],
+          "decision_points": [
+            "Ask one focused clarification when the real job, output, or exclusion boundary is unclear.",
+            "Escalate visible tradeoffs when benchmark patterns conflict with local privacy, naming, or governance constraints.",
+            "Do not silently broaden the skill into adjacent jobs just because the examples are nearby."
+          ],
+          "failure_modes": [
+            "Tables can render as dense grids with weak hierarchy or poor mobile readability.",
+            "Long bullets can make the output look complete while hiding the actual decision logic.",
+            "Footnote markers or dense citation notes can interrupt the reading flow.",
+            "Evidence can be over-attached to obvious statements and under-attached to risky claims.",
+            "Screenshots can be captured from the wrong state, wrong viewport, or wrong crop.",
+            "Missing screenshots can cause the skill to invent visual references instead of declaring the gap.",
+            "Users start invoking the skill for adjacent one-off or explanation-only requests.",
+            "Outputs remain valid but become generic, cluttered, or weakly aligned with the user's domain.",
+            "Borrowed benchmark patterns no longer fit the local job or add ceremony without payoff.",
+            "Skill usage becomes team-critical while ownership, review cadence, or rollback evidence stays informal."
+          ]
+        },
+        "resources": {
+          "references": [
+            "references\\local-adapters.md",
+            "references\\quality-contract.md",
+            "references\\route-playbook.md",
+            "references\\source-matrix.md"
+          ],
+          "scripts": [
+            "scripts\\route_request.py"
+          ],
+          "assets": [],
+          "reports": [
+            "reports/intent-context.json",
+            "reports/intent-confidence.json",
+            "reports/intent-confidence.md",
+            "reports/reference-synthesis.json",
+            "reports/reference-synthesis.md",
+            "reports/output-risk-profile.json",
+            "reports/output-risk-profile.md",
+            "reports/artifact-design-profile.json",
+            "reports/artifact-design-profile.md",
+            "reports/prompt-quality-profile.json",
+            "reports/prompt-quality-profile.md",
+            "reports/system-model.json",
+            "reports/system-model.md",
+            "reports/iteration-directions.json",
+            "reports/iteration-directions.md",
+            "reports/skill-overview.json",
+            "reports/skill-overview.html",
+            "reports/review_annotations.json",
+            "reports/review_annotations.md",
+            "reports/conformance_matrix.json",
+            "reports/conformance_matrix.md",
+            "reports/security_trust_report.json",
+            "reports/security_trust_report.md",
+            "reports/runtime_permission_probes.json",
+            "reports/runtime_permission_probes.md"
+          ],
+          "counts": {
+            "references": 4,
+            "scripts": 1,
+            "assets": 0,
+            "reports": 25
+          }
+        },
+        "eval_plan": {
+          "trigger": [
+            "evals\\semantic_config.json",
+            "evals\\trigger_cases.json"
+          ],
+          "output": [],
+          "adversarial": [],
+          "baseline": "without_skill",
+          "counts": {
+            "trigger": 2,
+            "output": 0,
+            "adversarial": 0,
+            "baseline": 1
+          }
+        },
+        "risk": {
+          "output_risk": "high",
+          "execution_risk": "medium",
+          "trust_boundary": "team"
+        },
+        "governance": {
+          "owner": "lvsea",
+          "maturity": "production",
+          "review_cadence": "monthly",
+          "review_due": ""
+        },
+        "runtime": {
+          "activation": {
+            "mode": "manual",
+            "paths": []
+          },
+          "execution": {
+            "context": "inline",
+            "shell": "bash"
+          },
+          "trust": {
+            "source_tier": "local",
+            "remote_inline_execution": "forbid",
+            "remote_metadata_policy": "allow-metadata-only"
+          },
+          "adapter_targets": [
+            "openai",
+            "claude",
+            "generic",
+            "vscode"
+          ],
+          "canonical_format": "agent-skills"
+        },
+        "permissions": {
+          "schema_version": "1.0",
+          "source": "reports\\security_trust_report.json",
+          "source_available": true,
+          "declared_capabilities": [],
+          "review_required": false,
+          "capabilities": {
+            "network": {
+              "required": false,
+              "script_count": 0,
+              "scripts": [],
+              "review_reason": ""
+            },
+            "file_write": {
+              "required": false,
+              "script_count": 0,
+              "scripts": [],
+              "review_reason": ""
+            },
+            "subprocess": {
+              "required": false,
+              "script_count": 0,
+              "scripts": [],
+              "review_reason": ""
+            },
+            "interactive": {
+              "required": false,
+              "script_count": 0,
+              "scripts": [],
+              "review_reason": ""
+            }
+          },
+          "network_policy": {
+            "source": "security/network_policy.json",
+            "covered_scripts": [],
+            "missing_scripts": [],
+            "mismatches": []
+          },
+          "help_smoke": {
+            "enabled": true,
+            "checked_count": 1,
+            "failed_count": 0,
+            "failed_scripts": []
+          },
+          "trust_summary": {
+            "secret_findings": 0,
+            "network_script_count": 0,
+            "file_write_script_count": 0,
+            "subprocess_script_count": 0,
+            "interactive_script_count": 0,
+            "help_smoke_failed_count": 0
+          }
+        },
+        "source_files_count": 6,
+        "target": "agent-skills",
+        "target_permission_contract": {
+          "schema_version": "1.0",
+          "target": "agent-skills",
+          "permission_model": "metadata-only",
+          "native_enforcement": false,
+          "representation": "adapter metadata",
+          "review_required": false,
+          "declared_capabilities": [],
+          "capability_counts": {
+            "network": 0,
+            "file_write": 0,
+            "subprocess": 0,
+            "interactive": 0
+          },
+          "evidence": "reports\\security_trust_report.json",
+          "operator_note": "Permission semantics are preserved as metadata for reviewer visibility."
+        },
+        "target_native_contract": {
+          "schema_version": "1.0",
+          "target": "agent-skills",
+          "native_surface": "Agent Skills standard source tree",
+          "activation": {
+            "policy": "Use SKILL.md frontmatter name and description for progressive disclosure.",
+            "trigger_description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证。Use when users ask to 画图、制作架构图、流程图、可视化、技术解读图、动态 HTML、白板或把多个绘图 Skill 统一派发。",
+            "manual_activation_supported": true,
+            "automatic_activation_note": "Depends on the target client route/catalog implementation."
+          },
+          "resources": {
+            "strategy": "Keep optional directories as relative resources next to SKILL.md.",
+            "counts": {
+              "references": 4,
+              "scripts": 1,
+              "assets": 0,
+              "reports": 25
+            },
+            "generated_files": [
+              "SKILL.md",
+              "agents/interface.yaml"
+            ]
+          },
+          "scripts": {
+            "strategy": "Scripts remain local optional resources and should advertise --help when executable.",
+            "script_count": 1,
+            "help_smoke_failed_count": 0
+          },
+          "permissions": {
+            "enforcement": "consumer-enforced-or-metadata-only",
+            "native_enforcement": false,
+            "declared_capabilities": [],
+            "review_required": false
+          },
+          "review": {
+            "artifacts": [
+              "SKILL.md",
+              "agents/interface.yaml",
+              "reports/review-studio.html"
+            ],
+            "fallback_behavior": "The source tree itself is the target artifact.",
+            "unsupported_native_features": []
+          },
+          "install_scope": "Agent Skills source root"
+        },
+        "degradation_strategy": "neutral-source",
+        "target_runtime": {
+          "adapter_mode": "neutral-agent-skills-source",
+          "generated_files": [
+            "SKILL.md",
+            "agents/interface.yaml"
+          ],
+          "metadata_mapping": {
+            "name": "SKILL.md::frontmatter.name",
+            "description": "SKILL.md::frontmatter.description",
+            "interface": "agents/interface.yaml",
+            "manifest": "manifest.json"
+          },
+          "preserved_semantics": [
+            "trigger",
+            "workflow",
+            "resources",
+            "eval-plan",
+            "risk",
+            "governance",
+            "runtime",
+            "trust",
+            "permissions"
+          ],
+          "native_surface": "Agent Skills standard source tree"
+        }
+      },
+      "permission_contract": {
+        "schema_version": "1.0",
+        "source": "reports\\security_trust_report.json",
+        "source_available": true,
+        "declared_capabilities": [],
+        "review_required": false,
+        "capabilities": {
+          "network": {
+            "required": false,
+            "script_count": 0,
+            "scripts": [],
+            "review_reason": ""
+          },
+          "file_write": {
+            "required": false,
+            "script_count": 0,
+            "scripts": [],
+            "review_reason": ""
+          },
+          "subprocess": {
+            "required": false,
+            "script_count": 0,
+            "scripts": [],
+            "review_reason": ""
+          },
+          "interactive": {
+            "required": false,
+            "script_count": 0,
+            "scripts": [],
+            "review_reason": ""
+          }
+        },
+        "network_policy": {
+          "source": "security/network_policy.json",
+          "covered_scripts": [],
+          "missing_scripts": [],
+          "mismatches": []
+        },
+        "help_smoke": {
+          "enabled": true,
+          "checked_count": 1,
+          "failed_count": 0,
+          "failed_scripts": []
+        },
+        "trust_summary": {
+          "secret_findings": 0,
+          "network_script_count": 0,
+          "file_write_script_count": 0,
+          "subprocess_script_count": 0,
+          "interactive_script_count": 0,
+          "help_smoke_failed_count": 0
+        }
+      },
+      "target_permission_contract": {
+        "schema_version": "1.0",
+        "target": "agent-skills",
+        "permission_model": "metadata-only",
+        "native_enforcement": false,
+        "representation": "adapter metadata",
+        "review_required": false,
+        "declared_capabilities": [],
+        "capability_counts": {
+          "network": 0,
+          "file_write": 0,
+          "subprocess": 0,
+          "interactive": 0
+        },
+        "evidence": "reports\\security_trust_report.json",
+        "operator_note": "Permission semantics are preserved as metadata for reviewer visibility."
+      },
+      "target_native_contract": {
+        "schema_version": "1.0",
+        "target": "agent-skills",
+        "native_surface": "Agent Skills standard source tree",
+        "activation": {
+          "policy": "Use SKILL.md frontmatter name and description for progressive disclosure.",
+          "trigger_description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证。Use when users ask to 画图、制作架构图、流程图、可视化、技术解读图、动态 HTML、白板或把多个绘图 Skill 统一派发。",
+          "manual_activation_supported": true,
+          "automatic_activation_note": "Depends on the target client route/catalog implementation."
+        },
+        "resources": {
+          "strategy": "Keep optional directories as relative resources next to SKILL.md.",
+          "counts": {
+            "references": 4,
+            "scripts": 1,
+            "assets": 0,
+            "reports": 25
+          },
+          "generated_files": [
+            "SKILL.md",
+            "agents/interface.yaml"
+          ]
+        },
+        "scripts": {
+          "strategy": "Scripts remain local optional resources and should advertise --help when executable.",
+          "script_count": 1,
+          "help_smoke_failed_count": 0
+        },
+        "permissions": {
+          "enforcement": "consumer-enforced-or-metadata-only",
+          "native_enforcement": false,
+          "declared_capabilities": [],
+          "review_required": false
+        },
+        "review": {
+          "artifacts": [
+            "SKILL.md",
+            "agents/interface.yaml",
+            "reports/review-studio.html"
+          ],
+          "fallback_behavior": "The source tree itself is the target artifact.",
+          "unsupported_native_features": []
+        },
+        "install_scope": "Agent Skills source root"
+      },
+      "target_transform": {
+        "target": "agent-skills",
+        "adapter_mode": "neutral-agent-skills-source",
+        "generated_files": [
+          "SKILL.md",
+          "agents/interface.yaml"
+        ],
+        "metadata_mapping": {
+          "name": "SKILL.md::frontmatter.name",
+          "description": "SKILL.md::frontmatter.description",
+          "interface": "agents/interface.yaml",
+          "manifest": "manifest.json"
+        },
+        "preserved_semantics": [
+          "trigger",
+          "workflow",
+          "resources",
+          "eval-plan",
+          "risk",
+          "governance",
+          "runtime",
+          "trust",
+          "permissions"
+        ],
+        "degradation_strategy": "neutral-source",
+        "permission_representation": "adapter metadata",
+        "native_surface": "Agent Skills standard source tree",
+        "activation_policy": "Use SKILL.md frontmatter name and description for progressive disclosure.",
+        "resource_strategy": "Keep optional directories as relative resources next to SKILL.md.",
+        "script_strategy": "Scripts remain local optional resources and should advertise --help when executable.",
+        "permission_enforcement": "consumer-enforced-or-metadata-only"
+      },
+      "unsupported_features": [],
+      "warnings": [],
+      "failures": []
+    }
+  ],
+  "failures": [],
+  "warnings": [],
+  "artifacts": {
+    "json": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\compiled-agent-skills.json",
+    "markdown": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\compiled-agent-skills.md"
+  }
+}

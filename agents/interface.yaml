@@ -1,0 +1,26 @@
+interface:
+  display_name: "Lvsea Draw Boss"
+  short_description: "Route and validate editable diagrams"
+  default_prompt: "Use $lvsea-draw to route this Chinese diagram request to the best available renderer and deliver an editable, validated artifact."
+compatibility:
+  canonical_format: "agent-skills"
+  adapter_targets:
+    - "openai"
+    - "claude"
+    - "generic"
+    - "vscode"
+  activation:
+    mode: "manual"
+    paths: []
+  execution:
+    context: "inline"
+    shell: "bash"
+  trust:
+    source_tier: "local"
+    remote_inline_execution: "forbid"
+    remote_metadata_policy: "allow-metadata-only"
+  degradation:
+    openai: "metadata-adapter"
+    claude: "neutral-source-plus-adapter"
+    generic: "neutral-source"
+    vscode: "agent-skills-source-with-vscode-notes"

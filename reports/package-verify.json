@@ -1,0 +1,37 @@
+{
+  "ok": false,
+  "schema_version": "2.0",
+  "generated_at": "2026-08-11",
+  "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
+  "package_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist",
+  "summary": {
+    "target_count": 0,
+    "adapter_count": 0,
+    "archive_present": false,
+    "archive_sha256": "",
+    "archive_entry_count": 0,
+    "nested_skill_entry_count": 0,
+    "failure_count": 1,
+    "warning_count": 2
+  },
+  "checks": [
+    {
+      "id": "package-manifest",
+      "status": "fail",
+      "detail": "Package manifest exists: C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\manifest.json"
+    }
+  ],
+  "failures": [
+    "Package manifest exists: C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\manifest.json"
+  ],
+  "warnings": [
+    "Package archive not found: C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\lvsea-draw.zip",
+    "Registry audit was not supplied; package verification skipped metadata parity checks."
+  ],
+  "artifacts": {
+    "manifest": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\manifest.json",
+    "archive": "",
+    "json": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\package-verify.json",
+    "markdown": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\package-verify.md"
+  }
+}

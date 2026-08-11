@@ -1,0 +1,109 @@
+# lvsea-draw
+
+中文优先的架构图、流程图、可视化图和技术解释图总调度 Skill。它不把所有绘图工具硬拼成一个渲染器，而是根据用户意图、事实来源、编辑格式、交互要求和质量风险，把任务派发给最合适的本地 Skill、MCP 或工程库，再统一完成验证与交付。
+
+## 定位
+
+lvsea-draw 是一个垂类 Agent 派发层，核心职责是：
+
+- 选择正确的图形语义，而不是所有请求都画成流程图。
+- 在 Archify、Fireworks、Draw.io、Drawnix、Excalidraw、Technical Explainer、Generative UI、Understand Anything、AI Animation 和文档排版路线之间做选择。
+- 默认保留可编辑源文件，导出的 HTML、SVG、PNG、GIF、图片组或 PPT 作为派生物。
+- 对事实、结构、几何、渲染、交互和视觉质量分层验收。
+- 工具、MCP、浏览器或凭据缺失时透明降级，不把“文件存在”写成“已经跑通”。
+
+## 安装
+
+### Codex 全局安装
+
+把本仓库目录复制到：
+
+~~~text
+C:\Users\rabbit\.codex\skills\lvsea-draw
+~~~
+
+或使用本机的 Skill 安装方式将仓库作为 Agent Skill 安装。安装后重启 Codex，使新入口重新发现。
+
+### 显式调用
+
+~~~text
+Use $lvsea-draw to route this request and deliver an editable, validated diagram.
+~~~
+
+中文最短调用：
+
+~~~text
+用 $lvsea-draw 选择最合适的绘图路线，保留可编辑源文件并完成验证。
+~~~
+
+## 路由概览
+
+| 用户目标 | 主路由 | 适合的交付 |
+| --- | --- | --- |
+| 看懂真实代码库 | Understand Anything | 知识图谱、搜索、学习路径、变更影响 |
+| 有证据的系统架构或流程 | Archify | Typed JSON、独立 HTML、PNG/SVG/WebM/分享卡 |
+| 几何可靠的 SVG、PNG、UML、GIF | Fireworks Tech Graph | SVG、1920px PNG、离线 HTML、语义 GIF |
+| 可编辑 Draw.io | bruce-drawio 或 Draw.io MCP | .drawio/XML、PNG/SVG |
+| 白板、思维导图、自由画 | Drawnix | 白板会话、.drawnix/JSON/PNG |
+| 手绘视觉论证 | Excalidraw Diagram | .excalidraw JSON、证据卡片、教学结构 |
+| 仓库或论文的成套技术解读图 | Technical Explainer Illustrator | 来源清单、事实台账、视觉计划、图片组、QA |
+| 交互式小组件和数据图 | Generative UI MCP | 单文件 HTML、SVG、Chart.js、widget |
+| 科普演示和动画 HTML | AI Animation / science-content-ppt | 仿 PPT 轮播、流程动画、录屏网页 |
+| 图解嵌入一页纸、PPT、白皮书 | Kami 或本机文档 Skill | HTML/PDF/PPT/Slides 内嵌图解 |
+| 开发业务图编辑器 | AntV X6 | React/Vue/SVG 图编辑工程 |
+
+完整判断规则见 references/route-playbook.md。来源研究和取舍见 references/source-matrix.md。
+
+## 四个真实场景
+
+### 1. 制造运营系统架构
+
+输入生产订单、批次、检验、入库等模块说明或真实代码库。先用 Understand Anything 检查文件、函数和依赖关系，再用 Archify 生成高层架构和一条主路径；如果需要 SVG/PNG 进入汇报，再转 Fireworks 做几何和视觉检查。
+
+### 2. 安全生产异常闭环
+
+输入事故上报、分级、处置、复盘和关闭规则。若需要现场讨论，先用 Drawnix 做可编辑白板；若要求正式可交付文件，用 Draw.io XML 或 Archify Workflow，并检查分支、异常路径、责任边界和文字可读性。
+
+### 3. 技术报告转 16:9 图组
+
+输入论文、README、技术报告或仓库。先建立 SOURCE-MANIFEST、CLAIM-LEDGER 和 VISUAL-PLAN，再逐图选择原图复用、确定性绘制、生成式解释或混合路线；没有生图能力时仍交付事实台账、确定性图形和提示词包。
+
+### 4. 交互式工艺或数据可视化
+
+输入工艺步骤、指标数据或培训内容。数据量化图优先 Generative UI；需要步骤播放和录屏时转 AI Animation；需要可编辑节点、端口和业务交互时进入 X6 工程路线。所有按钮和控件都必须有真实效果，缺失数据不得补造。
+
+## 质量与验收
+
+推荐顺序：
+
+1. 确认来源、受众、目标格式和编辑要求。
+2. 运行 scripts/route_request.py 或按路由手册选择主路由。
+3. 先生成可编辑源文件，再导出派生物。
+4. 先做结构/JSON/XML/schema/几何检查，再做浏览器或图片视觉检查。
+5. 交付主文件、源文件、派生文件、验证命令和限制说明。
+
+机器验收建议：
+
+~~~powershell
+python scripts/route_request.py --text "把这个仓库做成有证据的运行时架构图"
+python tests/test_route_request.py
+python C:\Users\rabbit\.codex\skills\.system\skill-creator\scripts\quick_validate.py .
+~~~
+
+实际发布前还应运行仓库内的 trigger eval、Skill OS conformance、安装模拟和 Test-SkillInstall。它们验证的是不同层面，不能互相替代。
+
+## 来源与许可边界
+
+本 Skill 的方法抽取自用户指定的开源项目和工具页面，来源与固定研究版本记录在 references/source-matrix.md。只借鉴工作流、路由思想、质量门和公开能力边界，不复制上游源码、图片、商标、模板资产或私有数据。lvsea-draw 自身使用 MIT License，具体许可仍以各上游项目原仓库为准。
+
+## 已知限制
+
+- lvsea-draw 本身不会自动安装所有上游工具，也不会凭空创建 MCP 会话。
+- 当前机器的本地安装、端口、Node/Python 依赖和浏览器状态必须每次现场探测。
+- svg-preview 只能承担预览与人工核对，不是绘图生成器。
+- X6 是工程库，不是现成 Agent Skill；只有用户确实要开发图编辑应用时才进入该路线。
+- 静态 Skill 检查通过不等于每个外部渲染器、浏览器交互或在线模型已实际调用。
+
+## 维护
+
+更新上游路由时，先修改 source-matrix 和 route-playbook，再更新 SKILL.md 的触发边界与回归用例。每次发布前重新运行路由、触发、包结构、安装和远端回读检查。

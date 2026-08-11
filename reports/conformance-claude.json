@@ -1,0 +1,59 @@
+{
+  "ok": true,
+  "skill": "lvsea-draw",
+  "targets": [
+    {
+      "target": "claude",
+      "status": "pass",
+      "checks": [
+        "SKILL.md exists",
+        "frontmatter name exists",
+        "frontmatter description exists",
+        "description length <= 1024",
+        "name is runtime-safe",
+        "manifest.name exists",
+        "manifest.version exists",
+        "manifest.owner exists",
+        "manifest.status exists",
+        "manifest.maturity_tier exists",
+        "manifest.review_cadence exists",
+        "manifest declares claude",
+        "interface.display_name exists",
+        "interface.short_description exists",
+        "interface.default_prompt exists",
+        "adapter target declares claude",
+        "activation mode exists",
+        "execution context exists",
+        "execution shell exists",
+        "trust source tier exists",
+        "claude degradation note exists",
+        "Skill IR schema_version is 2.0.0",
+        "Skill IR name matches frontmatter",
+        "Skill IR description matches frontmatter",
+        "references resource resolves: references\\local-adapters.md",
+        "references resource resolves: references\\quality-contract.md",
+        "references resource resolves: references\\route-playbook.md",
+        "references resource resolves: references\\source-matrix.md",
+        "scripts resource resolves: scripts\\route_request.py",
+        "reports resource resolves: reports/intent-context.json",
+        "reports resource resolves: reports/intent-confidence.json",
+        "reports resource resolves: reports/intent-confidence.md",
+        "reports resource resolves: reports/reference-synthesis.json",
+        "reports resource resolves: reports/reference-synthesis.md",
+        "reports resource resolves: reports/output-risk-profile.json",
+        "reports resource resolves: reports/output-risk-profile.md"
+      ],
+      "failures": [],
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "target_count": 1,
+    "pass_count": 1,
+    "fail_count": 0
+  },
+  "artifacts": {
+    "json": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\conformance-claude.json",
+    "markdown": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\conformance-claude.md"
+  }
+}

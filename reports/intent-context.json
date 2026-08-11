@@ -1,0 +1,22 @@
+{
+  "job": "Turn broad diagram and visualization requests into a routed, validated, editable deliverable",
+  "real_inputs": [
+    "用户用中文提出架构图、流程图、可视化图、白板、知识图谱、动画 HTML、技术解读图或图表需求"
+  ],
+  "primary_output": "One route decision, one or more editable source artifacts, rendered previews when applicable, and a QA/verification record",
+  "description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+  "exclusions": [
+    "Do not claim facts, runtime topology, browser interaction, MCP availability, or visual quality without evidence"
+  ],
+  "constraints": [
+    "Preserve user wording and facts; prefer local portable files; do not silently use browser cache as formal data; do not auto-install or publish unrelated tools"
+  ],
+  "standards": [
+    "Use evidence-led routing, smallest sufficient renderer, deterministic validation before visual review, and user-preferred dense but readable outputs"
+  ],
+  "correction": "When route or render fails, preserve the source contract, switch only to a compatible fallback, and report the exact limitation",
+  "user_references": [
+    "C:\\Users\\rabbit\\.codex\\USER.md",
+    "C:\\Users\\rabbit\\.codex\\USER_PREFERENCES.md"
+  ]
+}

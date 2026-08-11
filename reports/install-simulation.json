@@ -1,0 +1,103 @@
+{
+  "ok": false,
+  "schema_version": "2.0",
+  "generated_at": "2026-08-11",
+  "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
+  "package_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist",
+  "install_root": "[temporary-install-root]",
+  "installed_skill_dir": "",
+  "summary": {
+    "archive_present": false,
+    "archive_entry_count": 0,
+    "nested_skill_entry_count": 0,
+    "archive_extracted": false,
+    "entrypoint_loaded": false,
+    "manifest_loaded": false,
+    "interface_loaded": false,
+    "adapter_count": 0,
+    "installer_permission_enforced_count": 0,
+    "installer_permission_failure_count": 1,
+    "permission_target_count": 0,
+    "permission_capability_count": 0,
+    "install_root_is_temp": true,
+    "failure_count": 9,
+    "warning_count": 1
+  },
+  "checks": [
+    {
+      "id": "archive-present",
+      "status": "fail",
+      "detail": "Package archive exists: C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\lvsea-draw.zip"
+    },
+    {
+      "id": "entrypoint-load",
+      "status": "fail",
+      "detail": "Installed SKILL.md frontmatter is readable"
+    },
+    {
+      "id": "entrypoint-name",
+      "status": "fail",
+      "detail": "Installed SKILL.md name matches package directory"
+    },
+    {
+      "id": "entrypoint-description",
+      "status": "fail",
+      "detail": "Installed SKILL.md description is present"
+    },
+    {
+      "id": "manifest-load",
+      "status": "fail",
+      "detail": "Installed manifest.json is readable"
+    },
+    {
+      "id": "manifest-name",
+      "status": "pass",
+      "detail": "Installed manifest name matches package manifest"
+    },
+    {
+      "id": "manifest-version",
+      "status": "pass",
+      "detail": "Installed manifest version matches package manifest"
+    },
+    {
+      "id": "interface-load",
+      "status": "fail",
+      "detail": "Installed agents/interface.yaml is readable"
+    },
+    {
+      "id": "overview-report",
+      "status": "fail",
+      "detail": "Installed overview report is present"
+    },
+    {
+      "id": "review-studio-report",
+      "status": "fail",
+      "detail": "Installed Review Studio report is present"
+    },
+    {
+      "id": "permission-policy-load",
+      "status": "fail",
+      "detail": "Installed permission policy is readable"
+    }
+  ],
+  "failures": [
+    "Package archive exists: C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\lvsea-draw.zip",
+    "Installed SKILL.md frontmatter is readable",
+    "Installed SKILL.md name matches package directory",
+    "Installed SKILL.md description is present",
+    "Installed manifest.json is readable",
+    "Installed agents/interface.yaml is readable",
+    "Installed overview report is present",
+    "Installed Review Studio report is present",
+    "Installed permission policy is readable"
+  ],
+  "warnings": [
+    "No target adapters found in package directory."
+  ],
+  "artifacts": {
+    "archive": "",
+    "package_manifest": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\manifest.json",
+    "json": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\install-simulation.json",
+    "markdown": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\install-simulation.md"
+  }
+}
