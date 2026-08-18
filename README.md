@@ -43,16 +43,26 @@ Use $lvsea-draw to route this request and deliver an editable, validated diagram
 | 看懂真实代码库 | Understand Anything | 知识图谱、搜索、学习路径、变更影响 |
 | 有证据的系统架构或流程 | Archify | Typed JSON、独立 HTML、PNG/SVG/WebM/分享卡 |
 | 几何可靠的 SVG、PNG、UML、GIF | Fireworks Tech Graph | SVG、1920px PNG、离线 HTML、语义 GIF |
-| 可编辑 Draw.io | bruce-drawio 或 Draw.io MCP | .drawio/XML、PNG/SVG |
+| 可编辑 Draw.io | Agents365 drawio-skill；缺失时 bruce-drawio 或 Draw.io MCP | .drawio/XML、PNG/SVG |
 | 白板、思维导图、自由画 | Drawnix | 白板会话、.drawnix/JSON/PNG |
 | 手绘视觉论证 | Excalidraw Diagram | .excalidraw JSON、证据卡片、教学结构 |
 | 仓库或论文的成套技术解读图 | Technical Explainer Illustrator | 来源清单、事实台账、视觉计划、图片组、QA |
 | 交互式小组件和数据图 | Generative UI MCP | 单文件 HTML、SVG、Chart.js、widget |
+| 信息图和数据故事 | AntV Infographic；缺失时 diagram-design 或精确 SVG | Infographic DSL、HTML/SVG、PNG |
 | 科普演示和动画 HTML | AI Animation / science-content-ppt | 仿 PPT 轮播、流程动画、录屏网页 |
 | 图解嵌入一页纸、PPT、白皮书 | Kami 或本机文档 Skill | HTML/PDF/PPT/Slides 内嵌图解 |
+| 品牌化静态图和 Mermaid/Draw.io 重绘 | cathrynlavery diagram-design | 自包含 HTML、可访问 SVG、可选 PNG |
 | 开发业务图编辑器 | AntV X6 | React/Vue/SVG 图编辑工程 |
 
 完整判断规则见 references/route-playbook.md。来源研究和取舍见 references/source-matrix.md。
+
+## 本次新增整合
+
+- **AntV Infographic**：把“信息图/数据故事/对比/时间线/漏斗/金字塔/列表”识别为信息结构任务，保留 DSL 源文件；AntV 运行时未实际可用时，按 provider policy 降级到 diagram-design 或精确 SVG，不伪造渲染状态。
+- **Agents365 drawio-skill**：成为 editable-drawio 的优先 provider，覆盖 Mermaid、代码库、Terraform/Kubernetes、SQL/OpenAPI、C4、多页 `.drawio`、自检/自动修复和导出验证；桌面 CLI、Graphviz、版本和真实导出仍需现场探测。
+- **cathrynlavery diagram-design**：新增 editorial-diagram 路由，优先静态、自包含、可访问和品牌可控的 HTML/SVG；先选语义模式和密度，再处理 style guide、尺寸和可选动效。
+
+三份上游只贡献方法、路由和质量规则，不复制上游源码、模板、图片、图标库或品牌资产。固定研究版本见 [references/source-matrix.md](references/source-matrix.md)。
 
 ## 四个真实场景
 
@@ -97,6 +107,10 @@ python C:\Users\rabbit\.codex\skills\.system\skill-creator\scripts\quick_validat
 本 Skill 的方法抽取自用户指定的开源项目和工具页面，来源与固定研究版本记录在 references/source-matrix.md。只借鉴工作流、路由思想、质量门和公开能力边界，不复制上游源码、图片、商标、模板资产或私有数据。lvsea-draw 自身使用 MIT License，具体许可仍以各上游项目原仓库为准。
 
 ## 已知限制
+
+- AntV Infographic 路由并不意味着本机已安装 `@antv/infographic` 或 `infographic-*` Skill；没有实际运行时只交付结构草案或明确降级产物。
+- drawio-skill 的桌面 CLI、Graphviz、版本和导出能力必须重新探测；当前文档不能替代一次真实导出与图片回读。
+- diagram-design 的默认主题不能直接当作品牌交付；品牌项目要先建立或确认 style guide，并保留 style receipt。
 
 - lvsea-draw 本身不会自动安装所有上游工具，也不会凭空创建 MCP 会话。
 - 当前机器的本地安装、端口、Node/Python 依赖和浏览器状态必须每次现场探测。

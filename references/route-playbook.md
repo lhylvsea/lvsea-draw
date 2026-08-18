@@ -14,6 +14,13 @@
 
 ## 决策树
 
+新增路由的优先级规则：
+
+- 明确要求信息图、数据故事、信息长图、对比/时间线/漏斗/金字塔/列表信息图或 Infographic DSL：`infographic-composition`。
+- 明确要求品牌化静态图、样式指南、Mermaid/Draw.io 重绘、可访问 HTML/SVG 或 diagram-design：`editorial-diagram`。
+- 如果同时明确要求 `.drawio` 或 Draw.io 编辑，格式约束优先，主路由仍为 `editable-drawio`，信息图或品牌图作为协作路由。
+- 如果请求是“把图放进 PPT/报告/一页纸”，`editorial-document` 负责版式，图形本体仍交给信息图或编辑图路由。
+
 1. 明确要求 Draw.io、.drawio、XML、云厂商图标或 Draw.io 实时编辑：editable-drawio。
 2. 明确要求白板、思维导图、自由画或先讨论结构：whiteboard-workbench。
 3. 明确要求 Excalidraw、手绘、草图、概念教学或视觉论证：handdrawn-argument。
@@ -46,6 +53,14 @@
 | preview-and-qa | 触发原主路由修复 | 不要把在线预览工具当生成器 |
 
 协作上限默认是一个主路由加一个协作路由。只有用户明确要成套产物，或主路由的输出本来就是组合契约时，才增加第二个协作路由。
+
+### 新增 provider 协作
+
+| 主路由 | 首选 provider | 协作或降级 | 关键约束 |
+| --- | --- | --- | --- |
+| infographic-composition | AntV Infographic / `antv-infographic` | diagram-design、precise-technical-graphic、interactive-widget | 保留 DSL；模板与主数据族必须匹配；没有真实 AntV 运行时不得声称已渲染 |
+| editable-drawio | Agents365 `drawio-skill` | `bruce-drawio`、Draw.io MCP | `.drawio` 是源文件；CLI/Graphviz/版本/导出逐项探测 |
+| editorial-diagram | `diagram-design` | infographic-composition、precise-technical-graphic、editorial-document | 先语义模式、密度和 style guide，再输出自包含 HTML/SVG |
 
 ## 统一派发协议
 
@@ -85,6 +100,12 @@ Technical Explainer 建事实台账 → Generative UI 生成静态图解组件�
 ### 业务拓扑编辑器
 
 先交付内容模型和路由契约 → X6 工程实现节点/边/端口/事件 → 浏览器交互测试和导出测试；这不是一次性图生成任务。
+
+### 信息图和品牌图
+
+结构化培训要点、指标对比或阶段路线：先由 `infographic-composition` 生成可复核的 DSL，再按本机可用能力渲染 HTML/SVG；需要企业品牌、可访问静态图或 Mermaid/Draw.io 重绘时，增加 `editorial-diagram`，不要把两种源文件混成不可维护的单一产物。
+
+代码库、Terraform/Kubernetes、SQL 或 OpenAPI 的正式可编辑图：先由 `drawio-skill` 解析并生成 `.drawio`，再执行 XML/边引用/CLI/PNG 回读检查；没有 CLI 时可以交付源文件，但必须标记导出未验证。
 
 ## 不应触发
 

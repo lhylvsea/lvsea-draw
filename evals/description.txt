@@ -1,1 +1,1 @@
-中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证。Use when users ask to 画图、制作架构图、流程图、可视化、技术解读图、动态 HTML、白板或把多个绘图 Skill 统一派发。
+中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill，或把多个绘图 Skill 统一派发。

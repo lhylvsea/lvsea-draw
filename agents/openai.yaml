@@ -1,6 +1,6 @@
 interface:
   display_name: "Lvsea Draw Boss"
-  short_description: "Route and validate editable diagrams"
-  default_prompt: "Use $lvsea-draw to route this Chinese diagram request to the best available renderer and deliver an editable, validated artifact."
+  short_description: "Route and validate diagrams, infographics, and visual explainers"
+  default_prompt: "Use $lvsea-draw to route this Chinese diagram, infographic, or visual explainer request to the best available provider and deliver an editable, validated artifact."
 policy:
   allow_implicit_invocation: true

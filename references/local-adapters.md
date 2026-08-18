@@ -1,6 +1,6 @@
 # 本机适配器与能力边界
 
-本文件是 2026-08-11 在当前 Windows 主机上做的发现快照。路径、端口、依赖、浏览器会话和 MCP 状态都可能变化；每次实际任务必须重新探测。
+本文件是 2026-08-18 在当前 Windows 主机上做的发现快照。路径、端口、依赖、浏览器会话和 MCP 状态都可能变化；每次实际任务必须重新探测。
 
 | 能力 | 本机发现 | 使用时必须再核对 |
 | --- | --- | --- |
@@ -16,6 +16,9 @@
 | Kami | 本次未发现 C:\Users\rabbit\.codex\skills\kami 或 C:\Users\rabbit\.agents\skills\kami 直接入口 | 使用前先发现；缺失时转 bentohttp-ppt、codex-slides 或其他文档 Skill |
 | X6 | 只研究了 AntV/X6 源码仓库，本机未将它作为现成 Agent Skill | package manager、React/Vue 工程、SSR 和浏览器测试 |
 | SVG Preview | 只确认了在线预览页面，不将其当本地生成能力 | 网络、隐私、SVG 是否包含敏感内容 |
+| Agents365 drawio-skill | `C:\Users\rabbit\.codex\skills\drawio-skill\SKILL.md`，本机已发现直接入口 | draw.io Desktop CLI、Graphviz、版本（Mermaid/ELK 能力）、真实导入与 PNG/SVG/PPTX 导出；缺失时转 `bruce-drawio` |
+| cathrynlavery diagram-design | `C:\Users\rabbit\.codex\skills\diagram-design\SKILL.md`，本机已发现直接入口 | style guide、品牌确认门、浏览器渲染、SVG 可访问性和 PNG 导出；默认主题不能直接视为品牌交付 |
+| AntV Infographic | 本机未发现 `C:\Users\rabbit\.codex\skills\antv-infographic\SKILL.md`；上游提供可选 `infographic-*` Skill 和 `@antv/infographic` 包 | Node/npm 包、模板注册、字体、渲染器、SVG 导出和是否允许网络/CDN；未探测到时转 `diagram-design` 或精确 SVG |
 
 ## 探测原则
 

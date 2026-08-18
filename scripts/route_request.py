@@ -22,14 +22,19 @@ ROUTES: dict[str, dict[str, Any]] = {
         "fallback": ["evidence-architecture", "technical-explainer-illustrator"],
     },
     "editable-drawio": {
-        "executor": "bruce-drawio",
+        "executor": "drawio-skill",
         "patterns": [
-            (r"draw\.?io|\.drawio|xml|云厂商图标|实时.*(编辑|预览)", 6),
+            (r"draw\.?io|\.drawio|drawio-skill|agents365|xml|云厂商图标|实时.*(编辑|预览)", 6),
             (r"可编辑|继续修改|导出.*(png|svg)", 1),
         ],
         "outputs": [".drawio or XML source", "optional PNG/SVG"],
-        "validation": ["XML parse", "cell IDs and edge references", "browser or desktop readback"],
-        "fallback": ["precise-technical-graphic", "evidence-architecture"],
+        "validation": [
+            "XML parse and cell/edge reference checks",
+            "draw.io CLI/version probe when import or export is requested",
+            "self-check or PNG visual readback when the provider supports it",
+        ],
+        "fallback": ["bruce-drawio", "precise-technical-graphic", "evidence-architecture"],
+        "provider_policy": "Prefer the installed drawio-skill; use bruce-drawio or Draw.io MCP only when actually detected.",
     },
     "whiteboard-workbench": {
         "executor": "drawnix",
@@ -72,6 +77,22 @@ ROUTES: dict[str, dict[str, Any]] = {
         "validation": ["source locations", "per-image route", "image and text QA"],
         "fallback": ["evidence-architecture", "precise-technical-graphic"],
     },
+    "infographic-composition": {
+        "executor": "antv-infographic",
+        "patterns": [
+            (r"信息图|信息可视化|数据故事|数据叙事|信息长图|图解海报|列表信息图|对比信息图|时间线信息图|金字塔信息图|漏斗信息图|infographic|antv\s*infographic", 7),
+            (r"时间线|漏斗|金字塔|对比.*图|列表.*图", 5),
+            (r"声明式.*(图|可视化)|infographic\s*(syntax|dsl)|信息图.*(html|svg|png)|编辑.*信息图", 2),
+        ],
+        "outputs": ["Infographic syntax source", "standalone HTML/SVG", "optional PNG"],
+        "validation": [
+            "template and syntax parse",
+            "single compatible data family with language and icon checks",
+            "browser/SVG viewBox, text-fit, and visual readback",
+        ],
+        "fallback": ["editorial-diagram", "precise-technical-graphic", "interactive-widget"],
+        "provider_policy": "Prefer @antv/infographic or an installed AntV Infographic skill; otherwise fall back without claiming AntV rendering.",
+    },
     "interactive-widget": {
         "executor": "generative-ui-mcp",
         "patterns": [
@@ -101,6 +122,22 @@ ROUTES: dict[str, dict[str, Any]] = {
         "outputs": ["HTML/PDF/PPT/Slides with embedded diagram"],
         "validation": ["page and font capacity", "rendered preview", "source fact readback"],
         "fallback": ["evidence-architecture", "interactive-widget"],
+    },
+    "editorial-diagram": {
+        "executor": "diagram-design",
+        "patterns": [
+            (r"diagram\s*design|editorial\s*diagram|品牌.*(图|配色)|品牌化.*(图|视觉)|样式指南|style\s*guide|重绘.*(mermaid|draw\.?io)|mermaid.*重绘|draw\.?io.*重绘", 6),
+            (r"泳道|时间线|象限|金字塔|漏斗|树状图|组织结构|venn|swot|循环|飞轮|矩阵|雷达图|分层.*图", 3),
+        ],
+        "outputs": ["self-contained HTML", "accessible SVG", "optional PNG and style receipt"],
+        "validation": [
+            "semantic pattern and density check",
+            "brand/style-guide decision recorded",
+            "accessible SVG title/description and text-fit checks",
+            "browser or image visual readback",
+        ],
+        "fallback": ["infographic-composition", "precise-technical-graphic", "editorial-document"],
+        "provider_policy": "Prefer diagram-design for static branded diagrams; do not silently ship its default skin into an identified brand project.",
     },
     "custom-graph-application": {
         "executor": "antv-x6-engineering",
@@ -158,6 +195,16 @@ def score_routes(text: str) -> list[tuple[str, float, list[str]]]:
 def secondary_routes(text: str, primary: str) -> list[str]:
     normalized = normalize(text)
     candidates: list[str] = []
+    if primary == "evidence-architecture" and re.search(r"信息图|infographic|数据故事|数据叙事", normalized):
+        candidates.append("infographic-composition")
+    if primary == "infographic-composition" and re.search(r"品牌|style\s*guide|mermaid|draw\.?io|重绘", normalized):
+        candidates.append("editorial-diagram")
+    if primary == "infographic-composition" and re.search(r"交互|dashboard|widget|动画|播放", normalized):
+        candidates.append("interactive-widget")
+    if primary == "infographic-composition" and re.search(r"ppt|slides|报告|一页纸|白皮书", normalized):
+        candidates.append("editorial-document")
+    if primary == "editorial-diagram" and re.search(r"ppt|slides|报告|一页纸|白皮书", normalized):
+        candidates.append("editorial-document")
     if primary == "codebase-knowledge-graph" and re.search(r"架构|流程|地图|可视化", normalized):
         candidates.append("evidence-architecture")
     if primary == "evidence-architecture" and re.search(r"svg|png|gif|uml|er|几何", normalized):
@@ -213,6 +260,7 @@ def build_plan(text: str) -> dict[str, Any]:
         "output_contract": route["outputs"],
         "validation": route["validation"],
         "fallback": route["fallback"],
+        "provider_policy": route.get("provider_policy"),
         "needs_clarification": needs_clarification,
         "clarification": (
             "请补充：最终要可编辑文件、可直接打开的 HTML，还是图片/PPT？"
@@ -225,6 +273,8 @@ def build_plan(text: str) -> dict[str, Any]:
             "evidence-architecture",
             "explainer-image-set",
             "precise-technical-graphic",
+            "infographic-composition",
+            "editorial-diagram",
         },
     }
 

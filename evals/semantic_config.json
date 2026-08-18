@@ -15,6 +15,11 @@
       "HTML",
       "repository",
       "technical report",
+      "infographic",
+      "data story",
+      "Infographic DSL",
+      "diagram-design",
+      "drawio-skill",
       "流程图",
       "架构图",
       "白板",
@@ -33,7 +38,11 @@
       "做可视化",
       "生成技术解读图",
       "生成 Draw.io",
-      "做白板"
+      "做白板",
+      "做信息图",
+      "生成数据故事",
+      "按品牌规范重绘 Mermaid",
+      "用 drawio-skill 生成 drawio"
     ],
     "exclusions": [
       "summary-only requests",
@@ -53,6 +62,8 @@
       "Draw.io XML",
       "Excalidraw JSON",
       "whiteboard export",
+      "Infographic DSL",
+      "style receipt",
       "QA record"
     ]
   },
@@ -92,6 +103,12 @@
         "交互式 HTML",
         "动画",
         "动起来",
+        "信息图",
+        "信息可视化",
+        "数据故事",
+        "Infographic DSL",
+        "diagram-design",
+        "drawio-skill",
         "画图",
         "绘图"
       ]

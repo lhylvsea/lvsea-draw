@@ -28,6 +28,23 @@ class RouteRequestTests(unittest.TestCase):
     def test_drawio_wins_over_generic_flow(self) -> None:
         self.assert_route("把安全生产异常闭环做成可继续修改的 Draw.io XML", "editable-drawio")
 
+    def test_drawio_skill_provider(self) -> None:
+        plan = build_plan("用 Agents365 drawio-skill 把 Terraform 和 SQL 生成可继续修改的多页 drawio")
+        self.assertEqual(plan["route"], "editable-drawio", plan)
+        self.assertEqual(plan["primary_executor"], "drawio-skill")
+
+    def test_infographic_composition(self) -> None:
+        plan = build_plan("把培训要点做成中文信息图和数据故事，保留 Infographic DSL 并导出 SVG")
+        self.assertEqual(plan["route"], "infographic-composition", plan)
+        self.assertIn("Infographic syntax source", plan["output_contract"])
+        self.assertIn("editorial-diagram", plan["fallback"])
+
+    def test_editorial_diagram(self) -> None:
+        plan = build_plan("按品牌规范把 Mermaid 重绘成自包含 HTML 和可访问 SVG")
+        self.assertEqual(plan["route"], "editorial-diagram", plan)
+        self.assertEqual(plan["primary_executor"], "diagram-design")
+        self.assertTrue(plan["provider_policy"])
+
     def test_whiteboard(self) -> None:
         self.assert_route("先用白板做一个生产订单到入库的思维导图", "whiteboard-workbench")
 
@@ -39,6 +56,9 @@ class RouteRequestTests(unittest.TestCase):
 
     def test_interactive_chart(self) -> None:
         self.assert_route("用真实数据做一个可交互的 Chart.js 经营指标组件", "interactive-widget")
+
+    def test_interactive_timeline_stays_widget(self) -> None:
+        self.assert_route("做一个可交互的时间线 HTML 组件", "interactive-widget")
 
     def test_animation(self) -> None:
         self.assert_route("把这段科普内容做成可录屏的仿 PPT 动画网页", "animated-explainer-html")

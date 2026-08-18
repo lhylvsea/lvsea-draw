@@ -7,6 +7,9 @@
 - 做 Draw.io、Excalidraw、Drawnix 白板、SVG、PNG、GIF 或交互式 HTML
 - 把论文、README、技术报告、制造流程、安全闭环转成图
 - 生成动画流程图、仿 PPT 演示网页、交互式组件或图编辑器
+- 做信息图、数据故事、信息长图、时间线/对比/漏斗/金字塔/列表信息图
+- 用 AntV Infographic DSL、Agents365 drawio-skill 或 diagram-design 生成图
+- 按品牌规范把 Mermaid/Draw.io 重绘成自包含 HTML、可访问 SVG 或 PNG
 - 把多个绘图 Skill 统一路由、派发、验证和发布
 
 ## 中文使用说明
@@ -22,6 +25,12 @@
 5. 先做确定性检查，再做浏览器或图片视觉检查。
 6. 交付文件路径、主要验证结果和尚未验证的外部条件。
 
+信息图请求先进入 `infographic-composition`：抽取标题、说明、主数据族、语言、图标和主题，再选择 sequence/list/compare/hierarchy/chart/relation 模板，保留 Infographic DSL。若本机没有 AntV 运行时，转 `editorial-diagram` 或 `precise-technical-graphic`，并在交付状态中说明降级。
+
+品牌化静态图、Mermaid/Draw.io 重绘进入 `editorial-diagram`，先按 diagram-design 的语义模式、信息密度、尺寸和 style guide 处理，默认交付自包含 HTML 与可访问 SVG。需要放进 PPT 或报告时，再由 `editorial-document` 负责页面排版。
+
+明确要 `.drawio`、代码/IaC/SQL/OpenAPI 导入或 Draw.io CLI 时，进入 `editable-drawio`，优先 drawio-skill；只有现场探测到 CLI、Graphviz 和实际导出，才把 PNG/SVG/PPTX 写成已验证产物。
+
 ## 四个真实应用场景
 
 1. 生产订单到批次、检验、入库的制造管理流程：先白板讨论，后输出 Draw.io 或 Archify 正式图。
@@ -33,6 +42,7 @@
 
 - 路由 JSON：route、secondary_routes、reasons、output_contract、validation 和 fallback。
 - 可编辑源文件：根据路由生成 JSON、XML、SVG、HTML、.drawnix、.excalidraw 或 Web 工程。
+- 信息图源文件：Infographic DSL、模板/主题记录和独立 HTML/SVG；若使用降级路线，保留原始结构说明。
 - 派生文件：PNG、SVG、GIF、WebM、PDF、PPT 或图片组。
 - 证据与 QA：来源清单、事实台账、视觉计划、渲染报告或人工检查记录。
 
@@ -43,4 +53,5 @@
 - Drawnix 的浏览器缓存不是正式备份；重要白板要导出到项目目录。
 - SVG/PNG/GIF 的质量不能只靠文本或 XML 检查；需要实际渲染和图片回读。
 - 技术图中的数字、公式、接口、协议和架构关系必须绑定来源；不能用图像模型替代事实核对。
+- AntV Infographic、drawio-skill 和 diagram-design 的上游包、CLI、Skill、浏览器或品牌配置是否可用，必须按本次运行重新探测。
 - 公开上游的源码、图片和品牌资产只做方法研究，不复制到本 Skill。

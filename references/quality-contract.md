@@ -32,14 +32,18 @@
 | --- | --- |
 | Archify | JSON IR、HTML、PNG/SVG 或分享卡（按请求） |
 | Fireworks | SVG、PNG，动效另留 GIF 和 motion report |
-| Draw.io | .drawio/XML，必要时 PNG/SVG |
+| Draw.io / drawio-skill | .drawio/XML，必要时 PNG/SVG/PDF/PPTX；记录 CLI 与导出状态 |
 | Excalidraw | .excalidraw JSON 和渲染图 |
 | Drawnix | .drawnix/JSON/PNG 导出文件，不能只留浏览器状态 |
 | Technical Explainer | SOURCE-MANIFEST、CLAIM-LEDGER、VISUAL-PLAN、提示词包、图片和 QA |
 | Generative UI | 单文件 HTML/SVG/组件代码和数据来源 |
+| AntV Infographic | Infographic DSL、模板/主题记录、HTML/SVG，必要时 PNG |
+| diagram-design | 自包含 HTML、可访问 SVG、必要时 PNG 和 style receipt |
 | X6 | 源码、运行入口、测试和导出样例 |
 
 ## 验证门
+
+信息图必须额外检查：模板与主数据族匹配、`title/desc/label/value/icon` 字段完整、语言不被静默翻译、主题颜色可读，以及 DSL 能否在真实运行时解析。编辑图必须额外检查：语义模式没有被装饰替代、节点密度可控、SVG 有 accessible name、品牌 style guide 决策已记录。drawio-skill 需要把 CLI/version/import/export 状态分开记录。
 
 ### 确定性检查
 

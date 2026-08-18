@@ -28,6 +28,18 @@
     {
       "text": "把 SVG 生成 GIF 并做几何和视觉验收",
       "family": "technical_motion"
+    },
+    {
+      "text": "把培训要点做成中文信息图和数据故事，保留 Infographic DSL 并导出 SVG",
+      "family": "infographic_composition"
+    },
+    {
+      "text": "用 Agents365 drawio-skill 把 Terraform 和 SQL 生成可继续修改的多页 drawio",
+      "family": "drawio_skill"
+    },
+    {
+      "text": "按品牌规范把 Mermaid 重绘成自包含 HTML 和可访问 SVG",
+      "family": "editorial_diagram"
     }
   ],
   "should_not_trigger": [
