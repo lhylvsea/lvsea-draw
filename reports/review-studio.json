@@ -4,12 +4,12 @@
   "skill_dir": ".",
   "summary": {
     "decision": "review",
-    "world_class_score": 69,
+    "world_class_score": 78,
     "gate_count": 16,
     "gate_contract_ok": true,
     "blocker_count": 0,
-    "warning_count": 12,
-    "action_count": 12,
+    "warning_count": 8,
+    "action_count": 8,
     "annotation_count": 0,
     "open_annotation_count": 0,
     "open_annotation_blocker_count": 0,
@@ -79,23 +79,23 @@
     {
       "key": "runtime-matrix",
       "label": "运行矩阵",
-      "status": "warn",
-      "detail": "runtime conformance matrix is missing",
+      "status": "pass",
+      "detail": "5 / 5 targets pass",
       "evidence": "reports/conformance_matrix.json",
       "link": "conformance_matrix.md",
-      "review_action_id": "review-action-runtime-matrix",
-      "review_action_status": "warn",
-      "review_action_title": "运行矩阵",
-      "review_action_next_step": "修复目标端结构、metadata、相对路径、fallback 或 adapter target 声明。",
-      "review_action_reason": "runtime conformance 失败意味着包可能被目标客户端错误加载或静默降级。",
-      "review_action_source_ref_count": 2,
-      "review_action_verification_command": "python3 scripts/run_conformance_suite.py ."
+      "review_action_id": "",
+      "review_action_status": "",
+      "review_action_title": "",
+      "review_action_next_step": "",
+      "review_action_reason": "",
+      "review_action_source_ref_count": 0,
+      "review_action_verification_command": ""
     },
     {
       "key": "trust-report",
       "label": "信任报告",
       "status": "warn",
-      "detail": "security trust report is missing",
+      "detail": "0 secrets; 2 scripts; 0 network-capable scripts; 0 help smoke failures",
       "evidence": "reports/security_trust_report.json",
       "link": "security_trust_report.md",
       "review_action_id": "review-action-trust-report",
@@ -109,17 +109,17 @@
     {
       "key": "python-compat",
       "label": "Python 兼容",
-      "status": "warn",
-      "detail": "Python compatibility report is missing",
+      "status": "pass",
+      "detail": "Python 3.11; 4 files; 0 compatibility issues; 0 syntax; 0 f-string 3.11 hazards",
       "evidence": "reports/python_compatibility.json",
       "link": "python_compatibility.md",
-      "review_action_id": "review-action-python-compat",
-      "review_action_status": "warn",
-      "review_action_title": "Python 兼容",
-      "review_action_next_step": "修复 Python 3.11 语法兼容问题，尤其是 f-string 表达式内的反斜杠转义。",
-      "review_action_reason": "目标运行环境可能仍停留在 Python 3.11，语法漂移会让 CLI、报告生成和 CI 在发布后直接失败。",
-      "review_action_source_ref_count": 3,
-      "review_action_verification_command": "python3 scripts/yao.py python-compat ."
+      "review_action_id": "",
+      "review_action_status": "",
+      "review_action_title": "",
+      "review_action_next_step": "",
+      "review_action_reason": "",
+      "review_action_source_ref_count": 0,
+      "review_action_verification_command": ""
     },
     {
       "key": "architecture-maintainability",
@@ -139,38 +139,38 @@
     {
       "key": "permission-gates",
       "label": "权限批准",
-      "status": "warn",
-      "detail": "permission governance evidence is missing because trust report is missing",
+      "status": "pass",
+      "detail": "2/2 permissions approved; gaps 0; required file_write, subprocess",
       "evidence": "reports/security_trust_report.json + security/permission_policy.json",
       "link": "..\\security\\permission_policy.md",
-      "review_action_id": "review-action-permission-gates",
-      "review_action_status": "warn",
-      "review_action_title": "权限批准",
-      "review_action_next_step": "补齐高权限能力的 reviewer、scope、reason、expires_at 和目标端 enforcement 说明。",
-      "review_action_reason": "权限契约只有在批准人、有效期和目标端处置方式明确时，才能支撑 governed release。",
-      "review_action_source_ref_count": 2,
-      "review_action_verification_command": "python3 scripts/trust_check.py ."
+      "review_action_id": "",
+      "review_action_status": "",
+      "review_action_title": "",
+      "review_action_next_step": "",
+      "review_action_reason": "",
+      "review_action_source_ref_count": 0,
+      "review_action_verification_command": ""
     },
     {
       "key": "permission-runtime",
       "label": "权限探针",
-      "status": "warn",
-      "detail": "runtime permission probe report is missing",
+      "status": "pass",
+      "detail": "4/4 targets probed; native 0; metadata fallback 4; installer 4; residual risks 4",
       "evidence": "reports/runtime_permission_probes.json",
       "link": "runtime_permission_probes.md",
-      "review_action_id": "review-action-permission-runtime",
-      "review_action_status": "warn",
-      "review_action_title": "权限探针",
-      "review_action_next_step": "生成并修复目标包的 runtime permission probe 报告。",
-      "review_action_reason": "目标端即使只能提供 metadata fallback，也必须明确 native enforcement 缺口、表示位置和 operator note。",
-      "review_action_source_ref_count": 4,
-      "review_action_verification_command": "python3 scripts/probe_runtime_permissions.py . --package-dir dist"
+      "review_action_id": "",
+      "review_action_status": "",
+      "review_action_title": "",
+      "review_action_next_step": "",
+      "review_action_reason": "",
+      "review_action_source_ref_count": 0,
+      "review_action_verification_command": ""
     },
     {
       "key": "skill-atlas",
       "label": "组合治理",
       "status": "warn",
-      "detail": "skill atlas is missing; portfolio-level conflicts are unknown",
+      "detail": "1 skills, 1 actionable; 0 actionable route collisions; 0 actionable owner gaps; 0 actionable stale; 1 actionable drift; 0 scoped non-actionable issues",
       "evidence": "reports/skill_atlas.json",
       "link": "skill_atlas.html",
       "review_action_id": "review-action-skill-atlas",
@@ -200,7 +200,7 @@
       "key": "review-waivers",
       "label": "人工批准",
       "status": "warn",
-      "detail": "0 active waivers; 10 warning gates still need reviewer decision",
+      "detail": "0 active waivers; 6 warning gates still need reviewer decision",
       "evidence": "reports/review_waivers.json",
       "link": "review_waivers.md",
       "review_action_id": "review-action-review-waivers",
@@ -230,7 +230,7 @@
       "key": "registry-audit",
       "label": "注册审计",
       "status": "pass",
-      "detail": "registry audit is optional until team distribution is required",
+      "detail": "lvsea-draw 0.3.0; 6/6 compatibility entries pass; install pass with 4 adapters; installer permissions 8 enforced / 0 failures",
       "evidence": "reports/registry_audit.json + reports/install_simulation.json",
       "link": "registry_audit.md",
       "review_action_id": "",
@@ -350,25 +350,10 @@
       "review_action_verification_command": "python3 scripts/render_context_reports.py"
     },
     {
-      "key": "runtime-matrix",
-      "label": "运行矩阵",
-      "status": "warn",
-      "detail": "runtime conformance matrix is missing",
-      "evidence": "reports/conformance_matrix.json",
-      "link": "conformance_matrix.md",
-      "review_action_id": "review-action-runtime-matrix",
-      "review_action_status": "warn",
-      "review_action_title": "运行矩阵",
-      "review_action_next_step": "修复目标端结构、metadata、相对路径、fallback 或 adapter target 声明。",
-      "review_action_reason": "runtime conformance 失败意味着包可能被目标客户端错误加载或静默降级。",
-      "review_action_source_ref_count": 2,
-      "review_action_verification_command": "python3 scripts/run_conformance_suite.py ."
-    },
-    {
       "key": "trust-report",
       "label": "信任报告",
       "status": "warn",
-      "detail": "security trust report is missing",
+      "detail": "0 secrets; 2 scripts; 0 network-capable scripts; 0 help smoke failures",
       "evidence": "reports/security_trust_report.json",
       "link": "security_trust_report.md",
       "review_action_id": "review-action-trust-report",
@@ -380,55 +365,10 @@
       "review_action_verification_command": "python3 scripts/trust_check.py ."
     },
     {
-      "key": "python-compat",
-      "label": "Python 兼容",
-      "status": "warn",
-      "detail": "Python compatibility report is missing",
-      "evidence": "reports/python_compatibility.json",
-      "link": "python_compatibility.md",
-      "review_action_id": "review-action-python-compat",
-      "review_action_status": "warn",
-      "review_action_title": "Python 兼容",
-      "review_action_next_step": "修复 Python 3.11 语法兼容问题，尤其是 f-string 表达式内的反斜杠转义。",
-      "review_action_reason": "目标运行环境可能仍停留在 Python 3.11，语法漂移会让 CLI、报告生成和 CI 在发布后直接失败。",
-      "review_action_source_ref_count": 3,
-      "review_action_verification_command": "python3 scripts/yao.py python-compat ."
-    },
-    {
-      "key": "permission-gates",
-      "label": "权限批准",
-      "status": "warn",
-      "detail": "permission governance evidence is missing because trust report is missing",
-      "evidence": "reports/security_trust_report.json + security/permission_policy.json",
-      "link": "..\\security\\permission_policy.md",
-      "review_action_id": "review-action-permission-gates",
-      "review_action_status": "warn",
-      "review_action_title": "权限批准",
-      "review_action_next_step": "补齐高权限能力的 reviewer、scope、reason、expires_at 和目标端 enforcement 说明。",
-      "review_action_reason": "权限契约只有在批准人、有效期和目标端处置方式明确时，才能支撑 governed release。",
-      "review_action_source_ref_count": 2,
-      "review_action_verification_command": "python3 scripts/trust_check.py ."
-    },
-    {
-      "key": "permission-runtime",
-      "label": "权限探针",
-      "status": "warn",
-      "detail": "runtime permission probe report is missing",
-      "evidence": "reports/runtime_permission_probes.json",
-      "link": "runtime_permission_probes.md",
-      "review_action_id": "review-action-permission-runtime",
-      "review_action_status": "warn",
-      "review_action_title": "权限探针",
-      "review_action_next_step": "生成并修复目标包的 runtime permission probe 报告。",
-      "review_action_reason": "目标端即使只能提供 metadata fallback，也必须明确 native enforcement 缺口、表示位置和 operator note。",
-      "review_action_source_ref_count": 4,
-      "review_action_verification_command": "python3 scripts/probe_runtime_permissions.py . --package-dir dist"
-    },
-    {
       "key": "skill-atlas",
       "label": "组合治理",
       "status": "warn",
-      "detail": "skill atlas is missing; portfolio-level conflicts are unknown",
+      "detail": "1 skills, 1 actionable; 0 actionable route collisions; 0 actionable owner gaps; 0 actionable stale; 1 actionable drift; 0 scoped non-actionable issues",
       "evidence": "reports/skill_atlas.json",
       "link": "skill_atlas.html",
       "review_action_id": "review-action-skill-atlas",
@@ -458,7 +398,7 @@
       "key": "review-waivers",
       "label": "人工批准",
       "status": "warn",
-      "detail": "0 active waivers; 10 warning gates still need reviewer decision",
+      "detail": "0 active waivers; 6 warning gates still need reviewer decision",
       "evidence": "reports/review_waivers.json",
       "link": "review_waivers.md",
       "review_action_id": "review-action-review-waivers",
@@ -505,7 +445,7 @@
           "kind": "source",
           "line": 3,
           "matched_pattern": "description:",
-          "excerpt": "description: \"Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliabl…",
+          "excerpt": "description: \"中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉…",
           "exists": true,
           "link": "..\\SKILL.md"
         },
@@ -513,11 +453,11 @@
           "path": "evals/trigger_cases.json",
           "label": "trigger eval cases",
           "kind": "eval",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
+          "line": 3,
+          "matched_pattern": "should_trigger",
+          "excerpt": "\"should_trigger\": [",
+          "exists": true,
+          "link": "..\\evals\\trigger_cases.json"
         },
         {
           "path": "reports/route_scorecard.md",
@@ -674,45 +614,6 @@
       "evidence_steps": []
     },
     {
-      "action_id": "review-action-runtime-matrix",
-      "gate_key": "runtime-matrix",
-      "title": "运行矩阵",
-      "label": "运行矩阵",
-      "status": "warn",
-      "priority": "warning",
-      "next_step": "修复目标端结构、metadata、相对路径、fallback 或 adapter target 声明。",
-      "summary": "修复目标端结构、metadata、相对路径、fallback 或 adapter target 声明。",
-      "reason": "runtime conformance 失败意味着包可能被目标客户端错误加载或静默降级。",
-      "why": "runtime conformance 失败意味着包可能被目标客户端错误加载或静默降级。",
-      "source_fix": "agents/interface.yaml + reports/conformance_matrix.md",
-      "source_refs": [
-        {
-          "path": "agents/interface.yaml",
-          "label": "portable interface",
-          "kind": "source",
-          "line": 7,
-          "matched_pattern": "adapter_targets",
-          "excerpt": "adapter_targets:",
-          "exists": true,
-          "link": "..\\agents\\interface.yaml"
-        },
-        {
-          "path": "reports/conformance_matrix.md",
-          "label": "conformance matrix",
-          "kind": "report",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
-        }
-      ],
-      "evidence": "reports/conformance_matrix.json",
-      "evidence_link": "conformance_matrix.md",
-      "verification_command": "python3 scripts/run_conformance_suite.py .",
-      "evidence_steps": []
-    },
-    {
       "action_id": "review-action-trust-report",
       "gate_key": "trust-report",
       "title": "信任报告",
@@ -729,11 +630,11 @@
           "path": "reports/security_trust_report.md",
           "label": "trust report",
           "kind": "report",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
+          "line": 1,
+          "matched_pattern": "# Security",
+          "excerpt": "# Security Trust Report",
+          "exists": true,
+          "link": "security_trust_report.md"
         },
         {
           "path": "security/script_policy.md",
@@ -759,153 +660,6 @@
       "evidence": "reports/security_trust_report.json",
       "evidence_link": "security_trust_report.md",
       "verification_command": "python3 scripts/trust_check.py .",
-      "evidence_steps": []
-    },
-    {
-      "action_id": "review-action-python-compat",
-      "gate_key": "python-compat",
-      "title": "Python 兼容",
-      "label": "Python 兼容",
-      "status": "warn",
-      "priority": "warning",
-      "next_step": "修复 Python 3.11 语法兼容问题，尤其是 f-string 表达式内的反斜杠转义。",
-      "summary": "修复 Python 3.11 语法兼容问题，尤其是 f-string 表达式内的反斜杠转义。",
-      "reason": "目标运行环境可能仍停留在 Python 3.11，语法漂移会让 CLI、报告生成和 CI 在发布后直接失败。",
-      "why": "目标运行环境可能仍停留在 Python 3.11，语法漂移会让 CLI、报告生成和 CI 在发布后直接失败。",
-      "source_fix": "reports/python_compatibility.md + scripts/*.py + tests/*.py",
-      "source_refs": [
-        {
-          "path": "reports/python_compatibility.md",
-          "label": "Python compatibility",
-          "kind": "report",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
-        },
-        {
-          "path": "scripts/python_compat_check.py",
-          "label": "compatibility checker",
-          "kind": "source",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
-        },
-        {
-          "path": ".github/workflows/test.yml",
-          "label": "CI test workflow",
-          "kind": "ci",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
-        }
-      ],
-      "evidence": "reports/python_compatibility.json",
-      "evidence_link": "python_compatibility.md",
-      "verification_command": "python3 scripts/yao.py python-compat .",
-      "evidence_steps": []
-    },
-    {
-      "action_id": "review-action-permission-gates",
-      "gate_key": "permission-gates",
-      "title": "权限批准",
-      "label": "权限批准",
-      "status": "warn",
-      "priority": "warning",
-      "next_step": "补齐高权限能力的 reviewer、scope、reason、expires_at 和目标端 enforcement 说明。",
-      "summary": "补齐高权限能力的 reviewer、scope、reason、expires_at 和目标端 enforcement 说明。",
-      "reason": "权限契约只有在批准人、有效期和目标端处置方式明确时，才能支撑 governed release。",
-      "why": "权限契约只有在批准人、有效期和目标端处置方式明确时，才能支撑 governed release。",
-      "source_fix": "security/permission_policy.json + security/permission_policy.md",
-      "source_refs": [
-        {
-          "path": "security/permission_policy.json",
-          "label": "permission approvals",
-          "kind": "policy",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
-        },
-        {
-          "path": "security/permission_policy.md",
-          "label": "permission method",
-          "kind": "policy",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
-        }
-      ],
-      "evidence": "reports/security_trust_report.json + security/permission_policy.json",
-      "evidence_link": "..\\security\\permission_policy.md",
-      "verification_command": "python3 scripts/trust_check.py .",
-      "evidence_steps": []
-    },
-    {
-      "action_id": "review-action-permission-runtime",
-      "gate_key": "permission-runtime",
-      "title": "权限探针",
-      "label": "权限探针",
-      "status": "warn",
-      "priority": "warning",
-      "next_step": "生成并修复目标包的 runtime permission probe 报告。",
-      "summary": "生成并修复目标包的 runtime permission probe 报告。",
-      "reason": "目标端即使只能提供 metadata fallback，也必须明确 native enforcement 缺口、表示位置和 operator note。",
-      "why": "目标端即使只能提供 metadata fallback，也必须明确 native enforcement 缺口、表示位置和 operator note。",
-      "source_fix": "dist/targets/*/adapter.json + reports/runtime_permission_probes.md",
-      "source_refs": [
-        {
-          "path": "reports/runtime_permission_probes.md",
-          "label": "runtime permission probes",
-          "kind": "report",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
-        },
-        {
-          "path": "dist/targets/openai/adapter.json",
-          "label": "OpenAI adapter",
-          "kind": "package",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
-        },
-        {
-          "path": "dist/targets/claude/adapter.json",
-          "label": "Claude adapter",
-          "kind": "package",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
-        },
-        {
-          "path": "dist/targets/generic/adapter.json",
-          "label": "generic adapter",
-          "kind": "package",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
-        }
-      ],
-      "evidence": "reports/runtime_permission_probes.json",
-      "evidence_link": "runtime_permission_probes.md",
-      "verification_command": "python3 scripts/probe_runtime_permissions.py . --package-dir dist",
       "evidence_steps": []
     },
     {
@@ -945,11 +699,11 @@
           "path": "reports/skill_atlas.html",
           "label": "skill atlas report",
           "kind": "report",
-          "line": null,
-          "matched_pattern": "",
-          "excerpt": "",
-          "exists": false,
-          "link": ""
+          "line": 6,
+          "matched_pattern": "Skill Atlas",
+          "excerpt": "<title>Skill Atlas</title>",
+          "exists": true,
+          "link": "skill_atlas.html"
         }
       ],
       "evidence": "reports/skill_atlas.json",
@@ -2334,11 +2088,11 @@
     "compiled_targets": {
       "schema_version": "1.0",
       "ok": true,
-      "generated_at": "2026-08-11",
-      "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
+      "generated_at": "2026-08-18",
+      "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
       "summary": {
-        "target_count": 5,
-        "pass_count": 5,
+        "target_count": 4,
+        "pass_count": 4,
         "warn_count": 0,
         "block_count": 0,
         "failure_count": 0,
@@ -2357,7 +2111,7 @@
             "ir_schema_version": "2.0.0"
           },
           "source": {
-            "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
+            "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
             "canonical_metadata": "agents/interface.yaml",
             "declared_targets": [
               "openai",
@@ -2370,18 +2124,32 @@
           "compiled_contract": {
             "name": "lvsea-draw",
             "title": "Lvsea Draw Boss",
-            "version": "0.1.0",
-            "description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+            "version": "0.3.0",
+            "description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或把多个绘图 Skill 统一派发。",
             "job_to_be_done": "Turn broad diagram and visualization requests into a routed, validated, editable deliverable",
             "trigger": {
-              "description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+              "description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或把多个绘图 Skill 统一派发。",
               "should_trigger": [
-                "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts."
+                "画一张有证据的系统架构图并保留可编辑源文件",
+                "把这段流程做成可继续修改的 Draw.io XML",
+                "把这个仓库转成代码知识图谱和技术解读图",
+                "生成一个交互式 HTML 图表组件",
+                "把这篇技术报告拆成 16:9 图片组并建立事实台账",
+                "用白板先梳理安全生产异常闭环",
+                "把 SVG 生成 GIF 并做几何和视觉验收",
+                "把培训要点做成中文信息图和数据故事，保留 Infographic DSL 并导出 SVG"
               ],
               "should_not_trigger": [
+                "只要总结一下流程图是什么",
+                "翻译一下这段画图说明",
+                "不要生成文件，只给我几个头脑风暴方向",
+                "只看一下这张已有图片，不要修改",
                 "Do not claim facts, runtime topology, browser interaction, MCP availability, or visual quality without evidence"
               ],
-              "edge_cases": []
+              "edge_cases": [
+                "我要做一个复杂的 React 图编辑器，但还没有决定用什么库",
+                "帮我把报告排版成一页纸，里面需要一张流程图"
+              ]
             },
             "workflow": {
               "steps": [
@@ -2397,10 +2165,10 @@
               "failure_modes": [
                 "Tables can render as dense grids with weak hierarchy or poor mobile readability.",
                 "Long bullets can make the output look complete while hiding the actual decision logic.",
+                "Commands can omit environment assumptions, working directory, or rollback notes.",
+                "Code snippets can look runnable while missing required inputs.",
                 "Footnote markers or dense citation notes can interrupt the reading flow.",
                 "Evidence can be over-attached to obvious statements and under-attached to risky claims.",
-                "Screenshots can be captured from the wrong state, wrong viewport, or wrong crop.",
-                "Missing screenshots can cause the skill to invent visual references instead of declaring the gap.",
                 "Users start invoking the skill for adjacent one-off or explanation-only requests.",
                 "Outputs remain valid but become generic, cluttered, or weakly aligned with the user's domain.",
                 "Borrowed benchmark patterns no longer fit the local job or add ceremony without payoff.",
@@ -2408,8 +2176,18 @@
               ]
             },
             "resources": {
-              "references": [],
-              "scripts": [],
+              "references": [
+                "references\\editable-pptx-companion.md",
+                "references\\infographic-adapter.md",
+                "references\\local-adapters.md",
+                "references\\quality-contract.md",
+                "references\\route-playbook.md",
+                "references\\source-matrix.md"
+              ],
+              "scripts": [
+                "scripts\\emit_editable_pptx.py",
+                "scripts\\route_request.py"
+              ],
               "assets": [],
               "reports": [
                 "reports/intent-context.json",
@@ -2424,22 +2202,37 @@
                 "reports/prompt-quality-profile.json",
                 "reports/prompt-quality-profile.md",
                 "reports/system-model.json",
-                "reports/system-model.md"
+                "reports/system-model.md",
+                "reports/iteration-directions.json",
+                "reports/iteration-directions.md",
+                "reports/skill-overview.json",
+                "reports/skill-overview.html",
+                "reports/review_annotations.json",
+                "reports/review_annotations.md",
+                "reports/conformance_matrix.json",
+                "reports/conformance_matrix.md",
+                "reports/security_trust_report.json",
+                "reports/security_trust_report.md",
+                "reports/runtime_permission_probes.json",
+                "reports/runtime_permission_probes.md"
               ],
               "counts": {
-                "references": 0,
-                "scripts": 0,
+                "references": 6,
+                "scripts": 2,
                 "assets": 0,
-                "reports": 13
+                "reports": 25
               }
             },
             "eval_plan": {
-              "trigger": [],
+              "trigger": [
+                "evals\\semantic_config.json",
+                "evals\\trigger_cases.json"
+              ],
               "output": [],
               "adversarial": [],
               "baseline": "without_skill",
               "counts": {
-                "trigger": 0,
+                "trigger": 2,
                 "output": 0,
                 "adversarial": 0,
                 "baseline": 1
@@ -2447,11 +2240,11 @@
             },
             "risk": {
               "output_risk": "high",
-              "execution_risk": "low",
+              "execution_risk": "medium",
               "trust_boundary": "team"
             },
             "governance": {
-              "owner": "Yao Team",
+              "owner": "lvsea",
               "maturity": "production",
               "review_cadence": "monthly",
               "review_due": ""
@@ -2480,8 +2273,8 @@
             },
             "permissions": {
               "schema_version": "1.0",
-              "source": "missing-security-trust-report",
-              "source_available": false,
+              "source": "reports\\security_trust_report.json",
+              "source_available": true,
               "declared_capabilities": [],
               "review_required": false,
               "capabilities": {
@@ -2517,8 +2310,8 @@
                 "mismatches": []
               },
               "help_smoke": {
-                "enabled": false,
-                "checked_count": 0,
+                "enabled": true,
+                "checked_count": 1,
                 "failed_count": 0,
                 "failed_scripts": []
               },
@@ -2547,7 +2340,7 @@
                 "subprocess": 0,
                 "interactive": 0
               },
-              "evidence": "missing-security-trust-report",
+              "evidence": "reports\\security_trust_report.json",
               "operator_note": "OpenAI target carries permission metadata for reviewer visibility; host enforcement remains outside the package."
             },
             "target_native_contract": {
@@ -2556,17 +2349,17 @@
               "native_surface": "OpenAI-style interface metadata plus neutral Agent Skills source",
               "activation": {
                 "policy": "Use frontmatter description for catalog routing and targets/openai/agents/openai.yaml for display name, default prompt, and compatibility metadata.",
-                "trigger_description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+                "trigger_description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或把多个绘图 Skill 统一派发。",
                 "manual_activation_supported": true,
                 "automatic_activation_note": "Depends on the target client route/catalog implementation."
               },
               "resources": {
                 "strategy": "Ship the neutral source tree and expose OpenAI-facing interface metadata as a generated companion file.",
                 "counts": {
-                  "references": 0,
-                  "scripts": 0,
+                  "references": 6,
+                  "scripts": 2,
                   "assets": 0,
-                  "reports": 13
+                  "reports": 25
                 },
                 "generated_files": [
                   "targets/openai/adapter.json",
@@ -2575,7 +2368,7 @@
               },
               "scripts": {
                 "strategy": "Keep scripts as local package resources; expose help-smoke and permission metadata for reviewer approval before execution.",
-                "script_count": 0,
+                "script_count": 2,
                 "help_smoke_failed_count": 0
               },
               "permissions": {
@@ -2631,8 +2424,8 @@
           },
           "permission_contract": {
             "schema_version": "1.0",
-            "source": "missing-security-trust-report",
-            "source_available": false,
+            "source": "reports\\security_trust_report.json",
+            "source_available": true,
             "declared_capabilities": [],
             "review_required": false,
             "capabilities": {
@@ -2668,8 +2461,8 @@
               "mismatches": []
             },
             "help_smoke": {
-              "enabled": false,
-              "checked_count": 0,
+              "enabled": true,
+              "checked_count": 1,
               "failed_count": 0,
               "failed_scripts": []
             },
@@ -2696,7 +2489,7 @@
               "subprocess": 0,
               "interactive": 0
             },
-            "evidence": "missing-security-trust-report",
+            "evidence": "reports\\security_trust_report.json",
             "operator_note": "OpenAI target carries permission metadata for reviewer visibility; host enforcement remains outside the package."
           },
           "target_native_contract": {
@@ -2705,17 +2498,17 @@
             "native_surface": "OpenAI-style interface metadata plus neutral Agent Skills source",
             "activation": {
               "policy": "Use frontmatter description for catalog routing and targets/openai/agents/openai.yaml for display name, default prompt, and compatibility metadata.",
-              "trigger_description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+              "trigger_description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或把多个绘图 Skill 统一派发。",
               "manual_activation_supported": true,
               "automatic_activation_note": "Depends on the target client route/catalog implementation."
             },
             "resources": {
               "strategy": "Ship the neutral source tree and expose OpenAI-facing interface metadata as a generated companion file.",
               "counts": {
-                "references": 0,
-                "scripts": 0,
+                "references": 6,
+                "scripts": 2,
                 "assets": 0,
-                "reports": 13
+                "reports": 25
               },
               "generated_files": [
                 "targets/openai/adapter.json",
@@ -2724,7 +2517,7 @@
             },
             "scripts": {
               "strategy": "Keep scripts as local package resources; expose help-smoke and permission metadata for reviewer approval before execution.",
-              "script_count": 0,
+              "script_count": 2,
               "help_smoke_failed_count": 0
             },
             "permissions": {
@@ -2801,7 +2594,7 @@
             "ir_schema_version": "2.0.0"
           },
           "source": {
-            "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
+            "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
             "canonical_metadata": "agents/interface.yaml",
             "declared_targets": [
               "openai",
@@ -2814,18 +2607,32 @@
           "compiled_contract": {
             "name": "lvsea-draw",
             "title": "Lvsea Draw Boss",
-            "version": "0.1.0",
-            "description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+            "version": "0.3.0",
+            "description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或把多个绘图 Skill 统一派发。",
             "job_to_be_done": "Turn broad diagram and visualization requests into a routed, validated, editable deliverable",
             "trigger": {
-              "description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+              "description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或把多个绘图 Skill 统一派发。",
               "should_trigger": [
-                "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts."
+                "画一张有证据的系统架构图并保留可编辑源文件",
+                "把这段流程做成可继续修改的 Draw.io XML",
+                "把这个仓库转成代码知识图谱和技术解读图",
+                "生成一个交互式 HTML 图表组件",
+                "把这篇技术报告拆成 16:9 图片组并建立事实台账",
+                "用白板先梳理安全生产异常闭环",
+                "把 SVG 生成 GIF 并做几何和视觉验收",
+                "把培训要点做成中文信息图和数据故事，保留 Infographic DSL 并导出 SVG"
               ],
               "should_not_trigger": [
+                "只要总结一下流程图是什么",
+                "翻译一下这段画图说明",
+                "不要生成文件，只给我几个头脑风暴方向",
+                "只看一下这张已有图片，不要修改",
                 "Do not claim facts, runtime topology, browser interaction, MCP availability, or visual quality without evidence"
               ],
-              "edge_cases": []
+              "edge_cases": [
+                "我要做一个复杂的 React 图编辑器，但还没有决定用什么库",
+                "帮我把报告排版成一页纸，里面需要一张流程图"
+              ]
             },
             "workflow": {
               "steps": [
@@ -2841,10 +2648,10 @@
               "failure_modes": [
                 "Tables can render as dense grids with weak hierarchy or poor mobile readability.",
                 "Long bullets can make the output look complete while hiding the actual decision logic.",
+                "Commands can omit environment assumptions, working directory, or rollback notes.",
+                "Code snippets can look runnable while missing required inputs.",
                 "Footnote markers or dense citation notes can interrupt the reading flow.",
                 "Evidence can be over-attached to obvious statements and under-attached to risky claims.",
-                "Screenshots can be captured from the wrong state, wrong viewport, or wrong crop.",
-                "Missing screenshots can cause the skill to invent visual references instead of declaring the gap.",
                 "Users start invoking the skill for adjacent one-off or explanation-only requests.",
                 "Outputs remain valid but become generic, cluttered, or weakly aligned with the user's domain.",
                 "Borrowed benchmark patterns no longer fit the local job or add ceremony without payoff.",
@@ -2852,8 +2659,18 @@
               ]
             },
             "resources": {
-              "references": [],
-              "scripts": [],
+              "references": [
+                "references\\editable-pptx-companion.md",
+                "references\\infographic-adapter.md",
+                "references\\local-adapters.md",
+                "references\\quality-contract.md",
+                "references\\route-playbook.md",
+                "references\\source-matrix.md"
+              ],
+              "scripts": [
+                "scripts\\emit_editable_pptx.py",
+                "scripts\\route_request.py"
+              ],
               "assets": [],
               "reports": [
                 "reports/intent-context.json",
@@ -2868,22 +2685,37 @@
                 "reports/prompt-quality-profile.json",
                 "reports/prompt-quality-profile.md",
                 "reports/system-model.json",
-                "reports/system-model.md"
+                "reports/system-model.md",
+                "reports/iteration-directions.json",
+                "reports/iteration-directions.md",
+                "reports/skill-overview.json",
+                "reports/skill-overview.html",
+                "reports/review_annotations.json",
+                "reports/review_annotations.md",
+                "reports/conformance_matrix.json",
+                "reports/conformance_matrix.md",
+                "reports/security_trust_report.json",
+                "reports/security_trust_report.md",
+                "reports/runtime_permission_probes.json",
+                "reports/runtime_permission_probes.md"
               ],
               "counts": {
-                "references": 0,
-                "scripts": 0,
+                "references": 6,
+                "scripts": 2,
                 "assets": 0,
-                "reports": 13
+                "reports": 25
               }
             },
             "eval_plan": {
-              "trigger": [],
+              "trigger": [
+                "evals\\semantic_config.json",
+                "evals\\trigger_cases.json"
+              ],
               "output": [],
               "adversarial": [],
               "baseline": "without_skill",
               "counts": {
-                "trigger": 0,
+                "trigger": 2,
                 "output": 0,
                 "adversarial": 0,
                 "baseline": 1
@@ -2891,11 +2723,11 @@
             },
             "risk": {
               "output_risk": "high",
-              "execution_risk": "low",
+              "execution_risk": "medium",
               "trust_boundary": "team"
             },
             "governance": {
-              "owner": "Yao Team",
+              "owner": "lvsea",
               "maturity": "production",
               "review_cadence": "monthly",
               "review_due": ""
@@ -2924,8 +2756,8 @@
             },
             "permissions": {
               "schema_version": "1.0",
-              "source": "missing-security-trust-report",
-              "source_available": false,
+              "source": "reports\\security_trust_report.json",
+              "source_available": true,
               "declared_capabilities": [],
               "review_required": false,
               "capabilities": {
@@ -2961,8 +2793,8 @@
                 "mismatches": []
               },
               "help_smoke": {
-                "enabled": false,
-                "checked_count": 0,
+                "enabled": true,
+                "checked_count": 1,
                 "failed_count": 0,
                 "failed_scripts": []
               },
@@ -2991,7 +2823,7 @@
                 "subprocess": 0,
                 "interactive": 0
               },
-              "evidence": "missing-security-trust-report",
+              "evidence": "reports\\security_trust_report.json",
               "operator_note": "Claude-compatible package keeps permission intent in adapter metadata for install review."
             },
             "target_native_contract": {
@@ -3000,17 +2832,17 @@
               "native_surface": "Claude-compatible neutral source folder with adapter notes",
               "activation": {
                 "policy": "Use SKILL.md frontmatter description as the primary activation contract and adapter.json for review metadata.",
-                "trigger_description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+                "trigger_description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或把多个绘图 Skill 统一派发。",
                 "manual_activation_supported": true,
                 "automatic_activation_note": "Depends on the target client route/catalog implementation."
               },
               "resources": {
                 "strategy": "Preserve the source tree directly; write target notes in targets/claude/README.md.",
                 "counts": {
-                  "references": 0,
-                  "scripts": 0,
+                  "references": 6,
+                  "scripts": 2,
                   "assets": 0,
-                  "reports": 13
+                  "reports": 25
                 },
                 "generated_files": [
                   "targets/claude/adapter.json",
@@ -3019,7 +2851,7 @@
               },
               "scripts": {
                 "strategy": "Scripts remain local package resources and must be reviewed through trust and permission reports before use.",
-                "script_count": 0,
+                "script_count": 2,
                 "help_smoke_failed_count": 0
               },
               "permissions": {
@@ -3075,8 +2907,8 @@
           },
           "permission_contract": {
             "schema_version": "1.0",
-            "source": "missing-security-trust-report",
-            "source_available": false,
+            "source": "reports\\security_trust_report.json",
+            "source_available": true,
             "declared_capabilities": [],
             "review_required": false,
             "capabilities": {
@@ -3112,8 +2944,8 @@
               "mismatches": []
             },
             "help_smoke": {
-              "enabled": false,
-              "checked_count": 0,
+              "enabled": true,
+              "checked_count": 1,
               "failed_count": 0,
               "failed_scripts": []
             },
@@ -3140,7 +2972,7 @@
               "subprocess": 0,
               "interactive": 0
             },
-            "evidence": "missing-security-trust-report",
+            "evidence": "reports\\security_trust_report.json",
             "operator_note": "Claude-compatible package keeps permission intent in adapter metadata for install review."
           },
           "target_native_contract": {
@@ -3149,17 +2981,17 @@
             "native_surface": "Claude-compatible neutral source folder with adapter notes",
             "activation": {
               "policy": "Use SKILL.md frontmatter description as the primary activation contract and adapter.json for review metadata.",
-              "trigger_description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+              "trigger_description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或把多个绘图 Skill 统一派发。",
               "manual_activation_supported": true,
               "automatic_activation_note": "Depends on the target client route/catalog implementation."
             },
             "resources": {
               "strategy": "Preserve the source tree directly; write target notes in targets/claude/README.md.",
               "counts": {
-                "references": 0,
-                "scripts": 0,
+                "references": 6,
+                "scripts": 2,
                 "assets": 0,
-                "reports": 13
+                "reports": 25
               },
               "generated_files": [
                 "targets/claude/adapter.json",
@@ -3168,7 +3000,7 @@
             },
             "scripts": {
               "strategy": "Scripts remain local package resources and must be reviewed through trust and permission reports before use.",
-              "script_count": 0,
+              "script_count": 2,
               "help_smoke_failed_count": 0
             },
             "permissions": {
@@ -3245,7 +3077,7 @@
             "ir_schema_version": "2.0.0"
           },
           "source": {
-            "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
+            "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
             "canonical_metadata": "agents/interface.yaml",
             "declared_targets": [
               "openai",
@@ -3258,18 +3090,32 @@
           "compiled_contract": {
             "name": "lvsea-draw",
             "title": "Lvsea Draw Boss",
-            "version": "0.1.0",
-            "description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+            "version": "0.3.0",
+            "description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或把多个绘图 Skill 统一派发。",
             "job_to_be_done": "Turn broad diagram and visualization requests into a routed, validated, editable deliverable",
             "trigger": {
-              "description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+              "description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或把多个绘图 Skill 统一派发。",
               "should_trigger": [
-                "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts."
+                "画一张有证据的系统架构图并保留可编辑源文件",
+                "把这段流程做成可继续修改的 Draw.io XML",
+                "把这个仓库转成代码知识图谱和技术解读图",
+                "生成一个交互式 HTML 图表组件",
+                "把这篇技术报告拆成 16:9 图片组并建立事实台账",
+                "用白板先梳理安全生产异常闭环",
+                "把 SVG 生成 GIF 并做几何和视觉验收",
+                "把培训要点做成中文信息图和数据故事，保留 Infographic DSL 并导出 SVG"
               ],
               "should_not_trigger": [
+                "只要总结一下流程图是什么",
+                "翻译一下这段画图说明",
+                "不要生成文件，只给我几个头脑风暴方向",
+                "只看一下这张已有图片，不要修改",
                 "Do not claim facts, runtime topology, browser interaction, MCP availability, or visual quality without evidence"
               ],
-              "edge_cases": []
+              "edge_cases": [
+                "我要做一个复杂的 React 图编辑器，但还没有决定用什么库",
+                "帮我把报告排版成一页纸，里面需要一张流程图"
+              ]
             },
             "workflow": {
               "steps": [
@@ -3285,10 +3131,10 @@
               "failure_modes": [
                 "Tables can render as dense grids with weak hierarchy or poor mobile readability.",
                 "Long bullets can make the output look complete while hiding the actual decision logic.",
+                "Commands can omit environment assumptions, working directory, or rollback notes.",
+                "Code snippets can look runnable while missing required inputs.",
                 "Footnote markers or dense citation notes can interrupt the reading flow.",
                 "Evidence can be over-attached to obvious statements and under-attached to risky claims.",
-                "Screenshots can be captured from the wrong state, wrong viewport, or wrong crop.",
-                "Missing screenshots can cause the skill to invent visual references instead of declaring the gap.",
                 "Users start invoking the skill for adjacent one-off or explanation-only requests.",
                 "Outputs remain valid but become generic, cluttered, or weakly aligned with the user's domain.",
                 "Borrowed benchmark patterns no longer fit the local job or add ceremony without payoff.",
@@ -3296,8 +3142,18 @@
               ]
             },
             "resources": {
-              "references": [],
-              "scripts": [],
+              "references": [
+                "references\\editable-pptx-companion.md",
+                "references\\infographic-adapter.md",
+                "references\\local-adapters.md",
+                "references\\quality-contract.md",
+                "references\\route-playbook.md",
+                "references\\source-matrix.md"
+              ],
+              "scripts": [
+                "scripts\\emit_editable_pptx.py",
+                "scripts\\route_request.py"
+              ],
               "assets": [],
               "reports": [
                 "reports/intent-context.json",
@@ -3312,22 +3168,37 @@
                 "reports/prompt-quality-profile.json",
                 "reports/prompt-quality-profile.md",
                 "reports/system-model.json",
-                "reports/system-model.md"
+                "reports/system-model.md",
+                "reports/iteration-directions.json",
+                "reports/iteration-directions.md",
+                "reports/skill-overview.json",
+                "reports/skill-overview.html",
+                "reports/review_annotations.json",
+                "reports/review_annotations.md",
+                "reports/conformance_matrix.json",
+                "reports/conformance_matrix.md",
+                "reports/security_trust_report.json",
+                "reports/security_trust_report.md",
+                "reports/runtime_permission_probes.json",
+                "reports/runtime_permission_probes.md"
               ],
               "counts": {
-                "references": 0,
-                "scripts": 0,
+                "references": 6,
+                "scripts": 2,
                 "assets": 0,
-                "reports": 13
+                "reports": 25
               }
             },
             "eval_plan": {
-              "trigger": [],
+              "trigger": [
+                "evals\\semantic_config.json",
+                "evals\\trigger_cases.json"
+              ],
               "output": [],
               "adversarial": [],
               "baseline": "without_skill",
               "counts": {
-                "trigger": 0,
+                "trigger": 2,
                 "output": 0,
                 "adversarial": 0,
                 "baseline": 1
@@ -3335,11 +3206,11 @@
             },
             "risk": {
               "output_risk": "high",
-              "execution_risk": "low",
+              "execution_risk": "medium",
               "trust_boundary": "team"
             },
             "governance": {
-              "owner": "Yao Team",
+              "owner": "lvsea",
               "maturity": "production",
               "review_cadence": "monthly",
               "review_due": ""
@@ -3368,8 +3239,8 @@
             },
             "permissions": {
               "schema_version": "1.0",
-              "source": "missing-security-trust-report",
-              "source_available": false,
+              "source": "reports\\security_trust_report.json",
+              "source_available": true,
               "declared_capabilities": [],
               "review_required": false,
               "capabilities": {
@@ -3405,8 +3276,8 @@
                 "mismatches": []
               },
               "help_smoke": {
-                "enabled": false,
-                "checked_count": 0,
+                "enabled": true,
+                "checked_count": 1,
                 "failed_count": 0,
                 "failed_scripts": []
               },
@@ -3435,7 +3306,7 @@
                 "subprocess": 0,
                 "interactive": 0
               },
-              "evidence": "missing-security-trust-report",
+              "evidence": "reports\\security_trust_report.json",
               "operator_note": "Generic target exposes permission metadata for downstream clients to enforce or review."
             },
             "target_native_contract": {
@@ -3444,17 +3315,17 @@
               "native_surface": "Agent Skills compatible neutral package",
               "activation": {
                 "policy": "Use SKILL.md name and description; consumers decide automatic or manual activation.",
-                "trigger_description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+                "trigger_description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或把多个绘图 Skill 统一派发。",
                 "manual_activation_supported": true,
                 "automatic_activation_note": "Depends on the target client route/catalog implementation."
               },
               "resources": {
                 "strategy": "Preserve references, scripts, assets, evals, reports, and adapter metadata as relative package resources.",
                 "counts": {
-                  "references": 0,
-                  "scripts": 0,
+                  "references": 6,
+                  "scripts": 2,
                   "assets": 0,
-                  "reports": 13
+                  "reports": 25
                 },
                 "generated_files": [
                   "targets/generic/adapter.json"
@@ -3462,7 +3333,7 @@
               },
               "scripts": {
                 "strategy": "Expose script and permission metadata for downstream clients or installers to enforce.",
-                "script_count": 0,
+                "script_count": 2,
                 "help_smoke_failed_count": 0
               },
               "permissions": {
@@ -3512,8 +3383,8 @@
           },
           "permission_contract": {
             "schema_version": "1.0",
-            "source": "missing-security-trust-report",
-            "source_available": false,
+            "source": "reports\\security_trust_report.json",
+            "source_available": true,
             "declared_capabilities": [],
             "review_required": false,
             "capabilities": {
@@ -3549,8 +3420,8 @@
               "mismatches": []
             },
             "help_smoke": {
-              "enabled": false,
-              "checked_count": 0,
+              "enabled": true,
+              "checked_count": 1,
               "failed_count": 0,
               "failed_scripts": []
             },
@@ -3577,7 +3448,7 @@
               "subprocess": 0,
               "interactive": 0
             },
-            "evidence": "missing-security-trust-report",
+            "evidence": "reports\\security_trust_report.json",
             "operator_note": "Generic target exposes permission metadata for downstream clients to enforce or review."
           },
           "target_native_contract": {
@@ -3586,17 +3457,17 @@
             "native_surface": "Agent Skills compatible neutral package",
             "activation": {
               "policy": "Use SKILL.md name and description; consumers decide automatic or manual activation.",
-              "trigger_description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+              "trigger_description": "中文优先的终极 Draw 总调度 Skill：为系统架构图、流程图、时序图、数据流图、状态机、UML、ER、信息图、数据故事、品牌化静态图、思维导图、白板草图、可编辑 Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、知识图谱、技术解读图和动画演示选择最合适的本地或外部绘图工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、动态 HTML、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或把多个绘图 Skill 统一派发。",
               "manual_activation_supported": true,
               "automatic_activation_note": "Depends on the target client route/catalog implementation."
             },
             "resources": {
               "strategy": "Preserve references, scripts, assets, evals, reports, and adapter metadata as relative package resources.",
               "counts": {
-                "references": 0,
-                "scripts": 0,
+                "references": 6,
+                "scripts": 2,
                 "assets": 0,
-                "reports": 13
+                "reports": 25
               },
               "generated_files": [
                 "targets/generic/adapter.json"
@@ -3604,7 +3475,7 @@
             },
             "scripts": {
               "strategy": "Expose script and permission metadata for downstream clients or installers to enforce.",
-              "script_count": 0,
+              "script_count": 2,
               "help_smoke_failed_count": 0
             },
             "permissions": {
@@ -3663,434 +3534,6 @@
         },
         {
           "schema_version": "1.0",
-          "target": "agent-skills-compatible",
-          "status": "pass",
-          "compiler": {
-            "name": "yao-skill-ir-compiler",
-            "schema_version": "1.0",
-            "source": "skill-ir",
-            "ir_source": "reports\\skill-ir.json",
-            "ir_schema_version": "2.0.0"
-          },
-          "source": {
-            "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
-            "canonical_metadata": "agents/interface.yaml",
-            "declared_targets": [
-              "openai",
-              "claude",
-              "generic",
-              "agent-skills-compatible",
-              "vscode"
-            ]
-          },
-          "compiled_contract": {
-            "name": "lvsea-draw",
-            "title": "Lvsea Draw Boss",
-            "version": "0.1.0",
-            "description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
-            "job_to_be_done": "Turn broad diagram and visualization requests into a routed, validated, editable deliverable",
-            "trigger": {
-              "description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
-              "should_trigger": [
-                "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts."
-              ],
-              "should_not_trigger": [
-                "Do not claim facts, runtime topology, browser interaction, MCP availability, or visual quality without evidence"
-              ],
-              "edge_cases": []
-            },
-            "workflow": {
-              "steps": [
-                "Understand the request.",
-                "Execute the main task.",
-                "Validate the result."
-              ],
-              "decision_points": [
-                "Ask one focused clarification when the real job, output, or exclusion boundary is unclear.",
-                "Escalate visible tradeoffs when benchmark patterns conflict with local privacy, naming, or governance constraints.",
-                "Do not silently broaden the skill into adjacent jobs just because the examples are nearby."
-              ],
-              "failure_modes": [
-                "Tables can render as dense grids with weak hierarchy or poor mobile readability.",
-                "Long bullets can make the output look complete while hiding the actual decision logic.",
-                "Footnote markers or dense citation notes can interrupt the reading flow.",
-                "Evidence can be over-attached to obvious statements and under-attached to risky claims.",
-                "Screenshots can be captured from the wrong state, wrong viewport, or wrong crop.",
-                "Missing screenshots can cause the skill to invent visual references instead of declaring the gap.",
-                "Users start invoking the skill for adjacent one-off or explanation-only requests.",
-                "Outputs remain valid but become generic, cluttered, or weakly aligned with the user's domain.",
-                "Borrowed benchmark patterns no longer fit the local job or add ceremony without payoff.",
-                "Skill usage becomes team-critical while ownership, review cadence, or rollback evidence stays informal."
-              ]
-            },
-            "resources": {
-              "references": [],
-              "scripts": [],
-              "assets": [],
-              "reports": [
-                "reports/intent-context.json",
-                "reports/intent-confidence.json",
-                "reports/intent-confidence.md",
-                "reports/reference-synthesis.json",
-                "reports/reference-synthesis.md",
-                "reports/output-risk-profile.json",
-                "reports/output-risk-profile.md",
-                "reports/artifact-design-profile.json",
-                "reports/artifact-design-profile.md",
-                "reports/prompt-quality-profile.json",
-                "reports/prompt-quality-profile.md",
-                "reports/system-model.json",
-                "reports/system-model.md"
-              ],
-              "counts": {
-                "references": 0,
-                "scripts": 0,
-                "assets": 0,
-                "reports": 13
-              }
-            },
-            "eval_plan": {
-              "trigger": [],
-              "output": [],
-              "adversarial": [],
-              "baseline": "without_skill",
-              "counts": {
-                "trigger": 0,
-                "output": 0,
-                "adversarial": 0,
-                "baseline": 1
-              }
-            },
-            "risk": {
-              "output_risk": "high",
-              "execution_risk": "low",
-              "trust_boundary": "team"
-            },
-            "governance": {
-              "owner": "Yao Team",
-              "maturity": "production",
-              "review_cadence": "monthly",
-              "review_due": ""
-            },
-            "runtime": {
-              "activation": {
-                "mode": "manual",
-                "paths": []
-              },
-              "execution": {
-                "context": "inline",
-                "shell": "bash"
-              },
-              "trust": {
-                "source_tier": "local",
-                "remote_inline_execution": "forbid",
-                "remote_metadata_policy": "allow-metadata-only"
-              },
-              "adapter_targets": [
-                "openai",
-                "claude",
-                "generic",
-                "vscode"
-              ],
-              "canonical_format": "agent-skills"
-            },
-            "permissions": {
-              "schema_version": "1.0",
-              "source": "missing-security-trust-report",
-              "source_available": false,
-              "declared_capabilities": [],
-              "review_required": false,
-              "capabilities": {
-                "network": {
-                  "required": false,
-                  "script_count": 0,
-                  "scripts": [],
-                  "review_reason": ""
-                },
-                "file_write": {
-                  "required": false,
-                  "script_count": 0,
-                  "scripts": [],
-                  "review_reason": ""
-                },
-                "subprocess": {
-                  "required": false,
-                  "script_count": 0,
-                  "scripts": [],
-                  "review_reason": ""
-                },
-                "interactive": {
-                  "required": false,
-                  "script_count": 0,
-                  "scripts": [],
-                  "review_reason": ""
-                }
-              },
-              "network_policy": {
-                "source": "security/network_policy.json",
-                "covered_scripts": [],
-                "missing_scripts": [],
-                "mismatches": []
-              },
-              "help_smoke": {
-                "enabled": false,
-                "checked_count": 0,
-                "failed_count": 0,
-                "failed_scripts": []
-              },
-              "trust_summary": {
-                "secret_findings": 0,
-                "network_script_count": 0,
-                "file_write_script_count": 0,
-                "subprocess_script_count": 0,
-                "interactive_script_count": 0,
-                "help_smoke_failed_count": 0
-              }
-            },
-            "source_files_count": 6,
-            "target": "agent-skills-compatible",
-            "target_permission_contract": {
-              "schema_version": "1.0",
-              "target": "agent-skills-compatible",
-              "permission_model": "metadata-only",
-              "native_enforcement": false,
-              "representation": "adapter metadata",
-              "review_required": false,
-              "declared_capabilities": [],
-              "capability_counts": {
-                "network": 0,
-                "file_write": 0,
-                "subprocess": 0,
-                "interactive": 0
-              },
-              "evidence": "missing-security-trust-report",
-              "operator_note": "Permission semantics are preserved as metadata for reviewer visibility."
-            },
-            "target_native_contract": {
-              "schema_version": "1.0",
-              "target": "agent-skills-compatible",
-              "native_surface": "Agent Skills standard source tree",
-              "activation": {
-                "policy": "Use SKILL.md frontmatter name and description for progressive disclosure.",
-                "trigger_description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
-                "manual_activation_supported": true,
-                "automatic_activation_note": "Depends on the target client route/catalog implementation."
-              },
-              "resources": {
-                "strategy": "Keep optional directories as relative resources next to SKILL.md.",
-                "counts": {
-                  "references": 0,
-                  "scripts": 0,
-                  "assets": 0,
-                  "reports": 13
-                },
-                "generated_files": [
-                  "SKILL.md",
-                  "agents/interface.yaml"
-                ]
-              },
-              "scripts": {
-                "strategy": "Scripts remain local optional resources and should advertise --help when executable.",
-                "script_count": 0,
-                "help_smoke_failed_count": 0
-              },
-              "permissions": {
-                "enforcement": "consumer-enforced-or-metadata-only",
-                "native_enforcement": false,
-                "declared_capabilities": [],
-                "review_required": false
-              },
-              "review": {
-                "artifacts": [
-                  "SKILL.md",
-                  "agents/interface.yaml",
-                  "reports/review-studio.html"
-                ],
-                "fallback_behavior": "The source tree itself is the target artifact.",
-                "unsupported_native_features": []
-              },
-              "install_scope": "Agent Skills source root"
-            },
-            "degradation_strategy": "neutral-source",
-            "target_runtime": {
-              "adapter_mode": "neutral-agent-skills-source",
-              "generated_files": [
-                "SKILL.md",
-                "agents/interface.yaml"
-              ],
-              "metadata_mapping": {
-                "name": "SKILL.md::frontmatter.name",
-                "description": "SKILL.md::frontmatter.description",
-                "interface": "agents/interface.yaml",
-                "manifest": "manifest.json"
-              },
-              "preserved_semantics": [
-                "trigger",
-                "workflow",
-                "resources",
-                "eval-plan",
-                "risk",
-                "governance",
-                "runtime",
-                "trust",
-                "permissions"
-              ],
-              "native_surface": "Agent Skills standard source tree"
-            }
-          },
-          "permission_contract": {
-            "schema_version": "1.0",
-            "source": "missing-security-trust-report",
-            "source_available": false,
-            "declared_capabilities": [],
-            "review_required": false,
-            "capabilities": {
-              "network": {
-                "required": false,
-                "script_count": 0,
-                "scripts": [],
-                "review_reason": ""
-              },
-              "file_write": {
-                "required": false,
-                "script_count": 0,
-                "scripts": [],
-                "review_reason": ""
-              },
-              "subprocess": {
-                "required": false,
-                "script_count": 0,
-                "scripts": [],
-                "review_reason": ""
-              },
-              "interactive": {
-                "required": false,
-                "script_count": 0,
-                "scripts": [],
-                "review_reason": ""
-              }
-            },
-            "network_policy": {
-              "source": "security/network_policy.json",
-              "covered_scripts": [],
-              "missing_scripts": [],
-              "mismatches": []
-            },
-            "help_smoke": {
-              "enabled": false,
-              "checked_count": 0,
-              "failed_count": 0,
-              "failed_scripts": []
-            },
-            "trust_summary": {
-              "secret_findings": 0,
-              "network_script_count": 0,
-              "file_write_script_count": 0,
-              "subprocess_script_count": 0,
-              "interactive_script_count": 0,
-              "help_smoke_failed_count": 0
-            }
-          },
-          "target_permission_contract": {
-            "schema_version": "1.0",
-            "target": "agent-skills-compatible",
-            "permission_model": "metadata-only",
-            "native_enforcement": false,
-            "representation": "adapter metadata",
-            "review_required": false,
-            "declared_capabilities": [],
-            "capability_counts": {
-              "network": 0,
-              "file_write": 0,
-              "subprocess": 0,
-              "interactive": 0
-            },
-            "evidence": "missing-security-trust-report",
-            "operator_note": "Permission semantics are preserved as metadata for reviewer visibility."
-          },
-          "target_native_contract": {
-            "schema_version": "1.0",
-            "target": "agent-skills-compatible",
-            "native_surface": "Agent Skills standard source tree",
-            "activation": {
-              "policy": "Use SKILL.md frontmatter name and description for progressive disclosure.",
-              "trigger_description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
-              "manual_activation_supported": true,
-              "automatic_activation_note": "Depends on the target client route/catalog implementation."
-            },
-            "resources": {
-              "strategy": "Keep optional directories as relative resources next to SKILL.md.",
-              "counts": {
-                "references": 0,
-                "scripts": 0,
-                "assets": 0,
-                "reports": 13
-              },
-              "generated_files": [
-                "SKILL.md",
-                "agents/interface.yaml"
-              ]
-            },
-            "scripts": {
-              "strategy": "Scripts remain local optional resources and should advertise --help when executable.",
-              "script_count": 0,
-              "help_smoke_failed_count": 0
-            },
-            "permissions": {
-              "enforcement": "consumer-enforced-or-metadata-only",
-              "native_enforcement": false,
-              "declared_capabilities": [],
-              "review_required": false
-            },
-            "review": {
-              "artifacts": [
-                "SKILL.md",
-                "agents/interface.yaml",
-                "reports/review-studio.html"
-              ],
-              "fallback_behavior": "The source tree itself is the target artifact.",
-              "unsupported_native_features": []
-            },
-            "install_scope": "Agent Skills source root"
-          },
-          "target_transform": {
-            "target": "agent-skills-compatible",
-            "adapter_mode": "neutral-agent-skills-source",
-            "generated_files": [
-              "SKILL.md",
-              "agents/interface.yaml"
-            ],
-            "metadata_mapping": {
-              "name": "SKILL.md::frontmatter.name",
-              "description": "SKILL.md::frontmatter.description",
-              "interface": "agents/interface.yaml",
-              "manifest": "manifest.json"
-            },
-            "preserved_semantics": [
-              "trigger",
-              "workflow",
-              "resources",
-              "eval-plan",
-              "risk",
-              "governance",
-              "runtime",
-              "trust",
-              "permissions"
-            ],
-            "degradation_strategy": "neutral-source",
-            "permission_representation": "adapter metadata",
-            "native_surface": "Agent Skills standard source tree",
-            "activation_policy": "Use SKILL.md frontmatter name and description for progressive disclosure.",
-            "resource_strategy": "Keep optional directories as relative resources next to SKILL.md.",
-            "script_strategy": "Scripts remain local optional resources and should advertise --help when executable.",
-            "permission_enforcement": "consumer-enforced-or-metadata-only"
-          },
-          "unsupported_features": [],
-          "warnings": [],
-          "failures": []
-        },
-        {
-          "schema_version": "1.0",
           "target": "vscode",
           "status": "pass",
           "compiler": {
@@ -4101,7 +3544,7 @@
             "ir_schema_version": "2.0.0"
           },
           "source": {
-            "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
+            "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
             "canonical_metadata": "agents/interface.yaml",
             "declared_targets": [
               "openai",
@@ -4114,18 +3557,32 @@
           "compiled_contract": {
             "name": "lvsea-draw",
             "title": "Lvsea Draw Boss",
-            "version": "0.1.0",
-            "description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+            "version": "0.3.0",
+            "description": "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。",
             "job_to_be_done": "Turn broad diagram and visualization requests into a routed, validated, editable deliverable",
             "trigger": {
-              "description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+              "description": "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。",
               "should_trigger": [
-                "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts."
+                "画一张有证据的系统架构图并保留可编辑源文件",
+                "把这段流程做成可继续修改的 Draw.io XML",
+                "把这个仓库转成代码知识图谱和技术解读图",
+                "生成一个交互式 HTML 图表组件",
+                "把这篇技术报告拆成 16:9 图片组并建立事实台账",
+                "用白板先梳理安全生产异常闭环",
+                "把 SVG 生成 GIF 并做几何和视觉验收",
+                "把培训要点做成中文信息图和数据故事，保留 Infographic DSL 并导出 SVG"
               ],
               "should_not_trigger": [
+                "只要总结一下流程图是什么",
+                "翻译一下这段画图说明",
+                "不要生成文件，只给我几个头脑风暴方向",
+                "只看一下这张已有图片，不要修改",
                 "Do not claim facts, runtime topology, browser interaction, MCP availability, or visual quality without evidence"
               ],
-              "edge_cases": []
+              "edge_cases": [
+                "我要做一个复杂的 React 图编辑器，但还没有决定用什么库",
+                "帮我把报告排版成一页纸，里面需要一张流程图"
+              ]
             },
             "workflow": {
               "steps": [
@@ -4141,10 +3598,10 @@
               "failure_modes": [
                 "Tables can render as dense grids with weak hierarchy or poor mobile readability.",
                 "Long bullets can make the output look complete while hiding the actual decision logic.",
+                "Commands can omit environment assumptions, working directory, or rollback notes.",
+                "Code snippets can look runnable while missing required inputs.",
                 "Footnote markers or dense citation notes can interrupt the reading flow.",
                 "Evidence can be over-attached to obvious statements and under-attached to risky claims.",
-                "Screenshots can be captured from the wrong state, wrong viewport, or wrong crop.",
-                "Missing screenshots can cause the skill to invent visual references instead of declaring the gap.",
                 "Users start invoking the skill for adjacent one-off or explanation-only requests.",
                 "Outputs remain valid but become generic, cluttered, or weakly aligned with the user's domain.",
                 "Borrowed benchmark patterns no longer fit the local job or add ceremony without payoff.",
@@ -4152,8 +3609,18 @@
               ]
             },
             "resources": {
-              "references": [],
-              "scripts": [],
+              "references": [
+                "references\\editable-pptx-companion.md",
+                "references\\infographic-adapter.md",
+                "references\\local-adapters.md",
+                "references\\quality-contract.md",
+                "references\\route-playbook.md",
+                "references\\source-matrix.md"
+              ],
+              "scripts": [
+                "scripts\\emit_editable_pptx.py",
+                "scripts\\route_request.py"
+              ],
               "assets": [],
               "reports": [
                 "reports/intent-context.json",
@@ -4168,22 +3635,37 @@
                 "reports/prompt-quality-profile.json",
                 "reports/prompt-quality-profile.md",
                 "reports/system-model.json",
-                "reports/system-model.md"
+                "reports/system-model.md",
+                "reports/iteration-directions.json",
+                "reports/iteration-directions.md",
+                "reports/skill-overview.json",
+                "reports/skill-overview.html",
+                "reports/review_annotations.json",
+                "reports/review_annotations.md",
+                "reports/conformance_matrix.json",
+                "reports/conformance_matrix.md",
+                "reports/security_trust_report.json",
+                "reports/security_trust_report.md",
+                "reports/runtime_permission_probes.json",
+                "reports/runtime_permission_probes.md"
               ],
               "counts": {
-                "references": 0,
-                "scripts": 0,
+                "references": 6,
+                "scripts": 2,
                 "assets": 0,
-                "reports": 13
+                "reports": 25
               }
             },
             "eval_plan": {
-              "trigger": [],
+              "trigger": [
+                "evals\\semantic_config.json",
+                "evals\\trigger_cases.json"
+              ],
               "output": [],
               "adversarial": [],
               "baseline": "without_skill",
               "counts": {
-                "trigger": 0,
+                "trigger": 2,
                 "output": 0,
                 "adversarial": 0,
                 "baseline": 1
@@ -4191,11 +3673,11 @@
             },
             "risk": {
               "output_risk": "high",
-              "execution_risk": "low",
+              "execution_risk": "medium",
               "trust_boundary": "team"
             },
             "governance": {
-              "owner": "Yao Team",
+              "owner": "lvsea",
               "maturity": "production",
               "review_cadence": "monthly",
               "review_due": ""
@@ -4224,8 +3706,8 @@
             },
             "permissions": {
               "schema_version": "1.0",
-              "source": "missing-security-trust-report",
-              "source_available": false,
+              "source": "reports\\security_trust_report.json",
+              "source_available": true,
               "declared_capabilities": [],
               "review_required": false,
               "capabilities": {
@@ -4261,8 +3743,8 @@
                 "mismatches": []
               },
               "help_smoke": {
-                "enabled": false,
-                "checked_count": 0,
+                "enabled": true,
+                "checked_count": 1,
                 "failed_count": 0,
                 "failed_scripts": []
               },
@@ -4291,7 +3773,7 @@
                 "subprocess": 0,
                 "interactive": 0
               },
-              "evidence": "missing-security-trust-report",
+              "evidence": "reports\\security_trust_report.json",
               "operator_note": "VS Code target relies on project or user skill installation plus VS Code workspace trust; Yao preserves permission metadata for reviewer and installer checks."
             },
             "target_native_contract": {
@@ -4300,17 +3782,17 @@
               "native_surface": "VS Code/Copilot Agent Skills project or user scope",
               "activation": {
                 "policy": "Use folder name plus SKILL.md name/description; keep description under platform limits.",
-                "trigger_description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+                "trigger_description": "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。",
                 "manual_activation_supported": true,
                 "automatic_activation_note": "Depends on the target client route/catalog implementation."
               },
               "resources": {
                 "strategy": "Install as project or user scoped skill source, preserving relative references and scripts.",
                 "counts": {
-                  "references": 0,
-                  "scripts": 0,
+                  "references": 6,
+                  "scripts": 2,
                   "assets": 0,
-                  "reports": 13
+                  "reports": 25
                 },
                 "generated_files": [
                   "targets/vscode/adapter.json",
@@ -4319,7 +3801,7 @@
               },
               "scripts": {
                 "strategy": "Scripts require workspace trust and operator/client approval outside this compiler.",
-                "script_count": 0,
+                "script_count": 2,
                 "help_smoke_failed_count": 0
               },
               "permissions": {
@@ -4372,8 +3854,8 @@
           },
           "permission_contract": {
             "schema_version": "1.0",
-            "source": "missing-security-trust-report",
-            "source_available": false,
+            "source": "reports\\security_trust_report.json",
+            "source_available": true,
             "declared_capabilities": [],
             "review_required": false,
             "capabilities": {
@@ -4409,8 +3891,8 @@
               "mismatches": []
             },
             "help_smoke": {
-              "enabled": false,
-              "checked_count": 0,
+              "enabled": true,
+              "checked_count": 1,
               "failed_count": 0,
               "failed_scripts": []
             },
@@ -4437,7 +3919,7 @@
               "subprocess": 0,
               "interactive": 0
             },
-            "evidence": "missing-security-trust-report",
+            "evidence": "reports\\security_trust_report.json",
             "operator_note": "VS Code target relies on project or user skill installation plus VS Code workspace trust; Yao preserves permission metadata for reviewer and installer checks."
           },
           "target_native_contract": {
@@ -4446,17 +3928,17 @@
             "native_surface": "VS Code/Copilot Agent Skills project or user scope",
             "activation": {
               "policy": "Use folder name plus SKILL.md name/description; keep description under platform limits.",
-              "trigger_description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts.",
+              "trigger_description": "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。",
               "manual_activation_supported": true,
               "automatic_activation_note": "Depends on the target client route/catalog implementation."
             },
             "resources": {
               "strategy": "Install as project or user scoped skill source, preserving relative references and scripts.",
               "counts": {
-                "references": 0,
-                "scripts": 0,
+                "references": 6,
+                "scripts": 2,
                 "assets": 0,
-                "reports": 13
+                "reports": 25
               },
               "generated_files": [
                 "targets/vscode/adapter.json",
@@ -4465,7 +3947,7 @@
             },
             "scripts": {
               "strategy": "Scripts require workspace trust and operator/client approval outside this compiler.",
-              "script_count": 0,
+              "script_count": 2,
               "help_smoke_failed_count": 0
             },
             "permissions": {
@@ -4531,18 +4013,1089 @@
       "failures": [],
       "warnings": [],
       "artifacts": {
-        "json": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\compiled_targets.json",
-        "markdown": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\compiled_targets.md"
+        "json": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\compiled_targets.json",
+        "markdown": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\compiled_targets.md"
       }
     },
-    "conformance": {},
-    "runtime_permissions": {},
-    "trust": {},
-    "python_compatibility": {},
+    "conformance": {
+      "ok": true,
+      "skill": "lvsea-draw",
+      "targets": [
+        {
+          "target": "openai",
+          "status": "pass",
+          "checks": [
+            "SKILL.md exists",
+            "frontmatter name exists",
+            "frontmatter description exists",
+            "description length <= 1024",
+            "name is runtime-safe",
+            "manifest.name exists",
+            "manifest.version exists",
+            "manifest.owner exists",
+            "manifest.status exists",
+            "manifest.maturity_tier exists",
+            "manifest.review_cadence exists",
+            "manifest declares openai",
+            "interface.display_name exists",
+            "interface.short_description exists",
+            "interface.default_prompt exists",
+            "adapter target declares openai",
+            "activation mode exists",
+            "execution context exists",
+            "execution shell exists",
+            "trust source tier exists",
+            "openai degradation note exists",
+            "Skill IR schema_version is 2.0.0",
+            "Skill IR name matches frontmatter",
+            "Skill IR description matches frontmatter",
+            "references resource resolves: references\\editable-pptx-companion.md",
+            "references resource resolves: references\\infographic-adapter.md",
+            "references resource resolves: references\\local-adapters.md",
+            "references resource resolves: references\\quality-contract.md",
+            "references resource resolves: references\\route-playbook.md",
+            "references resource resolves: references\\source-matrix.md",
+            "scripts resource resolves: scripts\\emit_editable_pptx.py",
+            "scripts resource resolves: scripts\\route_request.py",
+            "reports resource resolves: reports/intent-context.json",
+            "reports resource resolves: reports/intent-confidence.json",
+            "reports resource resolves: reports/intent-confidence.md",
+            "reports resource resolves: reports/reference-synthesis.json"
+          ],
+          "failures": [],
+          "warnings": []
+        },
+        {
+          "target": "claude",
+          "status": "pass",
+          "checks": [
+            "SKILL.md exists",
+            "frontmatter name exists",
+            "frontmatter description exists",
+            "description length <= 1024",
+            "name is runtime-safe",
+            "manifest.name exists",
+            "manifest.version exists",
+            "manifest.owner exists",
+            "manifest.status exists",
+            "manifest.maturity_tier exists",
+            "manifest.review_cadence exists",
+            "manifest declares claude",
+            "interface.display_name exists",
+            "interface.short_description exists",
+            "interface.default_prompt exists",
+            "adapter target declares claude",
+            "activation mode exists",
+            "execution context exists",
+            "execution shell exists",
+            "trust source tier exists",
+            "claude degradation note exists",
+            "Skill IR schema_version is 2.0.0",
+            "Skill IR name matches frontmatter",
+            "Skill IR description matches frontmatter",
+            "references resource resolves: references\\editable-pptx-companion.md",
+            "references resource resolves: references\\infographic-adapter.md",
+            "references resource resolves: references\\local-adapters.md",
+            "references resource resolves: references\\quality-contract.md",
+            "references resource resolves: references\\route-playbook.md",
+            "references resource resolves: references\\source-matrix.md",
+            "scripts resource resolves: scripts\\emit_editable_pptx.py",
+            "scripts resource resolves: scripts\\route_request.py",
+            "reports resource resolves: reports/intent-context.json",
+            "reports resource resolves: reports/intent-confidence.json",
+            "reports resource resolves: reports/intent-confidence.md",
+            "reports resource resolves: reports/reference-synthesis.json"
+          ],
+          "failures": [],
+          "warnings": []
+        },
+        {
+          "target": "agent-skills",
+          "status": "pass",
+          "checks": [
+            "SKILL.md exists",
+            "frontmatter name exists",
+            "frontmatter description exists",
+            "description length <= 1024",
+            "name is runtime-safe",
+            "package identity derives from skill name",
+            "manifest.name exists",
+            "manifest.version exists",
+            "manifest.owner exists",
+            "manifest.status exists",
+            "manifest.maturity_tier exists",
+            "manifest.review_cadence exists",
+            "manifest declares agent-skills via agent-skills-compatible",
+            "interface.display_name exists",
+            "interface.short_description exists",
+            "interface.default_prompt exists",
+            "canonical format is agent-skills",
+            "activation mode exists",
+            "execution context exists",
+            "execution shell exists",
+            "trust source tier exists",
+            "Skill IR schema_version is 2.0.0",
+            "Skill IR name matches frontmatter",
+            "Skill IR description matches frontmatter",
+            "references resource resolves: references\\editable-pptx-companion.md",
+            "references resource resolves: references\\infographic-adapter.md",
+            "references resource resolves: references\\local-adapters.md",
+            "references resource resolves: references\\quality-contract.md",
+            "references resource resolves: references\\route-playbook.md",
+            "references resource resolves: references\\source-matrix.md",
+            "scripts resource resolves: scripts\\emit_editable_pptx.py",
+            "scripts resource resolves: scripts\\route_request.py",
+            "reports resource resolves: reports/intent-context.json",
+            "reports resource resolves: reports/intent-confidence.json",
+            "reports resource resolves: reports/intent-confidence.md",
+            "reports resource resolves: reports/reference-synthesis.json"
+          ],
+          "failures": [],
+          "warnings": [
+            "agent-skills uses canonical Agent Skills metadata; provider-native execution transforms are not implemented in v0."
+          ]
+        },
+        {
+          "target": "vscode",
+          "status": "pass",
+          "checks": [
+            "SKILL.md exists",
+            "frontmatter name exists",
+            "frontmatter description exists",
+            "description length <= 1024",
+            "name is runtime-safe",
+            "package identity derives from skill name",
+            "manifest.name exists",
+            "manifest.version exists",
+            "manifest.owner exists",
+            "manifest.status exists",
+            "manifest.maturity_tier exists",
+            "manifest.review_cadence exists",
+            "manifest declares vscode",
+            "interface.display_name exists",
+            "interface.short_description exists",
+            "interface.default_prompt exists",
+            "canonical format is agent-skills",
+            "activation mode exists",
+            "execution context exists",
+            "execution shell exists",
+            "trust source tier exists",
+            "Skill IR schema_version is 2.0.0",
+            "Skill IR name matches frontmatter",
+            "Skill IR description matches frontmatter",
+            "references resource resolves: references\\editable-pptx-companion.md",
+            "references resource resolves: references\\infographic-adapter.md",
+            "references resource resolves: references\\local-adapters.md",
+            "references resource resolves: references\\quality-contract.md",
+            "references resource resolves: references\\route-playbook.md",
+            "references resource resolves: references\\source-matrix.md",
+            "scripts resource resolves: scripts\\emit_editable_pptx.py",
+            "scripts resource resolves: scripts\\route_request.py",
+            "reports resource resolves: reports/intent-context.json",
+            "reports resource resolves: reports/intent-confidence.json",
+            "reports resource resolves: reports/intent-confidence.md",
+            "reports resource resolves: reports/reference-synthesis.json"
+          ],
+          "failures": [],
+          "warnings": [
+            "vscode uses canonical Agent Skills metadata; provider-native execution transforms are not implemented in v0."
+          ]
+        },
+        {
+          "target": "generic",
+          "status": "pass",
+          "checks": [
+            "SKILL.md exists",
+            "frontmatter name exists",
+            "frontmatter description exists",
+            "description length <= 1024",
+            "name is runtime-safe",
+            "manifest.name exists",
+            "manifest.version exists",
+            "manifest.owner exists",
+            "manifest.status exists",
+            "manifest.maturity_tier exists",
+            "manifest.review_cadence exists",
+            "manifest declares generic",
+            "interface.display_name exists",
+            "interface.short_description exists",
+            "interface.default_prompt exists",
+            "adapter target declares generic",
+            "activation mode exists",
+            "execution context exists",
+            "execution shell exists",
+            "trust source tier exists",
+            "generic degradation note exists",
+            "Skill IR schema_version is 2.0.0",
+            "Skill IR name matches frontmatter",
+            "Skill IR description matches frontmatter",
+            "references resource resolves: references\\editable-pptx-companion.md",
+            "references resource resolves: references\\infographic-adapter.md",
+            "references resource resolves: references\\local-adapters.md",
+            "references resource resolves: references\\quality-contract.md",
+            "references resource resolves: references\\route-playbook.md",
+            "references resource resolves: references\\source-matrix.md",
+            "scripts resource resolves: scripts\\emit_editable_pptx.py",
+            "scripts resource resolves: scripts\\route_request.py",
+            "reports resource resolves: reports/intent-context.json",
+            "reports resource resolves: reports/intent-confidence.json",
+            "reports resource resolves: reports/intent-confidence.md",
+            "reports resource resolves: reports/reference-synthesis.json"
+          ],
+          "failures": [],
+          "warnings": []
+        }
+      ],
+      "summary": {
+        "target_count": 5,
+        "pass_count": 5,
+        "fail_count": 0
+      },
+      "artifacts": {
+        "json": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\conformance_matrix.json",
+        "markdown": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\conformance_matrix.md"
+      }
+    },
+    "runtime_permissions": {
+      "schema_version": "1.0",
+      "ok": true,
+      "skill_dir": ".",
+      "package_dir": "dist",
+      "expected_capabilities": [
+        "file_write",
+        "subprocess"
+      ],
+      "summary": {
+        "target_count": 4,
+        "pass_count": 4,
+        "fail_count": 0,
+        "native_enforcement_count": 0,
+        "metadata_fallback_count": 4,
+        "residual_risk_count": 4,
+        "required_capability_count": 2,
+        "failure_count": 0,
+        "installer_enforcement_source_status": "present",
+        "installer_enforcement_target_count": 4,
+        "installer_enforcement_pass_count": 4,
+        "installer_permission_enforced_count": 8,
+        "installer_permission_failure_count": 0,
+        "installer_permission_capability_count": 2,
+        "world_class_native_evidence_ready": false,
+        "installer_enforcement_ready": true
+      },
+      "installer_enforcement": {
+        "source": "reports\\install_simulation.json",
+        "source_status": "present",
+        "package_dir_matches": true,
+        "summary": {
+          "installer_permission_enforced_count": 8,
+          "installer_permission_failure_count": 0,
+          "permission_target_count": 4,
+          "permission_capability_count": 2,
+          "failure_count": 0
+        }
+      },
+      "targets": [
+        {
+          "target": "openai",
+          "status": "pass",
+          "adapter": "dist\\targets\\openai\\adapter.json",
+          "permission_model": "metadata-only",
+          "native_enforcement": false,
+          "metadata_fallback_explicit": true,
+          "installer_enforcement": {
+            "target": "openai",
+            "source_status": "present",
+            "enforced": true,
+            "enforced_capabilities": [
+              "file_write",
+              "subprocess"
+            ],
+            "missing_capabilities": [],
+            "failure_details": []
+          },
+          "assurance": "metadata-fallback-explicit",
+          "declared_capabilities": [
+            "file_write",
+            "subprocess"
+          ],
+          "checks": [
+            {
+              "key": "adapter-present",
+              "passed": true,
+              "detail": "openai adapter.json is readable"
+            },
+            {
+              "key": "permission-contract-present",
+              "passed": true,
+              "detail": "openai adapter includes permission_contract"
+            },
+            {
+              "key": "target-contract-present",
+              "passed": true,
+              "detail": "openai adapter includes target_permission_contract"
+            },
+            {
+              "key": "source-available",
+              "passed": true,
+              "detail": "openai permission_contract links to an available trust report"
+            },
+            {
+              "key": "declared-capabilities-match",
+              "passed": true,
+              "detail": "openai target_permission_contract mirrors expected capabilities"
+            },
+            {
+              "key": "capability-counts-present",
+              "passed": true,
+              "detail": "openai target_permission_contract includes capability_counts"
+            },
+            {
+              "key": "native-enforcement-boolean",
+              "passed": true,
+              "detail": "openai target_permission_contract declares native_enforcement as a boolean"
+            },
+            {
+              "key": "representation-present",
+              "passed": true,
+              "detail": "openai target_permission_contract declares where permission metadata is represented"
+            },
+            {
+              "key": "operator-note-present",
+              "passed": true,
+              "detail": "openai target_permission_contract includes an operator_note"
+            },
+            {
+              "key": "review-required-matches",
+              "passed": true,
+              "detail": "openai review_required matches whether capabilities are required"
+            },
+            {
+              "key": "openai-yaml-present",
+              "passed": true,
+              "detail": "OpenAI permission metadata YAML is readable"
+            },
+            {
+              "key": "openai-yaml-permissions",
+              "passed": true,
+              "detail": "OpenAI YAML permission contract mirrors expected capabilities"
+            },
+            {
+              "key": "openai-yaml-native-flag",
+              "passed": true,
+              "detail": "OpenAI YAML declares native_enforcement as a boolean"
+            }
+          ],
+          "failures": [],
+          "residual_risks": [
+            "Client-native permission enforcement is not provided by this target; installer or operator must honor metadata."
+          ]
+        },
+        {
+          "target": "claude",
+          "status": "pass",
+          "adapter": "dist\\targets\\claude\\adapter.json",
+          "permission_model": "neutral-source-plus-adapter",
+          "native_enforcement": false,
+          "metadata_fallback_explicit": true,
+          "installer_enforcement": {
+            "target": "claude",
+            "source_status": "present",
+            "enforced": true,
+            "enforced_capabilities": [
+              "file_write",
+              "subprocess"
+            ],
+            "missing_capabilities": [],
+            "failure_details": []
+          },
+          "assurance": "metadata-fallback-explicit",
+          "declared_capabilities": [
+            "file_write",
+            "subprocess"
+          ],
+          "checks": [
+            {
+              "key": "adapter-present",
+              "passed": true,
+              "detail": "claude adapter.json is readable"
+            },
+            {
+              "key": "permission-contract-present",
+              "passed": true,
+              "detail": "claude adapter includes permission_contract"
+            },
+            {
+              "key": "target-contract-present",
+              "passed": true,
+              "detail": "claude adapter includes target_permission_contract"
+            },
+            {
+              "key": "source-available",
+              "passed": true,
+              "detail": "claude permission_contract links to an available trust report"
+            },
+            {
+              "key": "declared-capabilities-match",
+              "passed": true,
+              "detail": "claude target_permission_contract mirrors expected capabilities"
+            },
+            {
+              "key": "capability-counts-present",
+              "passed": true,
+              "detail": "claude target_permission_contract includes capability_counts"
+            },
+            {
+              "key": "native-enforcement-boolean",
+              "passed": true,
+              "detail": "claude target_permission_contract declares native_enforcement as a boolean"
+            },
+            {
+              "key": "representation-present",
+              "passed": true,
+              "detail": "claude target_permission_contract declares where permission metadata is represented"
+            },
+            {
+              "key": "operator-note-present",
+              "passed": true,
+              "detail": "claude target_permission_contract includes an operator_note"
+            },
+            {
+              "key": "review-required-matches",
+              "passed": true,
+              "detail": "claude review_required matches whether capabilities are required"
+            }
+          ],
+          "failures": [],
+          "residual_risks": [
+            "Client-native permission enforcement is not provided by this target; installer or operator must honor metadata."
+          ]
+        },
+        {
+          "target": "generic",
+          "status": "pass",
+          "adapter": "dist\\targets\\generic\\adapter.json",
+          "permission_model": "agent-skills-compatible-metadata",
+          "native_enforcement": false,
+          "metadata_fallback_explicit": true,
+          "installer_enforcement": {
+            "target": "generic",
+            "source_status": "present",
+            "enforced": true,
+            "enforced_capabilities": [
+              "file_write",
+              "subprocess"
+            ],
+            "missing_capabilities": [],
+            "failure_details": []
+          },
+          "assurance": "metadata-fallback-explicit",
+          "declared_capabilities": [
+            "file_write",
+            "subprocess"
+          ],
+          "checks": [
+            {
+              "key": "adapter-present",
+              "passed": true,
+              "detail": "generic adapter.json is readable"
+            },
+            {
+              "key": "permission-contract-present",
+              "passed": true,
+              "detail": "generic adapter includes permission_contract"
+            },
+            {
+              "key": "target-contract-present",
+              "passed": true,
+              "detail": "generic adapter includes target_permission_contract"
+            },
+            {
+              "key": "source-available",
+              "passed": true,
+              "detail": "generic permission_contract links to an available trust report"
+            },
+            {
+              "key": "declared-capabilities-match",
+              "passed": true,
+              "detail": "generic target_permission_contract mirrors expected capabilities"
+            },
+            {
+              "key": "capability-counts-present",
+              "passed": true,
+              "detail": "generic target_permission_contract includes capability_counts"
+            },
+            {
+              "key": "native-enforcement-boolean",
+              "passed": true,
+              "detail": "generic target_permission_contract declares native_enforcement as a boolean"
+            },
+            {
+              "key": "representation-present",
+              "passed": true,
+              "detail": "generic target_permission_contract declares where permission metadata is represented"
+            },
+            {
+              "key": "operator-note-present",
+              "passed": true,
+              "detail": "generic target_permission_contract includes an operator_note"
+            },
+            {
+              "key": "review-required-matches",
+              "passed": true,
+              "detail": "generic review_required matches whether capabilities are required"
+            }
+          ],
+          "failures": [],
+          "residual_risks": [
+            "Client-native permission enforcement is not provided by this target; installer or operator must honor metadata."
+          ]
+        },
+        {
+          "target": "vscode",
+          "status": "pass",
+          "adapter": "dist\\targets\\vscode\\adapter.json",
+          "permission_model": "vscode-workspace-trust-plus-metadata",
+          "native_enforcement": false,
+          "metadata_fallback_explicit": true,
+          "installer_enforcement": {
+            "target": "vscode",
+            "source_status": "present",
+            "enforced": true,
+            "enforced_capabilities": [
+              "file_write",
+              "subprocess"
+            ],
+            "missing_capabilities": [],
+            "failure_details": []
+          },
+          "assurance": "metadata-fallback-explicit",
+          "declared_capabilities": [
+            "file_write",
+            "subprocess"
+          ],
+          "checks": [
+            {
+              "key": "adapter-present",
+              "passed": true,
+              "detail": "vscode adapter.json is readable"
+            },
+            {
+              "key": "permission-contract-present",
+              "passed": true,
+              "detail": "vscode adapter includes permission_contract"
+            },
+            {
+              "key": "target-contract-present",
+              "passed": true,
+              "detail": "vscode adapter includes target_permission_contract"
+            },
+            {
+              "key": "source-available",
+              "passed": true,
+              "detail": "vscode permission_contract links to an available trust report"
+            },
+            {
+              "key": "declared-capabilities-match",
+              "passed": true,
+              "detail": "vscode target_permission_contract mirrors expected capabilities"
+            },
+            {
+              "key": "capability-counts-present",
+              "passed": true,
+              "detail": "vscode target_permission_contract includes capability_counts"
+            },
+            {
+              "key": "native-enforcement-boolean",
+              "passed": true,
+              "detail": "vscode target_permission_contract declares native_enforcement as a boolean"
+            },
+            {
+              "key": "representation-present",
+              "passed": true,
+              "detail": "vscode target_permission_contract declares where permission metadata is represented"
+            },
+            {
+              "key": "operator-note-present",
+              "passed": true,
+              "detail": "vscode target_permission_contract includes an operator_note"
+            },
+            {
+              "key": "review-required-matches",
+              "passed": true,
+              "detail": "vscode review_required matches whether capabilities are required"
+            }
+          ],
+          "failures": [],
+          "residual_risks": [
+            "Client-native permission enforcement is not provided by this target; installer or operator must honor metadata."
+          ]
+        }
+      ],
+      "failures": [],
+      "artifacts": {
+        "json": "reports\\runtime_permission_probes.json",
+        "markdown": "reports\\runtime_permission_probes.md"
+      }
+    },
+    "trust": {
+      "ok": true,
+      "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
+      "summary": {
+        "scanned_files": 17,
+        "script_count": 2,
+        "internal_module_count": 0,
+        "secret_findings": 0,
+        "dependency_files": [],
+        "network_script_count": 0,
+        "network_policy_covered_count": 0,
+        "network_policy_missing_count": 0,
+        "file_write_script_count": 1,
+        "permission_required_count": 2,
+        "permission_approved_count": 2,
+        "permission_missing_count": 0,
+        "permission_invalid_count": 0,
+        "permission_expired_count": 0,
+        "help_smoke_checked_count": 2,
+        "help_smoke_failed_count": 0,
+        "interactive_script_count": 0,
+        "package_hash_scope": "source-contract-without-generated-reports",
+        "package_hash_file_count": 17,
+        "package_sha256": "5d2b536a6c4df4e446af1e7f852cad80ac5f9b38d77cb4abfd867520b6f945fa"
+      },
+      "failures": [],
+      "warnings": [
+        "No dependency or lock file detected"
+      ],
+      "secrets": [],
+      "scripts": [
+        {
+          "path": "scripts\\emit_editable_pptx.py",
+          "interface": "cli",
+          "interface_declared": false,
+          "interface_reason": "Default CLI classification; add SCRIPT_INTERFACE for internal modules.",
+          "has_argparse": true,
+          "has_main_guard": true,
+          "uses_input": false,
+          "uses_network": false,
+          "uses_file_write": true,
+          "uses_subprocess": true,
+          "network_urls": [
+            "http://www.w3.org/2000/svg",
+            "http://www.w3.org/1999/xlink",
+            "http://schemas.openxmlformats.org/presentationml/2006/main",
+            "http://schemas.openxmlformats.org/drawingml/2006/main}t"
+          ],
+          "network_hosts": [
+            "schemas.openxmlformats.org",
+            "www.w3.org"
+          ]
+        },
+        {
+          "path": "scripts\\route_request.py",
+          "interface": "cli",
+          "interface_declared": false,
+          "interface_reason": "Default CLI classification; add SCRIPT_INTERFACE for internal modules.",
+          "has_argparse": true,
+          "has_main_guard": true,
+          "uses_input": false,
+          "uses_network": false,
+          "uses_file_write": false,
+          "uses_subprocess": false,
+          "network_urls": [],
+          "network_hosts": []
+        }
+      ],
+      "dependencies": {
+        "present": [],
+        "pinned": [],
+        "unpinned": []
+      },
+      "network_policy": {
+        "present": false,
+        "path": "security/network_policy.json",
+        "schema_version": "",
+        "network_script_count": 0,
+        "covered_scripts": [],
+        "missing_scripts": [],
+        "mismatches": [],
+        "default_policy": {}
+      },
+      "help_smoke": {
+        "enabled": true,
+        "timeout_seconds": 5.0,
+        "candidate_count": 2,
+        "checked_count": 2,
+        "passed_count": 2,
+        "failed_count": 0,
+        "skipped_count": 0,
+        "failed_scripts": [],
+        "results": [
+          {
+            "path": "scripts\\emit_editable_pptx.py",
+            "command": "python3 scripts\\emit_editable_pptx.py --help",
+            "returncode": 0,
+            "timed_out": false,
+            "passed": true,
+            "has_help_text": true,
+            "stdout_excerpt": "usage: emit_editable_pptx.py [-h] -o OUTPUT [--report REPORT]\n                             [--ppt-master-dir PPT_MASTER_DIR]\n                             [--work-dir WORK_DIR]\n                             [--format {ppt169,ppt43,wechat,xiao",
+            "stderr_excerpt": ""
+          },
+          {
+            "path": "scripts\\route_request.py",
+            "command": "python3 scripts\\route_request.py --help",
+            "returncode": 0,
+            "timed_out": false,
+            "passed": true,
+            "has_help_text": true,
+            "stdout_excerpt": "usage: route_request.py [-h] [--text TEXT] [--pretty]\n\nRoute a diagram request.\n\noptions:\n  -h, --help   show this help message and exit\n  --text TEXT  Request text. Reads stdin when omitted.\n  --pretty     Pretty-print JSON.",
+            "stderr_excerpt": ""
+          }
+        ],
+        "skipped": []
+      },
+      "permission_governance": {
+        "present": true,
+        "path": "security/permission_policy.json",
+        "schema_version": "1.0",
+        "reviewed_at": "2026-08-18",
+        "required_capabilities": [
+          "file_write",
+          "subprocess"
+        ],
+        "approved_capabilities": [
+          "file_write",
+          "subprocess"
+        ],
+        "missing_capabilities": [],
+        "invalid_capabilities": [],
+        "expired_capabilities": [],
+        "approval_count": 2,
+        "required_count": 2,
+        "missing_count": 0,
+        "invalid_count": 0,
+        "expired_count": 0,
+        "approvals": [
+          {
+            "capability": "file_write",
+            "status": "approved",
+            "scripts": [
+              "scripts\\emit_editable_pptx.py"
+            ],
+            "reviewer": "lvsea",
+            "scope": "Write generated PPTX companions, JSON reports, normalized temporary SVG projects, and optional preview files under the caller-provided output/work directories.",
+            "reason": "The editable PPTX companion workflow must preserve source files while creating auditable derived artifacts and a temporary PPT Master project.",
+            "expires_at": "2027-08-18",
+            "evidence": [
+              "scripts/emit_editable_pptx.py",
+              "references/editable-pptx-companion.md",
+              "reports/security_trust_report.md"
+            ],
+            "target_enforcement": {
+              "openai": "metadata-only permission_contract in openai.yaml plus adapter.json",
+              "claude": "adapter.json target_permission_contract and README note",
+              "generic": "adapter.json target_permission_contract",
+              "vscode": "adapter.json target_permission_contract plus workspace-trust review"
+            },
+            "validation": []
+          },
+          {
+            "capability": "subprocess",
+            "status": "approved",
+            "scripts": [
+              "scripts\\emit_editable_pptx.py"
+            ],
+            "reviewer": "lvsea",
+            "scope": "Invoke only caller-selected local PPT Master, LibreOffice, and Poppler executables for validation, native export, and optional visual preview.",
+            "reason": "Native PPTX generation and rendering cannot be performed reliably by the router alone; subprocesses remain local, explicit, and surfaced in the JSON report.",
+            "expires_at": "2027-08-18",
+            "evidence": [
+              "scripts/emit_editable_pptx.py",
+              "references/editable-pptx-companion.md",
+              "reports/security_trust_report.md"
+            ],
+            "target_enforcement": {
+              "openai": "metadata-only permission_contract in openai.yaml plus adapter.json",
+              "claude": "adapter.json target_permission_contract and README note",
+              "generic": "adapter.json target_permission_contract",
+              "vscode": "adapter.json target_permission_contract plus workspace-trust review"
+            },
+            "validation": []
+          }
+        ]
+      },
+      "trust_metadata": {
+        "source_tier": "local",
+        "remote_inline_execution": "forbid",
+        "remote_metadata_policy": "allow-metadata-only"
+      },
+      "artifacts": {
+        "json": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\security_trust_report.json",
+        "markdown": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\security_trust_report.md"
+      }
+    },
+    "python_compatibility": {
+      "schema_version": "1.0",
+      "ok": true,
+      "generated_at": "2026-08-18",
+      "root": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
+      "summary": {
+        "target_python": "3.11",
+        "file_count": 4,
+        "issue_count": 0,
+        "syntax_error_count": 0,
+        "fstring_311_violation_count": 0,
+        "decision": "pass"
+      },
+      "rules": [
+        {
+          "key": "current-python-syntax",
+          "reason": "Every scanned Python source file must compile under the running interpreter."
+        },
+        {
+          "key": "fstring-expression-backslash",
+          "reason": "Python 3.11 rejects backslashes inside f-string expressions; keep escaping outside the expression."
+        }
+      ],
+      "files": [
+        {
+          "path": "scripts\\emit_editable_pptx.py",
+          "ok": true,
+          "issue_count": 0,
+          "issues": []
+        },
+        {
+          "path": "scripts\\route_request.py",
+          "ok": true,
+          "issue_count": 0,
+          "issues": []
+        },
+        {
+          "path": "tests\\test_editable_pptx.py",
+          "ok": true,
+          "issue_count": 0,
+          "issues": []
+        },
+        {
+          "path": "tests\\test_route_request.py",
+          "ok": true,
+          "issue_count": 0,
+          "issues": []
+        }
+      ],
+      "issues": [],
+      "artifacts": {
+        "json": "reports/python_compatibility.json",
+        "markdown": "reports/python_compatibility.md"
+      }
+    },
     "architecture_maintainability": {},
     "context_budget": {},
     "promotion": {},
-    "atlas": {},
+    "atlas": {
+      "ok": true,
+      "workspace_root": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
+      "summary": {
+        "skill_count": 1,
+        "actionable_skill_count": 1,
+        "route_collision_count": 0,
+        "actionable_route_collision_count": 0,
+        "owner_gap_count": 0,
+        "actionable_owner_gap_count": 0,
+        "stale_count": 0,
+        "actionable_stale_count": 0,
+        "shared_resource_count": 0,
+        "no_route_opportunity_count": 0,
+        "telemetry_report_count": 1,
+        "drift_signal_count": 1,
+        "actionable_drift_signal_count": 1,
+        "non_actionable_issue_count": 0
+      },
+      "scope_policy": {
+        "present": false,
+        "path": "skill_atlas\\policy.json",
+        "rules": []
+      },
+      "catalog": {
+        "workspace_root": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
+        "generated_at": "2026-08-18",
+        "skills": [
+          {
+            "name": "lvsea-draw",
+            "path": ".",
+            "description": "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。",
+            "owner": "lvsea",
+            "version": "0.3.0",
+            "status": "active",
+            "maturity": "production",
+            "updated_at": "2026-08-18",
+            "review_cadence": "monthly",
+            "targets": [
+              "openai",
+              "claude",
+              "generic",
+              "agent-skills-compatible",
+              "vscode"
+            ],
+            "resources": [
+              "scripts/emit_editable_pptx.py",
+              "scripts/route_request.py",
+              "references/editable-pptx-companion.md",
+              "references/infographic-adapter.md",
+              "references/local-adapters.md",
+              "references/quality-contract.md",
+              "references/route-playbook.md",
+              "references/source-matrix.md"
+            ],
+            "token_set": [
+              "antv",
+              "ask",
+              "diagram-design",
+              "draw",
+              "drawio-skill",
+              "excalidraw",
+              "gif",
+              "html",
+              "infographic",
+              "io",
+              "png",
+              "pptx",
+              "svg",
+              "uml",
+              "users",
+              "中文优先的",
+              "为架构图",
+              "伴随产物",
+              "保留事实与可编辑源文件并完成验证",
+              "信息图",
+              "关系语义",
+              "制作架构图",
+              "可视化",
+              "总调度",
+              "或统一派发多个绘图",
+              "技术解读图",
+              "数据流图",
+              "时序图",
+              "根据来源",
+              "流程图",
+              "画图",
+              "白板",
+              "目标格式和质量风险",
+              "知识图谱和技术解读图选择合适的本地或外部工作流",
+              "编辑性",
+              "视觉默认追加一份原生可编辑",
+              "转可编辑",
+              "静态"
+            ],
+            "atlas_scope": "release",
+            "actionable": true,
+            "scope_reason": "default release-actionable skill",
+            "telemetry": {
+              "report_present": true,
+              "report": "reports\\adoption_drift_report.json",
+              "risk_band": "no-data",
+              "event_count": 0,
+              "adoption_sample_count": 0,
+              "adoption_rate": 0,
+              "candidate_count": 1
+            }
+          }
+        ],
+        "summary": {
+          "skill_count": 1,
+          "actionable_skill_count": 1,
+          "route_collision_count": 0,
+          "actionable_route_collision_count": 0,
+          "owner_gap_count": 0,
+          "actionable_owner_gap_count": 0,
+          "stale_count": 0,
+          "actionable_stale_count": 0,
+          "shared_resource_count": 0,
+          "no_route_opportunity_count": 0,
+          "telemetry_report_count": 1,
+          "drift_signal_count": 1,
+          "actionable_drift_signal_count": 1,
+          "non_actionable_issue_count": 0
+        }
+      },
+      "route_collisions": [],
+      "actionable_route_collisions": [],
+      "dependency_graph": {
+        "nodes": [
+          {
+            "name": "lvsea-draw",
+            "path": "."
+          }
+        ],
+        "shared_resources": []
+      },
+      "stale_skills": [],
+      "actionable_stale_skills": [],
+      "owner_review_gaps": [],
+      "actionable_owner_review_gaps": [],
+      "drift_signals": [
+        {
+          "name": "lvsea-draw",
+          "path": ".",
+          "source": "reports\\adoption_drift_report.json",
+          "risk_band": "no-data",
+          "signal_types": [
+            "no telemetry"
+          ],
+          "recommendation": "Start with a small metadata-only sample before using telemetry for release decisions.",
+          "actionable": true,
+          "scope": "release",
+          "summary": {
+            "event_count": 0,
+            "adoption_sample_count": 0,
+            "adoption_rate": 0,
+            "missed_trigger_count": 0,
+            "wrong_trigger_count": 0,
+            "bad_output_count": 0,
+            "missing_resource_count": 0,
+            "script_error_count": 0,
+            "review_overdue_count": 0
+          }
+        }
+      ],
+      "actionable_drift_signals": [
+        {
+          "name": "lvsea-draw",
+          "path": ".",
+          "source": "reports\\adoption_drift_report.json",
+          "risk_band": "no-data",
+          "signal_types": [
+            "no telemetry"
+          ],
+          "recommendation": "Start with a small metadata-only sample before using telemetry for release decisions.",
+          "actionable": true,
+          "scope": "release",
+          "summary": {
+            "event_count": 0,
+            "adoption_sample_count": 0,
+            "adoption_rate": 0,
+            "missed_trigger_count": 0,
+            "wrong_trigger_count": 0,
+            "bad_output_count": 0,
+            "missing_resource_count": 0,
+            "script_error_count": 0,
+            "review_overdue_count": 0
+          }
+        }
+      ],
+      "no_route_opportunities": [],
+      "artifacts": {
+        "catalog": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\skill_atlas\\catalog.json",
+        "route_overlap_matrix": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\skill_atlas\\route_overlap_matrix.csv",
+        "dependency_graph": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\skill_atlas\\dependency_graph.json",
+        "stale_skills": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\skill_atlas\\stale_skills.json",
+        "owner_review_gaps": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\skill_atlas\\owner_review_gaps.json",
+        "drift_signals": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\skill_atlas\\drift_signals.json",
+        "no_route_opportunities": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\skill_atlas\\no_route_opportunities.json",
+        "report_json": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\skill_atlas.json",
+        "report_html": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\skill_atlas.html"
+      }
+    },
     "adoption_drift": {
       "ok": true,
       "schema_version": "2.0",
@@ -4610,8 +5163,8 @@
     "review_waivers": {
       "schema_version": "1.0",
       "ok": true,
-      "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
-      "generated_at": "2026-08-11",
+      "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
+      "generated_at": "2026-08-18",
       "summary": {
         "waiver_count": 0,
         "active_count": 0,
@@ -4687,8 +5240,8 @@
       "failures": [],
       "warnings": [],
       "artifacts": {
-        "json": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\review_waivers.json",
-        "markdown": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\review_waivers.md"
+        "json": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\review_waivers.json",
+        "markdown": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\review_waivers.md"
       }
     },
     "review_annotations": {
@@ -4724,21 +5277,474 @@
     "world_class_submission_review": {},
     "world_class_operator_runbook": {},
     "world_class_claim_guard": {},
-    "registry": {},
-    "package_verification": {},
-    "install_simulation": {},
+    "registry": {
+      "ok": true,
+      "schema_version": "2.0",
+      "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
+      "registry_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\registry",
+      "package": {
+        "schema_version": "2.0",
+        "name": "lvsea-draw",
+        "version": "0.3.0",
+        "description": "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。",
+        "targets": [
+          "openai",
+          "claude",
+          "generic",
+          "agent-skills-compatible",
+          "vscode"
+        ],
+        "maturity": "production",
+        "owner": "lvsea",
+        "review_cadence": "monthly",
+        "trust_level": "local",
+        "license": "MIT",
+        "checksums": {
+          "package_sha256": "5d2b536a6c4df4e446af1e7f852cad80ac5f9b38d77cb4abfd867520b6f945fa",
+          "archive_sha256": "3124289e96ba489b00519c808444c9bf0ff6b61131d320c5b03f4608adcaa961"
+        },
+        "compatibility": {
+          "openai": "pass",
+          "claude": "pass",
+          "agent-skills": "pass",
+          "vscode": "pass",
+          "generic": "pass",
+          "agent-skills-compatible": "pass"
+        },
+        "source": {
+          "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
+          "skill_ir": "reports\\skill-ir.json",
+          "ir_schema_version": "2.0.0",
+          "canonical_metadata": "agents/interface.yaml"
+        },
+        "artifacts": {
+          "overview_html": "reports/skill-overview.html",
+          "review_studio_html": "reports/review-studio.html",
+          "trust_report": "reports/security_trust_report.md",
+          "conformance_matrix": "reports/conformance_matrix.md",
+          "compiled_targets": "reports/compiled_targets.md",
+          "package_verification": "reports/package_verification.md",
+          "install_simulation": "reports/install_simulation.md",
+          "adoption_drift": "reports/adoption_drift_report.md",
+          "review_waivers": "reports/review_waivers.md",
+          "review_annotations": "reports/review_annotations.md",
+          "package_metadata": "registry/packages/lvsea-draw.json"
+        },
+        "distribution": {
+          "archive_verified": true,
+          "archive_sha256": "3124289e96ba489b00519c808444c9bf0ff6b61131d320c5b03f4608adcaa961",
+          "package_verification": "reports/package_verification.json",
+          "install_simulated": true,
+          "install_simulation": "reports/install_simulation.json"
+        },
+        "generated_at": "2026-08-18"
+      },
+      "index": {
+        "schema_version": "2.0",
+        "generated_at": "2026-08-18",
+        "package_count": 1,
+        "packages": [
+          {
+            "name": "lvsea-draw",
+            "version": "0.3.0",
+            "maturity": "production",
+            "owner": "lvsea",
+            "targets": [
+              "openai",
+              "claude",
+              "generic",
+              "agent-skills-compatible",
+              "vscode"
+            ],
+            "package_metadata": "registry/packages/lvsea-draw.json",
+            "package_sha256": "5d2b536a6c4df4e446af1e7f852cad80ac5f9b38d77cb4abfd867520b6f945fa"
+          }
+        ]
+      },
+      "failures": [],
+      "warnings": [],
+      "artifacts": {
+        "index": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\registry\\index.json",
+        "package": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\registry\\packages\\lvsea-draw.json",
+        "json": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\registry_audit.json",
+        "markdown": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\registry_audit.md"
+      }
+    },
+    "package_verification": {
+      "ok": true,
+      "schema_version": "2.0",
+      "generated_at": "2026-08-18",
+      "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
+      "package_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist",
+      "summary": {
+        "target_count": 4,
+        "adapter_count": 4,
+        "archive_present": true,
+        "archive_sha256": "3124289e96ba489b00519c808444c9bf0ff6b61131d320c5b03f4608adcaa961",
+        "archive_entry_count": 116,
+        "nested_skill_entry_count": 0,
+        "failure_count": 0,
+        "warning_count": 0
+      },
+      "checks": [
+        {
+          "id": "package-manifest",
+          "status": "pass",
+          "detail": "Package manifest exists: C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist\\manifest.json"
+        },
+        {
+          "id": "claude-adapter",
+          "status": "pass",
+          "detail": "Adapter exists for target: claude"
+        },
+        {
+          "id": "generic-adapter",
+          "status": "pass",
+          "detail": "Adapter exists for target: generic"
+        },
+        {
+          "id": "openai-adapter",
+          "status": "pass",
+          "detail": "Adapter exists for target: openai"
+        },
+        {
+          "id": "vscode-adapter",
+          "status": "pass",
+          "detail": "Adapter exists for target: vscode"
+        },
+        {
+          "id": "archive-safe-paths",
+          "status": "pass",
+          "detail": "Archive has no absolute or parent-traversal entries"
+        },
+        {
+          "id": "archive-entry-lvsea-draw/SKILL.md",
+          "status": "pass",
+          "detail": "Archive contains lvsea-draw/SKILL.md"
+        },
+        {
+          "id": "archive-entry-lvsea-draw/manifest.json",
+          "status": "pass",
+          "detail": "Archive contains lvsea-draw/manifest.json"
+        },
+        {
+          "id": "archive-entry-lvsea-draw/agents/interface.yaml",
+          "status": "pass",
+          "detail": "Archive contains lvsea-draw/agents/interface.yaml"
+        },
+        {
+          "id": "archive-single-skill-entrypoint",
+          "status": "pass",
+          "detail": "Archive exposes only the root SKILL.md entrypoint"
+        },
+        {
+          "id": "archive-excludes-generated",
+          "status": "pass",
+          "detail": "Archive excludes generated dist/, .previews/, and tests/tmp* contents"
+        },
+        {
+          "id": "registry-ok",
+          "status": "pass",
+          "detail": "Registry audit is OK"
+        },
+        {
+          "id": "registry-name-match",
+          "status": "pass",
+          "detail": "Registry package name matches package manifest"
+        },
+        {
+          "id": "registry-version-match",
+          "status": "pass",
+          "detail": "Registry package version matches package manifest"
+        },
+        {
+          "id": "registry-compat-claude",
+          "status": "pass",
+          "detail": "Registry compatibility is reviewable for target: claude"
+        },
+        {
+          "id": "registry-compat-generic",
+          "status": "pass",
+          "detail": "Registry compatibility is reviewable for target: generic"
+        },
+        {
+          "id": "registry-compat-openai",
+          "status": "pass",
+          "detail": "Registry compatibility is reviewable for target: openai"
+        },
+        {
+          "id": "registry-compat-vscode",
+          "status": "pass",
+          "detail": "Registry compatibility is reviewable for target: vscode"
+        }
+      ],
+      "failures": [],
+      "warnings": [],
+      "artifacts": {
+        "manifest": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist\\manifest.json",
+        "archive": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist\\lvsea-draw.zip",
+        "json": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\package_verification.json",
+        "markdown": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\package_verification.md"
+      }
+    },
+    "install_simulation": {
+      "ok": true,
+      "schema_version": "2.0",
+      "generated_at": "2026-08-18",
+      "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
+      "package_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist",
+      "install_root": "[temporary-install-root]",
+      "installed_skill_dir": "[temporary-install-root]/lvsea-draw",
+      "summary": {
+        "archive_present": true,
+        "archive_entry_count": 101,
+        "nested_skill_entry_count": 0,
+        "archive_extracted": true,
+        "entrypoint_loaded": true,
+        "manifest_loaded": true,
+        "interface_loaded": true,
+        "adapter_count": 4,
+        "installer_permission_enforced_count": 8,
+        "installer_permission_failure_count": 0,
+        "permission_target_count": 4,
+        "permission_capability_count": 2,
+        "install_root_is_temp": true,
+        "failure_count": 0,
+        "warning_count": 0
+      },
+      "checks": [
+        {
+          "id": "archive-present",
+          "status": "pass",
+          "detail": "Package archive exists: C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist\\lvsea-draw.zip"
+        },
+        {
+          "id": "archive-safe-paths",
+          "status": "pass",
+          "detail": "Archive has no absolute or parent-traversal entries"
+        },
+        {
+          "id": "single-skill-entrypoint",
+          "status": "pass",
+          "detail": "Installed package exposes only the root SKILL.md entrypoint"
+        },
+        {
+          "id": "single-top-level",
+          "status": "pass",
+          "detail": "Archive top-level directory is lvsea-draw"
+        },
+        {
+          "id": "entrypoint-load",
+          "status": "pass",
+          "detail": "Installed SKILL.md frontmatter is readable"
+        },
+        {
+          "id": "entrypoint-name",
+          "status": "pass",
+          "detail": "Installed SKILL.md name matches package directory"
+        },
+        {
+          "id": "entrypoint-description",
+          "status": "pass",
+          "detail": "Installed SKILL.md description is present"
+        },
+        {
+          "id": "manifest-load",
+          "status": "pass",
+          "detail": "Installed manifest.json is readable"
+        },
+        {
+          "id": "manifest-name",
+          "status": "pass",
+          "detail": "Installed manifest name matches package manifest"
+        },
+        {
+          "id": "manifest-version",
+          "status": "pass",
+          "detail": "Installed manifest version matches package manifest"
+        },
+        {
+          "id": "interface-load",
+          "status": "pass",
+          "detail": "Installed agents/interface.yaml is readable"
+        },
+        {
+          "id": "overview-report",
+          "status": "pass",
+          "detail": "Installed overview report is present"
+        },
+        {
+          "id": "review-studio-report",
+          "status": "pass",
+          "detail": "Installed Review Studio report is present"
+        },
+        {
+          "id": "adapter-claude",
+          "status": "pass",
+          "detail": "claude adapter is readable after package install simulation"
+        },
+        {
+          "id": "adapter-claude-name",
+          "status": "pass",
+          "detail": "claude adapter name matches package manifest"
+        },
+        {
+          "id": "adapter-generic",
+          "status": "pass",
+          "detail": "generic adapter is readable after package install simulation"
+        },
+        {
+          "id": "adapter-generic-name",
+          "status": "pass",
+          "detail": "generic adapter name matches package manifest"
+        },
+        {
+          "id": "adapter-openai",
+          "status": "pass",
+          "detail": "openai adapter is readable after package install simulation"
+        },
+        {
+          "id": "adapter-openai-name",
+          "status": "pass",
+          "detail": "openai adapter name matches package manifest"
+        },
+        {
+          "id": "adapter-vscode",
+          "status": "pass",
+          "detail": "vscode adapter is readable after package install simulation"
+        },
+        {
+          "id": "adapter-vscode-name",
+          "status": "pass",
+          "detail": "vscode adapter name matches package manifest"
+        },
+        {
+          "id": "permission-policy-load",
+          "status": "pass",
+          "detail": "Installed permission policy is readable"
+        },
+        {
+          "id": "permission-claude-contract",
+          "status": "pass",
+          "detail": "claude adapter exposes target permission contract for installer enforcement"
+        },
+        {
+          "id": "permission-claude-file_write-approved",
+          "status": "pass",
+          "detail": "claude capability file_write has active reviewer approval"
+        },
+        {
+          "id": "permission-claude-file_write-target-enforcement",
+          "status": "pass",
+          "detail": "claude capability file_write has target enforcement note"
+        },
+        {
+          "id": "permission-claude-subprocess-approved",
+          "status": "pass",
+          "detail": "claude capability subprocess has active reviewer approval"
+        },
+        {
+          "id": "permission-claude-subprocess-target-enforcement",
+          "status": "pass",
+          "detail": "claude capability subprocess has target enforcement note"
+        },
+        {
+          "id": "permission-generic-contract",
+          "status": "pass",
+          "detail": "generic adapter exposes target permission contract for installer enforcement"
+        },
+        {
+          "id": "permission-generic-file_write-approved",
+          "status": "pass",
+          "detail": "generic capability file_write has active reviewer approval"
+        },
+        {
+          "id": "permission-generic-file_write-target-enforcement",
+          "status": "pass",
+          "detail": "generic capability file_write has target enforcement note"
+        },
+        {
+          "id": "permission-generic-subprocess-approved",
+          "status": "pass",
+          "detail": "generic capability subprocess has active reviewer approval"
+        },
+        {
+          "id": "permission-generic-subprocess-target-enforcement",
+          "status": "pass",
+          "detail": "generic capability subprocess has target enforcement note"
+        },
+        {
+          "id": "permission-openai-contract",
+          "status": "pass",
+          "detail": "openai adapter exposes target permission contract for installer enforcement"
+        },
+        {
+          "id": "permission-openai-file_write-approved",
+          "status": "pass",
+          "detail": "openai capability file_write has active reviewer approval"
+        },
+        {
+          "id": "permission-openai-file_write-target-enforcement",
+          "status": "pass",
+          "detail": "openai capability file_write has target enforcement note"
+        },
+        {
+          "id": "permission-openai-subprocess-approved",
+          "status": "pass",
+          "detail": "openai capability subprocess has active reviewer approval"
+        },
+        {
+          "id": "permission-openai-subprocess-target-enforcement",
+          "status": "pass",
+          "detail": "openai capability subprocess has target enforcement note"
+        },
+        {
+          "id": "permission-vscode-contract",
+          "status": "pass",
+          "detail": "vscode adapter exposes target permission contract for installer enforcement"
+        },
+        {
+          "id": "permission-vscode-file_write-approved",
+          "status": "pass",
+          "detail": "vscode capability file_write has active reviewer approval"
+        },
+        {
+          "id": "permission-vscode-file_write-target-enforcement",
+          "status": "pass",
+          "detail": "vscode capability file_write has target enforcement note"
+        },
+        {
+          "id": "permission-vscode-subprocess-approved",
+          "status": "pass",
+          "detail": "vscode capability subprocess has active reviewer approval"
+        },
+        {
+          "id": "permission-vscode-subprocess-target-enforcement",
+          "status": "pass",
+          "detail": "vscode capability subprocess has target enforcement note"
+        }
+      ],
+      "failures": [],
+      "warnings": [],
+      "artifacts": {
+        "archive": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist\\lvsea-draw.zip",
+        "package_manifest": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist\\manifest.json",
+        "json": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\install_simulation.json",
+        "markdown": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\install_simulation.md"
+      }
+    },
     "upgrade_check": {},
     "manifest": {
       "name": "lvsea-draw",
-      "version": "0.1.0",
-      "owner": "Yao Team",
-      "updated_at": "2026-08-11",
+      "version": "0.3.0",
+      "owner": "lvsea",
+      "updated_at": "2026-08-18",
       "status": "active",
       "maturity_tier": "production",
       "lifecycle_stage": "production",
       "context_budget_tier": "production",
       "review_cadence": "monthly",
-      "skill_archetype": "scaffold",
+      "skill_archetype": "production",
       "target_platforms": [
         "openai",
         "claude",
@@ -4754,13 +5760,13 @@
     },
     "frontmatter": {
       "name": "lvsea-draw",
-      "description": "Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts."
+      "description": "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。"
     },
     "interface": {
       "interface": {
         "display_name": "Lvsea Draw Boss",
-        "short_description": "Route Chinese-first architecture, workflow, diagram, technical visualization, ed",
-        "default_prompt": "Use $lvsea-draw when you need to Route Chinese-first architecture, workflow, diagram, technical visualization, editable whiteboard, evidence explainer, and animated HTML requests to the most reliable local or external diagram workflow, then validate and hand off editable artifacts."
+        "short_description": "Route, validate, and add native editable PPTX companions to visual artifacts",
+        "default_prompt": "Use $lvsea-draw to route this Chinese diagram, infographic, or visual explainer request to the best available provider and deliver an editable, validated artifact plus a native editable PPTX companion whenever a canonical SVG or static HTML visual is produced."
       },
       "compatibility": {
         "canonical_format": "agent-skills",

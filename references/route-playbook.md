@@ -83,6 +83,8 @@
 - fallback_used；
 - remaining_risks。
 
+当主路由返回 canonical SVG 或静态 HTML 时，`output_contract` 必须额外包含：原主图源不变、`scripts/emit_editable_pptx.py` 生成的原生可编辑 PPTX、PPTX 报告和转换 trace。PPT Master 未发现或导出失败时返回 `missing_capabilities`/`remaining_risks`，不能静默省略该伴随文件。
+
 ## 典型组合
 
 ### 仓库解读图
@@ -106,6 +108,8 @@ Technical Explainer 建事实台账 → Generative UI 生成静态图解组件�
 结构化培训要点、指标对比或阶段路线：先由 `infographic-composition` 生成可复核的 DSL，再按本机可用能力渲染 HTML/SVG；需要企业品牌、可访问静态图或 Mermaid/Draw.io 重绘时，增加 `editorial-diagram`，不要把两种源文件混成不可维护的单一产物。
 
 代码库、Terraform/Kubernetes、SQL 或 OpenAPI 的正式可编辑图：先由 `drawio-skill` 解析并生成 `.drawio`，再执行 XML/边引用/CLI/PNG 回读检查；没有 CLI 时可以交付源文件，但必须标记导出未验证。
+
+科研汇报或技术报告的静态 SVG/HTML 图：先按内容路由生成并核对主图，再用 `scripts/emit_editable_pptx.py` 追加 PPTX；PPTX 的可编辑性、图片边界和视觉预览状态单独记录，不把 PPTX 反向当成事实源。
 
 ## 不应触发
 

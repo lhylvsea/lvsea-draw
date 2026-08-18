@@ -21,6 +21,7 @@ class RouteRequestTests(unittest.TestCase):
         self.assertTrue(plan["primary_executor"])
         self.assertTrue(plan["output_contract"])
         self.assertTrue(plan["validation"])
+        self.assertTrue(plan["editable_pptx_companion"]["emitter"])
 
     def test_codebase_graph(self) -> None:
         self.assert_route("分析这个 GitHub 仓库，生成可搜索的代码知识图谱和变更影响", "codebase-knowledge-graph")
@@ -69,6 +70,12 @@ class RouteRequestTests(unittest.TestCase):
     def test_generic_request_needs_clarification(self) -> None:
         plan = build_plan("帮我画个图")
         self.assertTrue(plan["needs_clarification"])
+
+    def test_editable_pptx_companion_is_explicit(self) -> None:
+        plan = build_plan("把这个 SVG 转成可编辑 PPTX，并在每次图形输出时附带一份")
+        self.assertTrue(plan["editable_pptx_companion"]["requested"], plan)
+        self.assertEqual(plan["route"], "editorial-document")
+        self.assertIn("native editable PPTX companion", plan["output_contract"][-1])
 
 
 if __name__ == "__main__":

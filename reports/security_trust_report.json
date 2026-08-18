@@ -1,27 +1,27 @@
 {
   "ok": true,
-  "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
+  "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
   "summary": {
-    "scanned_files": 14,
-    "script_count": 1,
+    "scanned_files": 17,
+    "script_count": 2,
     "internal_module_count": 0,
     "secret_findings": 0,
     "dependency_files": [],
     "network_script_count": 0,
     "network_policy_covered_count": 0,
     "network_policy_missing_count": 0,
-    "file_write_script_count": 0,
-    "permission_required_count": 0,
-    "permission_approved_count": 0,
+    "file_write_script_count": 1,
+    "permission_required_count": 2,
+    "permission_approved_count": 2,
     "permission_missing_count": 0,
     "permission_invalid_count": 0,
     "permission_expired_count": 0,
-    "help_smoke_checked_count": 1,
+    "help_smoke_checked_count": 2,
     "help_smoke_failed_count": 0,
     "interactive_script_count": 0,
     "package_hash_scope": "source-contract-without-generated-reports",
-    "package_hash_file_count": 14,
-    "package_sha256": "a8c1c31df6ff2b623ccda17e5364b018429f10a081fd14340a386ea83eb47087"
+    "package_hash_file_count": 17,
+    "package_sha256": "5d2b536a6c4df4e446af1e7f852cad80ac5f9b38d77cb4abfd867520b6f945fa"
   },
   "failures": [],
   "warnings": [
@@ -29,6 +29,28 @@
   ],
   "secrets": [],
   "scripts": [
+    {
+      "path": "scripts\\emit_editable_pptx.py",
+      "interface": "cli",
+      "interface_declared": false,
+      "interface_reason": "Default CLI classification; add SCRIPT_INTERFACE for internal modules.",
+      "has_argparse": true,
+      "has_main_guard": true,
+      "uses_input": false,
+      "uses_network": false,
+      "uses_file_write": true,
+      "uses_subprocess": true,
+      "network_urls": [
+        "http://www.w3.org/2000/svg",
+        "http://www.w3.org/1999/xlink",
+        "http://schemas.openxmlformats.org/presentationml/2006/main",
+        "http://schemas.openxmlformats.org/drawingml/2006/main}t"
+      ],
+      "network_hosts": [
+        "schemas.openxmlformats.org",
+        "www.w3.org"
+      ]
+    },
     {
       "path": "scripts\\route_request.py",
       "interface": "cli",
@@ -62,13 +84,23 @@
   "help_smoke": {
     "enabled": true,
     "timeout_seconds": 5.0,
-    "candidate_count": 1,
-    "checked_count": 1,
-    "passed_count": 1,
+    "candidate_count": 2,
+    "checked_count": 2,
+    "passed_count": 2,
     "failed_count": 0,
     "skipped_count": 0,
     "failed_scripts": [],
     "results": [
+      {
+        "path": "scripts\\emit_editable_pptx.py",
+        "command": "python3 scripts\\emit_editable_pptx.py --help",
+        "returncode": 0,
+        "timed_out": false,
+        "passed": true,
+        "has_help_text": true,
+        "stdout_excerpt": "usage: emit_editable_pptx.py [-h] -o OUTPUT [--report REPORT]\n                             [--ppt-master-dir PPT_MASTER_DIR]\n                             [--work-dir WORK_DIR]\n                             [--format {ppt169,ppt43,wechat,xiao",
+        "stderr_excerpt": ""
+      },
       {
         "path": "scripts\\route_request.py",
         "command": "python3 scripts\\route_request.py --help",
@@ -86,18 +118,71 @@
     "present": true,
     "path": "security/permission_policy.json",
     "schema_version": "1.0",
-    "reviewed_at": "2026-08-11",
-    "required_capabilities": [],
-    "approved_capabilities": [],
+    "reviewed_at": "2026-08-18",
+    "required_capabilities": [
+      "file_write",
+      "subprocess"
+    ],
+    "approved_capabilities": [
+      "file_write",
+      "subprocess"
+    ],
     "missing_capabilities": [],
     "invalid_capabilities": [],
     "expired_capabilities": [],
-    "approval_count": 0,
-    "required_count": 0,
+    "approval_count": 2,
+    "required_count": 2,
     "missing_count": 0,
     "invalid_count": 0,
     "expired_count": 0,
-    "approvals": []
+    "approvals": [
+      {
+        "capability": "file_write",
+        "status": "approved",
+        "scripts": [
+          "scripts\\emit_editable_pptx.py"
+        ],
+        "reviewer": "lvsea",
+        "scope": "Write generated PPTX companions, JSON reports, normalized temporary SVG projects, and optional preview files under the caller-provided output/work directories.",
+        "reason": "The editable PPTX companion workflow must preserve source files while creating auditable derived artifacts and a temporary PPT Master project.",
+        "expires_at": "2027-08-18",
+        "evidence": [
+          "scripts/emit_editable_pptx.py",
+          "references/editable-pptx-companion.md",
+          "reports/security_trust_report.md"
+        ],
+        "target_enforcement": {
+          "openai": "metadata-only permission_contract in openai.yaml plus adapter.json",
+          "claude": "adapter.json target_permission_contract and README note",
+          "generic": "adapter.json target_permission_contract",
+          "vscode": "adapter.json target_permission_contract plus workspace-trust review"
+        },
+        "validation": []
+      },
+      {
+        "capability": "subprocess",
+        "status": "approved",
+        "scripts": [
+          "scripts\\emit_editable_pptx.py"
+        ],
+        "reviewer": "lvsea",
+        "scope": "Invoke only caller-selected local PPT Master, LibreOffice, and Poppler executables for validation, native export, and optional visual preview.",
+        "reason": "Native PPTX generation and rendering cannot be performed reliably by the router alone; subprocesses remain local, explicit, and surfaced in the JSON report.",
+        "expires_at": "2027-08-18",
+        "evidence": [
+          "scripts/emit_editable_pptx.py",
+          "references/editable-pptx-companion.md",
+          "reports/security_trust_report.md"
+        ],
+        "target_enforcement": {
+          "openai": "metadata-only permission_contract in openai.yaml plus adapter.json",
+          "claude": "adapter.json target_permission_contract and README note",
+          "generic": "adapter.json target_permission_contract",
+          "vscode": "adapter.json target_permission_contract plus workspace-trust review"
+        },
+        "validation": []
+      }
+    ]
   },
   "trust_metadata": {
     "source_tier": "local",
@@ -105,7 +190,7 @@
     "remote_metadata_policy": "allow-metadata-only"
   },
   "artifacts": {
-    "json": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\security_trust_report.json",
-    "markdown": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\security_trust_report.md"
+    "json": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\security_trust_report.json",
+    "markdown": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\security_trust_report.md"
   }
 }

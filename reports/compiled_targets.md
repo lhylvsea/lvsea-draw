@@ -1,8 +1,8 @@
 # Compiled Targets
 
 - OK: `True`
-- Targets: `5`
-- Pass: `5`
+- Targets: `4`
+- Pass: `4`
 - Warn: `0`
 - Block: `0`
 
@@ -13,7 +13,6 @@
 | `openai` | `pass` | OpenAI-style interface metadata plus neutral Agent Skills source | `metadata-adapter` | `none` | `metadata-adapter` | targets/openai/adapter.json, targets/openai/agents/openai.yaml |
 | `claude` | `pass` | Claude-compatible neutral source folder with adapter notes | `neutral-source-plus-adapter` | `none` | `neutral-source-plus-adapter` | targets/claude/adapter.json, targets/claude/README.md |
 | `generic` | `pass` | Agent Skills compatible neutral package | `agent-skills-compatible` | `none` | `neutral-source` | targets/generic/adapter.json |
-| `agent-skills-compatible` | `pass` | Agent Skills standard source tree | `neutral-agent-skills-source` | `none` | `neutral-source` | SKILL.md, agents/interface.yaml |
 | `vscode` | `pass` | VS Code/Copilot Agent Skills project or user scope | `vscode-agent-skills-adapter` | `none` | `agent-skills-source-with-vscode-notes` | targets/vscode/adapter.json, targets/vscode/README.md |
 
 ## Native Behavior Contracts
@@ -44,15 +43,6 @@
 - Scripts: Expose script and permission metadata for downstream clients or installers to enforce.
 - Permission enforcement: `consumer-enforced-or-metadata-only`; native enforcement `False`
 - Review artifacts: targets/generic/adapter.json, reports/review-studio.html
-
-### agent-skills-compatible
-
-- Native surface: Agent Skills standard source tree
-- Activation: Use SKILL.md frontmatter name and description for progressive disclosure.
-- Resources: Keep optional directories as relative resources next to SKILL.md.
-- Scripts: Scripts remain local optional resources and should advertise --help when executable.
-- Permission enforcement: `consumer-enforced-or-metadata-only`; native enforcement `False`
-- Review artifacts: SKILL.md, agents/interface.yaml, reports/review-studio.html
 
 ### vscode
 

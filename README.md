@@ -8,7 +8,7 @@ lvsea-draw 是一个垂类 Agent 派发层，核心职责是：
 
 - 选择正确的图形语义，而不是所有请求都画成流程图。
 - 在 Archify、Fireworks、Draw.io、Drawnix、Excalidraw、Technical Explainer、Generative UI、Understand Anything、AI Animation 和文档排版路线之间做选择。
-- 默认保留可编辑源文件，导出的 HTML、SVG、PNG、GIF、图片组或 PPT 作为派生物。
+- 默认保留可编辑源文件，导出的 HTML、SVG、PNG、GIF、图片组或 PPT 作为派生物；静态 SVG/HTML 图形再追加一份原生可编辑 PPTX 伴随物。
 - 对事实、结构、几何、渲染、交互和视觉质量分层验收。
 - 工具、MCP、浏览器或凭据缺失时透明降级，不把“文件存在”写成“已经跑通”。
 
@@ -56,6 +56,18 @@ Use $lvsea-draw to route this request and deliver an editable, validated diagram
 
 完整判断规则见 references/route-playbook.md。来源研究和取舍见 references/source-matrix.md。
 
+## 可编辑 PPTX 伴随产物
+
+当主路由输出 canonical SVG 或静态 HTML 时，Skill 会追加 `scripts/emit_editable_pptx.py`：它发现本机 PPT Master，做最小 SVG 兼容归一化，先跑 SVG quality gate，再生成原生 DrawingML PPTX，并写出对象检查、转换 trace 和可选首张预览。主 SVG/HTML/JSON/PNG 等文件不会被替换。
+
+```powershell
+python scripts/emit_editable_pptx.py path/to/diagram.svg `
+  -o output/diagram-可编辑.pptx `
+  --render-preview
+```
+
+“可编辑”只覆盖 PPT Master 支持的 SVG 文本和几何对象；嵌入图片仍是图片，动态 HTML 必须先输出静态 SVG。PPT Master 未发现、质量门失败或导出失败时，报告会写成 `blocked`，不会把图片嵌入 PPTX 冒充原生可编辑图。
+
 ## 本次新增整合
 
 - **AntV Infographic**：把“信息图/数据故事/对比/时间线/漏斗/金字塔/列表”识别为信息结构任务，保留 DSL 源文件；AntV 运行时未实际可用时，按 provider policy 降级到 diagram-design 或精确 SVG，不伪造渲染状态。
@@ -82,6 +94,10 @@ Use $lvsea-draw to route this request and deliver an editable, validated diagram
 
 输入工艺步骤、指标数据或培训内容。数据量化图优先 Generative UI；需要步骤播放和录屏时转 AI Animation；需要可编辑节点、端口和业务交互时进入 X6 工程路线。所有按钮和控件都必须有真实效果，缺失数据不得补造。
 
+### 5. 科研工艺流程图汇报
+
+输入制造工艺或科研流程文字，先按流程/信息图路由生成可核对的 SVG/HTML/PNG，再追加一份可编辑 PPTX，保留湿基、分流比例、温度段和能耗结论等原始数字；PPTX 首张幻灯片另做渲染回读。
+
 ## 质量与验收
 
 推荐顺序：
@@ -89,8 +105,9 @@ Use $lvsea-draw to route this request and deliver an editable, validated diagram
 1. 确认来源、受众、目标格式和编辑要求。
 2. 运行 scripts/route_request.py 或按路由手册选择主路由。
 3. 先生成可编辑源文件，再导出派生物。
-4. 先做结构/JSON/XML/schema/几何检查，再做浏览器或图片视觉检查。
-5. 交付主文件、源文件、派生文件、验证命令和限制说明。
+4. 静态 SVG/HTML 图生成后，追加 `emit_editable_pptx.py`，交付 PPTX、报告和 trace。
+5. 先做结构/JSON/XML/schema/几何检查，再做浏览器、PPTX 或图片视觉检查。
+6. 交付主文件、源文件、派生文件、验证命令和限制说明。
 
 机器验收建议：
 
@@ -117,6 +134,7 @@ python C:\Users\rabbit\.codex\skills\.system\skill-creator\scripts\quick_validat
 - svg-preview 只能承担预览与人工核对，不是绘图生成器。
 - X6 是工程库，不是现成 Agent Skill；只有用户确实要开发图编辑应用时才进入该路线。
 - 静态 Skill 检查通过不等于每个外部渲染器、浏览器交互或在线模型已实际调用。
+- Skill 已配置 PPTX 伴随流程不等于本次已生成 PPTX；必须以报告中的导出、对象检查和视觉预览状态为准。
 
 ## 维护
 

@@ -20,6 +20,7 @@
 | [AntV Infographic](https://github.com/antvis/Infographic)，69eae2ee | 声明式、AI 友好的 Infographic DSL；template/data/theme 分层；list/sequence/compare/hierarchy/relation/chart 结构族；模板、主题、编辑器和 SVG 输出思路 | 不复制上游模板、运行时代码、图标和站点素材；不把可选 CDN 或未安装 Skill 写成离线渲染能力 | infographic-composition |
 | [Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill/)，2ee141e0 | 11 类 Draw.io 预设；Mermaid、代码库、Terraform/Kubernetes、SQL/OpenAPI、C4 导入；官方图形/云图标检索；自检、自动修复、多页、viewer、热力图和导出策略 | 不复制 Skill 源码、脚本、图标库或桌面 CLI；不在未探测 CLI/Graphviz/版本时声称导入、PNG/SVG/PPTX 成功 | editable-drawio |
 | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design)，e48df3fb | 27 种静态图类型；语义模式优先；自包含 HTML、可访问 SVG、尺寸/受众/细节调节；品牌 style guide 首次确认门；Mermaid/Draw.io 重绘与可选可访问动效 | 不复制模板、图标、品牌资产或上游默认主题；不把“静态结构检查”当作浏览器/图片视觉通过 | editorial-diagram |
+| [ppt-master](https://cnb.cool/lvsea2008/ppt-master)，本机快照 2026-08-18 | SVG 到原生 DrawingML PPTX、`flat` 结构、转换 trace、PPTX postflight 和 SVG quality checker；适合把静态科研/技术图追加为可编辑汇报页 | 不把图片嵌入 PPT 冒充原生编辑；不把未发现的本地安装、字体或 LibreOffice/Poppler 预览写成已验证；不复制上游脚本或模板 | editable-pptx-companion |
 
 ## 组合原则
 

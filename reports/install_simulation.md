@@ -1,14 +1,14 @@
 # Install Simulation
 
 - OK: `True`
-- Package directory: `C:\Users\rabbit\Documents\Codex\2026-08-11\skill-agent-goal-boss-draw-qiaomu-2\outputs\lvsea-draw\dist`
+- Package directory: `C:\Users\rabbit\.codex\skills\lvsea-draw\dist`
 - Archive extracted: `True`
 - Nested SKILL.md entries: `0`
 - Entrypoint loaded: `True`
 - Manifest loaded: `True`
 - Interface loaded: `True`
 - Adapters readable: `4`
-- Installer permissions enforced: `0`
+- Installer permissions enforced: `8`
 - Installer permission failures: `0`
 - Failures: `0`
 - Warnings: `0`
@@ -17,7 +17,7 @@
 
 | Check | Status | Detail |
 | --- | --- | --- |
-| `archive-present` | `pass` | Package archive exists: C:\Users\rabbit\Documents\Codex\2026-08-11\skill-agent-goal-boss-draw-qiaomu-2\outputs\lvsea-draw\dist\lvsea-draw.zip |
+| `archive-present` | `pass` | Package archive exists: C:\Users\rabbit\.codex\skills\lvsea-draw\dist\lvsea-draw.zip |
 | `archive-safe-paths` | `pass` | Archive has no absolute or parent-traversal entries |
 | `single-skill-entrypoint` | `pass` | Installed package exposes only the root SKILL.md entrypoint |
 | `single-top-level` | `pass` | Archive top-level directory is lvsea-draw |
@@ -40,9 +40,25 @@
 | `adapter-vscode-name` | `pass` | vscode adapter name matches package manifest |
 | `permission-policy-load` | `pass` | Installed permission policy is readable |
 | `permission-claude-contract` | `pass` | claude adapter exposes target permission contract for installer enforcement |
+| `permission-claude-file_write-approved` | `pass` | claude capability file_write has active reviewer approval |
+| `permission-claude-file_write-target-enforcement` | `pass` | claude capability file_write has target enforcement note |
+| `permission-claude-subprocess-approved` | `pass` | claude capability subprocess has active reviewer approval |
+| `permission-claude-subprocess-target-enforcement` | `pass` | claude capability subprocess has target enforcement note |
 | `permission-generic-contract` | `pass` | generic adapter exposes target permission contract for installer enforcement |
+| `permission-generic-file_write-approved` | `pass` | generic capability file_write has active reviewer approval |
+| `permission-generic-file_write-target-enforcement` | `pass` | generic capability file_write has target enforcement note |
+| `permission-generic-subprocess-approved` | `pass` | generic capability subprocess has active reviewer approval |
+| `permission-generic-subprocess-target-enforcement` | `pass` | generic capability subprocess has target enforcement note |
 | `permission-openai-contract` | `pass` | openai adapter exposes target permission contract for installer enforcement |
+| `permission-openai-file_write-approved` | `pass` | openai capability file_write has active reviewer approval |
+| `permission-openai-file_write-target-enforcement` | `pass` | openai capability file_write has target enforcement note |
+| `permission-openai-subprocess-approved` | `pass` | openai capability subprocess has active reviewer approval |
+| `permission-openai-subprocess-target-enforcement` | `pass` | openai capability subprocess has target enforcement note |
 | `permission-vscode-contract` | `pass` | vscode adapter exposes target permission contract for installer enforcement |
+| `permission-vscode-file_write-approved` | `pass` | vscode capability file_write has active reviewer approval |
+| `permission-vscode-file_write-target-enforcement` | `pass` | vscode capability file_write has target enforcement note |
+| `permission-vscode-subprocess-approved` | `pass` | vscode capability subprocess has active reviewer approval |
+| `permission-vscode-subprocess-target-enforcement` | `pass` | vscode capability subprocess has target enforcement note |
 
 ## Failures
 

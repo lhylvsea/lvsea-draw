@@ -11,17 +11,17 @@ Runtime permission probes verify that generated target adapters expose high-perm
 - Native enforcement targets: `0`
 - Explicit metadata fallbacks: `4`
 - Installer enforcement source: `present`
-- Installer-enforced targets: `0`
+- Installer-enforced targets: `4`
 - Installer permission failures: `0`
 - World-class native evidence ready: `False`
-- Required capabilities: `none`
+- Required capabilities: `file_write, subprocess`
 
 | Target | Status | Assurance | Native Enforcement | Metadata Fallback | Installer Enforcement | Residual Risk |
 | --- | --- | --- | --- | --- | --- | --- |
-| `openai` | `pass` | `metadata-fallback-explicit` | `False` | `True` | `present` | Client-native permission enforcement is not provided by this target; installer or operator must honor metadata. |
-| `claude` | `pass` | `metadata-fallback-explicit` | `False` | `True` | `present` | Client-native permission enforcement is not provided by this target; installer or operator must honor metadata. |
-| `generic` | `pass` | `metadata-fallback-explicit` | `False` | `True` | `present` | Client-native permission enforcement is not provided by this target; installer or operator must honor metadata. |
-| `vscode` | `pass` | `metadata-fallback-explicit` | `False` | `True` | `present` | Client-native permission enforcement is not provided by this target; installer or operator must honor metadata. |
+| `openai` | `pass` | `metadata-fallback-explicit` | `False` | `True` | `pass` | Client-native permission enforcement is not provided by this target; installer or operator must honor metadata. |
+| `claude` | `pass` | `metadata-fallback-explicit` | `False` | `True` | `pass` | Client-native permission enforcement is not provided by this target; installer or operator must honor metadata. |
+| `generic` | `pass` | `metadata-fallback-explicit` | `False` | `True` | `pass` | Client-native permission enforcement is not provided by this target; installer or operator must honor metadata. |
+| `vscode` | `pass` | `metadata-fallback-explicit` | `False` | `True` | `pass` | Client-native permission enforcement is not provided by this target; installer or operator must honor metadata. |
 
 ## Installer Enforcement
 

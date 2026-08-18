@@ -40,6 +40,10 @@
     {
       "text": "按品牌规范把 Mermaid 重绘成自包含 HTML 和可访问 SVG",
       "family": "editorial_diagram"
+    },
+    {
+      "text": "把这个科研流程 SVG 转成原生可编辑 PPTX，并在每次视觉输出时附带一份",
+      "family": "editable_pptx_companion"
     }
   ],
   "should_not_trigger": [

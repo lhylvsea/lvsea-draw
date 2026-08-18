@@ -1,22 +1,41 @@
 {
   "schema_version": "1.0",
-  "reviewed_at": "2026-08-11",
+  "reviewed_at": "2026-08-18",
   "capabilities": {
-    "_none": {
-      "decision": "not-required",
+    "file_write": {
+      "decision": "approved",
       "reviewer": "lvsea",
-      "scope": "The bundled router only scores request text and emits JSON; it does not perform network, file-write, subprocess, or interactive operations.",
-      "reason": "The skill delegates artifact creation to separately installed tools and keeps this package's local script deterministic and permission-free.",
-      "expires_at": "2027-08-11",
+      "scope": "Write generated PPTX companions, JSON reports, normalized temporary SVG projects, and optional preview files under the caller-provided output/work directories.",
+      "reason": "The editable PPTX companion workflow must preserve source files while creating auditable derived artifacts and a temporary PPT Master project.",
+      "expires_at": "2027-08-18",
       "evidence": [
-        "scripts/route_request.py",
+        "scripts/emit_editable_pptx.py",
+        "references/editable-pptx-companion.md",
         "reports/security_trust_report.md"
       ],
       "target_enforcement": {
-        "openai": "No runtime capability is declared; preserve metadata-only contract.",
-        "claude": "No runtime capability is declared; preserve adapter contract.",
-        "generic": "No runtime capability is declared; preserve adapter contract.",
-        "vscode": "No runtime capability is declared; preserve adapter contract."
+        "openai": "metadata-only permission_contract in openai.yaml plus adapter.json",
+        "claude": "adapter.json target_permission_contract and README note",
+        "generic": "adapter.json target_permission_contract",
+        "vscode": "adapter.json target_permission_contract plus workspace-trust review"
+      }
+    },
+    "subprocess": {
+      "decision": "approved",
+      "reviewer": "lvsea",
+      "scope": "Invoke only caller-selected local PPT Master, LibreOffice, and Poppler executables for validation, native export, and optional visual preview.",
+      "reason": "Native PPTX generation and rendering cannot be performed reliably by the router alone; subprocesses remain local, explicit, and surfaced in the JSON report.",
+      "expires_at": "2027-08-18",
+      "evidence": [
+        "scripts/emit_editable_pptx.py",
+        "references/editable-pptx-companion.md",
+        "reports/security_trust_report.md"
+      ],
+      "target_enforcement": {
+        "openai": "metadata-only permission_contract in openai.yaml plus adapter.json",
+        "claude": "adapter.json target_permission_contract and README note",
+        "generic": "adapter.json target_permission_contract",
+        "vscode": "adapter.json target_permission_contract plus workspace-trust review"
       }
     }
   }

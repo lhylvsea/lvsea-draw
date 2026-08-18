@@ -39,11 +39,14 @@
 | Generative UI | 单文件 HTML/SVG/组件代码和数据来源 |
 | AntV Infographic | Infographic DSL、模板/主题记录、HTML/SVG，必要时 PNG |
 | diagram-design | 自包含 HTML、可访问 SVG、必要时 PNG 和 style receipt |
+| 静态 SVG/HTML 视觉 | 原主图源、原生可编辑 PPTX 伴随文件、PPTX JSON 报告和转换 trace |
 | X6 | 源码、运行入口、测试和导出样例 |
 
 ## 验证门
 
 信息图必须额外检查：模板与主数据族匹配、`title/desc/label/value/icon` 字段完整、语言不被静默翻译、主题颜色可读，以及 DSL 能否在真实运行时解析。编辑图必须额外检查：语义模式没有被装饰替代、节点密度可控、SVG 有 accessible name、品牌 style guide 决策已记录。drawio-skill 需要把 CLI/version/import/export 状态分开记录。
+
+静态 SVG/HTML 视觉还必须检查：PPT Master 是否被实际发现、SVG quality 是否有 blocking error、PPTX 是否为原生 DrawingML 结构、文本/形状/图片对象数量、转换 trace、视觉预览状态和未转换内容边界。
 
 ### 确定性检查
 

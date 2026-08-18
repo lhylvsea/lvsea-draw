@@ -2,12 +2,12 @@
 
 - OK: `True`
 - Package: `lvsea-draw`
-- Version: `0.1.0`
+- Version: `0.3.0`
 - Maturity: `production`
 - Owner: `lvsea`
 - License: `MIT`
-- Package SHA256: `a8c1c31df6ff2b623ccda17e5364b018429f10a081fd14340a386ea83eb47087`
-- Archive SHA256: `1e2845bb6257076f8debed183909c90490c8efb03c5f55fb81eb3f02d3875bb8`
+- Package SHA256: `5d2b536a6c4df4e446af1e7f852cad80ac5f9b38d77cb4abfd867520b6f945fa`
+- Archive SHA256: `3124289e96ba489b00519c808444c9bf0ff6b61131d320c5b03f4608adcaa961`
 - Install simulated: `True`
 
 ## Compatibility
@@ -31,7 +31,7 @@
 
 ## Artifacts
 
-- index: `registry\index.json`
-- package: `registry\packages\lvsea-draw.json`
-- json: `C:\Users\rabbit\Documents\Codex\2026-08-11\skill-agent-goal-boss-draw-qiaomu-2\outputs\lvsea-draw\reports\registry_audit.json`
-- markdown: `C:\Users\rabbit\Documents\Codex\2026-08-11\skill-agent-goal-boss-draw-qiaomu-2\outputs\lvsea-draw\reports\registry_audit.md`
+- index: `C:\Users\rabbit\.codex\skills\lvsea-draw\registry\index.json`
+- package: `C:\Users\rabbit\.codex\skills\lvsea-draw\registry\packages\lvsea-draw.json`
+- json: `C:\Users\rabbit\.codex\skills\lvsea-draw\reports\registry_audit.json`
+- markdown: `C:\Users\rabbit\.codex\skills\lvsea-draw\reports\registry_audit.md`
