@@ -29,9 +29,9 @@
 4. Excalidraw 负责手绘论证和教学结构，AI Animation 负责有限叙事动效，Kami 负责图解进入正式文档的版式。
 5. X6 只在“要开发图编辑产品”时成为工程底座；SVG Preview 只在预览和人工核对阶段使用。
 
-5. Infographic 负责信息结构和 DSL 源文件，diagram-design 负责品牌化、可访问的静态图；两者共享事实台账，但不混写源格式。
-6. drawio-skill 负责可编辑 `.drawio` 和代码/IaC/SQL/OpenAPI 导入；CLI、Graphviz、版本与导出是独立能力门，不因 XML 生成通过而自动通过。
-7. Diagram Design 的“删除无效节点、控制密度、每条连线有语义、首次品牌确认”补强所有静态图路线；它不是用装饰替代关系的模板机。
+6. Infographic 负责信息结构和 DSL 源文件，diagram-design 负责品牌化、可访问的静态图；两者共享事实台账，但不混写源格式。
+7. drawio-skill 负责可编辑 `.drawio` 和代码/IaC/SQL/OpenAPI 导入；CLI、Graphviz、版本与导出是独立能力门，不因 XML 生成通过而自动通过。
+8. Diagram Design 的“删除无效节点、控制密度、每条连线有语义、首次品牌确认”补强所有静态图路线；它不是用装饰替代关系的模板机。
 
 ## 研究边界
 
