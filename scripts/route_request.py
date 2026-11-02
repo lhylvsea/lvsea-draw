@@ -93,6 +93,25 @@ ROUTES: dict[str, dict[str, Any]] = {
         "fallback": ["editorial-diagram", "precise-technical-graphic", "interactive-widget"],
         "provider_policy": "Prefer @antv/infographic or an installed AntV Infographic skill; otherwise fall back without claiming AntV rendering.",
     },
+    "mermaid-polish": {
+        "executor": "pretty-mermaid",
+        "patterns": [
+            (r"pretty[\s-]*mermaid|mermaid.*(美化|主题|配色|渲染|render|theme|style|寡淡|太素|漂亮|好看|美观)", 8),
+            (r"(美化|主题|配色|渲染|重绘|漂亮|好看|美观).*(mermaid|\.mmd|flowchart|sequence|state|class|er|xychart)", 7),
+            (r"mermaid|\.mmd|flowchart|sequencediagram|statediagram|classdiagram|erdiagram|xychart-beta", 3),
+            (r"svg|png|ascii|unicode|终端|批量", 1),
+        ],
+        "outputs": ["canonical .mmd source", "themed SVG", "optional PNG", "optional ASCII/Unicode preview"],
+        "validation": [
+            "Mermaid source is preserved and the renderer exits successfully",
+            "SVG starts with <svg and has a non-empty viewBox or dimensions",
+            "theme, font, edge contrast, padding, and label fit are checked",
+            "PNG/ASCII output is validated when requested",
+            "visual readback for CJK labels, long edges, and crowded layouts",
+        ],
+        "fallback": ["editorial-diagram", "precise-technical-graphic", "editable-drawio"],
+        "provider_policy": "Prefer an installed pretty-mermaid provider and its bundled beautiful-mermaid CLI. If it is absent or the requested Mermaid syntax is unsupported, keep the .mmd source and fall back without claiming a Pretty Mermaid render.",
+    },
     "interactive-widget": {
         "executor": "generative-ui-mcp",
         "patterns": [
@@ -172,6 +191,26 @@ ROUTES: dict[str, dict[str, Any]] = {
 }
 
 
+EDITABLE_PPTX_COMPANION: dict[str, Any] = {
+    "required_when": "the selected route emits a canonical SVG or static HTML visual",
+    "source_preference": [
+        "canonical ppt-ready.svg",
+        "standalone SVG",
+        "self-contained/static HTML containing an inline SVG",
+    ],
+    "emitter": "scripts/emit_editable_pptx.py",
+    "exporter": "PPT Master",
+    "format": "native DrawingML .pptx; supported text and geometry remain editable",
+    "validation": [
+        "PPT Master SVG quality checker",
+        "native export postflight",
+        "PPTX package/object inspection",
+        "LibreOffice or browser visual readback when available",
+    ],
+    "fallback": "report missing capability and never omit the companion silently",
+}
+
+
 def normalize(text: str) -> str:
     return re.sub(r"\s+", " ", text.strip().lower())
 
@@ -195,6 +234,9 @@ def score_routes(text: str) -> list[tuple[str, float, list[str]]]:
 def secondary_routes(text: str, primary: str) -> list[str]:
     normalized = normalize(text)
     candidates: list[str] = []
+    if re.search(r"(?:可编辑\s*)?(?:pptx?|演示文稿)|svg\s*(?:转|转换|导出).*(?:pptx?|ppt)|pptx?.*(?:可编辑|伴随)", normalized):
+        if primary != "editorial-document":
+            candidates.append("editorial-document")
     if primary == "evidence-architecture" and re.search(r"信息图|infographic|数据故事|数据叙事", normalized):
         candidates.append("infographic-composition")
     if primary == "infographic-composition" and re.search(r"品牌|style\s*guide|mermaid|draw\.?io|重绘", normalized):
@@ -203,6 +245,12 @@ def secondary_routes(text: str, primary: str) -> list[str]:
         candidates.append("interactive-widget")
     if primary == "infographic-composition" and re.search(r"ppt|slides|报告|一页纸|白皮书", normalized):
         candidates.append("editorial-document")
+    if primary == "mermaid-polish" and re.search(r"品牌|style\s*guide|可访问|accessible|自包含|品牌规范", normalized):
+        candidates.append("editorial-diagram")
+    if primary == "editorial-diagram" and re.search(r"pretty[\s-]*mermaid|mermaid|\.mmd", normalized):
+        candidates.append("mermaid-polish")
+    if primary == "editable-drawio" and re.search(r"pretty[\s-]*mermaid|mermaid|\.mmd", normalized) and re.search(r"美化|主题|配色|渲染|寡淡|太素|漂亮|好看", normalized):
+        candidates.append("mermaid-polish")
     if primary == "editorial-diagram" and re.search(r"ppt|slides|报告|一页纸|白皮书", normalized):
         candidates.append("editorial-document")
     if primary == "codebase-knowledge-graph" and re.search(r"架构|流程|地图|可视化", normalized):
@@ -234,10 +282,28 @@ def build_plan(text: str) -> dict[str, Any]:
     else:
         primary, score, matched = scored[0]
 
+    # Explicit editable formats and accessibility/brand constraints outrank a
+    # renderer preference. Mermaid polish is a rendering layer, not a reason
+    # to discard a requested Draw.io source or accessible static artifact.
+    if re.search(r"draw\.?io|\.drawio|xml", normalized) and re.search(r"可编辑|继续修改|导出|转换|转成|生成", normalized):
+        primary = "editable-drawio"
+        score = next((item[1] for item in scored if item[0] == primary), score)
+        matched = next((item[2] for item in scored if item[0] == primary), matched)
+    elif re.search(r"品牌|style\s*guide|可访问|accessible|自包含|品牌规范", normalized) and re.search(r"mermaid|\.mmd|draw\.?io", normalized):
+        primary = "editorial-diagram"
+        score = next((item[1] for item in scored if item[0] == primary), score)
+        matched = next((item[2] for item in scored if item[0] == primary), matched)
+
     ambiguous = not scored or score < 4 or (len(scored) > 1 and scored[0][1] - scored[1][1] < 1.5)
     generic_request = bool(re.fullmatch(r"(帮我)?(画个图|做个图|做可视化|画图|可视化)", normalized))
     needs_clarification = generic_request or not scored
     route = ROUTES[primary]
+    requested_editable_pptx = bool(
+        re.search(
+            r"(?:可编辑\s*)?(?:pptx?|演示文稿)|svg\s*(?:转|转换|导出).*(?:pptx?|ppt)|pptx?.*(?:可编辑|伴随)",
+            normalized,
+        )
+    )
 
     reasons = [
         f"主路由 {primary} 命中 {len(matched)} 组意图信号",
@@ -247,6 +313,13 @@ def build_plan(text: str) -> dict[str, Any]:
         reasons.append("存在近邻路由，按明确输出格式和事实风险做最终裁决")
     if needs_clarification:
         reasons.append("请求缺少关系类型或目标格式，不能可靠决定唯一渲染器")
+    if requested_editable_pptx:
+        reasons.append("请求包含可编辑 PPTX 要求，主图源完成后追加 PPT Master 原生伴随导出")
+
+    output_contract = list(route["outputs"])
+    output_contract.append("native editable PPTX companion when canonical SVG or static HTML is emitted")
+    companion = dict(EDITABLE_PPTX_COMPANION)
+    companion["requested"] = requested_editable_pptx
 
     return {
         "schema_version": "1.0",
@@ -257,7 +330,8 @@ def build_plan(text: str) -> dict[str, Any]:
         "confidence": round(min(0.99, 0.35 + score / 14), 2),
         "reasons": reasons,
         "matched_signals": matched,
-        "output_contract": route["outputs"],
+        "output_contract": output_contract,
+        "editable_pptx_companion": companion,
         "validation": route["validation"],
         "fallback": route["fallback"],
         "provider_policy": route.get("provider_policy"),

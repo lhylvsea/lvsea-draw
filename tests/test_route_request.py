@@ -21,6 +21,7 @@ class RouteRequestTests(unittest.TestCase):
         self.assertTrue(plan["primary_executor"])
         self.assertTrue(plan["output_contract"])
         self.assertTrue(plan["validation"])
+        self.assertTrue(plan["editable_pptx_companion"]["emitter"])
 
     def test_codebase_graph(self) -> None:
         self.assert_route("分析这个 GitHub 仓库，生成可搜索的代码知识图谱和变更影响", "codebase-knowledge-graph")
@@ -44,6 +45,23 @@ class RouteRequestTests(unittest.TestCase):
         self.assertEqual(plan["route"], "editorial-diagram", plan)
         self.assertEqual(plan["primary_executor"], "diagram-design")
         self.assertTrue(plan["provider_policy"])
+
+    def test_mermaid_polish(self) -> None:
+        plan = build_plan("Mermaid 已经画出来了，但图表太寡淡，请换主题和配色并输出 SVG/PNG")
+        self.assertEqual(plan["route"], "mermaid-polish", plan)
+        self.assertEqual(plan["primary_executor"], "pretty-mermaid")
+        self.assertIn("canonical .mmd source", plan["output_contract"])
+        self.assertIn("editorial-diagram", plan["fallback"])
+
+    def test_drawio_format_wins_over_mermaid_polish(self) -> None:
+        plan = build_plan("把 Mermaid 美化后转换成可继续修改的 Draw.io XML")
+        self.assertEqual(plan["route"], "editable-drawio", plan)
+        self.assertEqual(plan["primary_executor"], "drawio-skill")
+
+    def test_mermaid_batch_theme_request(self) -> None:
+        plan = build_plan("批量把 diagrams 目录的 Mermaid 渲染成 GitHub 深色 SVG 和终端 ASCII")
+        self.assertEqual(plan["route"], "mermaid-polish", plan)
+        self.assertEqual(plan["primary_executor"], "pretty-mermaid")
 
     def test_whiteboard(self) -> None:
         self.assert_route("先用白板做一个生产订单到入库的思维导图", "whiteboard-workbench")
@@ -69,6 +87,12 @@ class RouteRequestTests(unittest.TestCase):
     def test_generic_request_needs_clarification(self) -> None:
         plan = build_plan("帮我画个图")
         self.assertTrue(plan["needs_clarification"])
+
+    def test_editable_pptx_companion_is_explicit(self) -> None:
+        plan = build_plan("把这个 SVG 转成可编辑 PPTX，并在每次图形输出时附带一份")
+        self.assertTrue(plan["editable_pptx_companion"]["requested"], plan)
+        self.assertEqual(plan["route"], "editorial-document")
+        self.assertIn("native editable PPTX companion", plan["output_contract"][-1])
 
 
 if __name__ == "__main__":

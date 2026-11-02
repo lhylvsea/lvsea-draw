@@ -20,6 +20,9 @@
       "Infographic DSL",
       "diagram-design",
       "drawio-skill",
+      "可编辑 PPTX",
+      "SVG 转 PPTX",
+      "每次附带 PPTX",
       "流程图",
       "架构图",
       "白板",
@@ -42,7 +45,9 @@
       "做信息图",
       "生成数据故事",
       "按品牌规范重绘 Mermaid",
-      "用 drawio-skill 生成 drawio"
+      "用 drawio-skill 生成 drawio",
+      "把 SVG 转成可编辑 PPTX",
+      "输出图形并附带 PPTX"
     ],
     "exclusions": [
       "summary-only requests",
@@ -64,7 +69,10 @@
       "whiteboard export",
       "Infographic DSL",
       "style receipt",
-      "QA record"
+      "QA record",
+      "native editable PPTX",
+      "PPTX report",
+      "conversion trace"
     ]
   },
   "fallback_positive_concepts": [
@@ -104,11 +112,22 @@
         "动画",
         "动起来",
         "信息图",
+        "Mermaid",
+        "Pretty Mermaid",
+        "Mermaid 美化",
+        "Mermaid 主题",
+        "Mermaid 配色",
+        "Mermaid 渲染",
+        "图表太寡淡",
+        ".mmd",
         "信息可视化",
         "数据故事",
         "Infographic DSL",
         "diagram-design",
         "drawio-skill",
+        "可编辑 PPTX",
+        "SVG 转 PPTX",
+        "科研 PPT",
         "画图",
         "绘图"
       ]

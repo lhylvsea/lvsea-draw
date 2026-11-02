@@ -1,5 +1,25 @@
 {
   "recommended_threshold": 0.33,
+  "description_required_concepts": ["diagram_job", "source_artifact", "routing_quality"],
+  "positive_concepts": {
+    "diagram_job": [
+      "架构图", "流程图", "时序图", "数据流图", "信息图", "可视化", "图表", "白板",
+      "Draw.io", "Excalidraw", "SVG", "PNG", "GIF", "HTML", "知识图谱", "技术解读图", "技术报告", "图片组",
+      "Mermaid", "Infographic", "diagram-design", "drawio-skill", "PPTX", "图编辑器", "画图", "绘图"
+    ],
+    "source_artifact": [
+      "源文件", "SVG", "PNG", "GIF", "HTML", "XML", "DSL", "mmd", "图片组", "报告",
+      "仓库", "代码", "Terraform", "SQL", "PPTX", "文件", "梳理"
+    ],
+    "routing_quality": [
+      "证据", "可编辑", "可继续修改", "交互式", "验收", "品牌", "可访问", "主题", "配色", "渲染", "美化",
+      "太寡淡", "批量", "保留", "导出", "高对比度", "数据故事", "事实台账", "知识图谱", "几何", "视觉", "梳理", "多页"
+    ]
+  },
+  "negative_patterns": [
+    "只要总结", "翻译一下", "不要生成文件", "不生成任何文件", "只看一下", "只给我几个头脑风暴方向",
+    "只讨论", "只要解释", "不需要渲染或修改", "还没有决定用什么库", "排版成一页纸"
+  ],
   "should_trigger": [
     {
       "text": "画一张有证据的系统架构图并保留可编辑源文件",
@@ -7,6 +27,10 @@
     },
     {
       "text": "把这段流程做成可继续修改的 Draw.io XML",
+      "family": "editable_diagram"
+    },
+    {
+      "text": "把 Mermaid 转成可继续修改的 Draw.io XML，不要只给图片",
       "family": "editable_diagram"
     },
     {
@@ -40,6 +64,18 @@
     {
       "text": "按品牌规范把 Mermaid 重绘成自包含 HTML 和可访问 SVG",
       "family": "editorial_diagram"
+    },
+    {
+      "text": "Mermaid 已经画出来了，但图表太寡淡，请用 Pretty Mermaid 换主题和配色，保留 mmd 并输出 SVG/PNG",
+      "family": "mermaid_polish"
+    },
+    {
+      "text": "把 diagrams 目录里的 Mermaid 批量渲染成 GitHub 深色 SVG 和终端 ASCII",
+      "family": "mermaid_polish"
+    },
+    {
+      "text": "把这个科研流程 SVG 转成原生可编辑 PPTX，并在每次视觉输出时附带一份",
+      "family": "editable_pptx_companion"
     }
   ],
   "should_not_trigger": [
@@ -68,6 +104,18 @@
     {
       "text": "帮我把报告排版成一页纸，里面需要一张流程图",
       "family": "editorial_document"
+    }
+  ],
+  "adversarial": [
+    {
+      "text": "只讨论图表自动化能力，不生成任何文件",
+      "family": "brainstorm_only",
+      "expected_trigger": false
+    },
+    {
+      "text": "只要解释 Mermaid 是什么，不需要渲染或修改",
+      "family": "summary_only",
+      "expected_trigger": false
     }
   ]
 }

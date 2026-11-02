@@ -1,0 +1,339 @@
+{
+  "ok": true,
+  "threshold": 0.33,
+  "description_concepts": [
+    "diagram_job",
+    "routing_quality",
+    "source_artifact"
+  ],
+  "missing_description_concepts": [],
+  "summary": {
+    "total": 22,
+    "passed": 22,
+    "false_positive": 0,
+    "false_negative": 0,
+    "pass_rate": 1.0
+  },
+  "bucket_summary": {
+    "should_trigger": {
+      "total": 14,
+      "passed": 14
+    },
+    "should_not_trigger": {
+      "total": 4,
+      "passed": 4
+    },
+    "near_neighbor": {
+      "total": 2,
+      "passed": 2
+    },
+    "adversarial": {
+      "total": 2,
+      "passed": 2
+    }
+  },
+  "failures": [],
+  "results": {
+    "should_trigger": [
+      {
+        "prompt": "画一张有证据的系统架构图并保留可编辑源文件",
+        "family": "architecture_visualization",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把这段流程做成可继续修改的 Draw.io XML",
+        "family": "editable_diagram",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把 Mermaid 转成可继续修改的 Draw.io XML，不要只给图片",
+        "family": "editable_diagram",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把这个仓库转成代码知识图谱和技术解读图",
+        "family": "codebase_explainer",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "生成一个交互式 HTML 图表组件",
+        "family": "interactive_visualization",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把这篇技术报告拆成 16:9 图片组并建立事实台账",
+        "family": "explainer_image_set",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "用白板先梳理安全生产异常闭环",
+        "family": "whiteboard_workbench",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把 SVG 生成 GIF 并做几何和视觉验收",
+        "family": "technical_motion",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把培训要点做成中文信息图和数据故事，保留 Infographic DSL 并导出 SVG",
+        "family": "infographic_composition",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "用 Agents365 drawio-skill 把 Terraform 和 SQL 生成可继续修改的多页 drawio",
+        "family": "drawio_skill",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "按品牌规范把 Mermaid 重绘成自包含 HTML 和可访问 SVG",
+        "family": "editorial_diagram",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "Mermaid 已经画出来了，但图表太寡淡，请用 Pretty Mermaid 换主题和配色，保留 mmd 并输出 SVG/PNG",
+        "family": "mermaid_polish",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把 diagrams 目录里的 Mermaid 批量渲染成 GitHub 深色 SVG 和终端 ASCII",
+        "family": "mermaid_polish",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把这个科研流程 SVG 转成原生可编辑 PPTX，并在每次视觉输出时附带一份",
+        "family": "editable_pptx_companion",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 1.0,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality",
+          "source_artifact"
+        ],
+        "negative_pattern": null
+      }
+    ],
+    "should_not_trigger": [
+      {
+        "prompt": "只要总结一下流程图是什么",
+        "family": "summary_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.333,
+        "matched_concepts": [
+          "diagram_job"
+        ],
+        "negative_pattern": "只要总结"
+      },
+      {
+        "prompt": "翻译一下这段画图说明",
+        "family": "translation_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.333,
+        "matched_concepts": [
+          "diagram_job"
+        ],
+        "negative_pattern": "翻译一下"
+      },
+      {
+        "prompt": "不要生成文件，只给我几个头脑风暴方向",
+        "family": "brainstorm_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.333,
+        "matched_concepts": [
+          "source_artifact"
+        ],
+        "negative_pattern": "不要生成文件"
+      },
+      {
+        "prompt": "只看一下这张已有图片，不要修改",
+        "family": "read_only_image",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": "只看一下"
+      }
+    ],
+    "near_neighbor": [
+      {
+        "prompt": "我要做一个复杂的 React 图编辑器，但还没有决定用什么库",
+        "family": "custom_graph_app",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.333,
+        "matched_concepts": [
+          "diagram_job"
+        ],
+        "negative_pattern": "还没有决定用什么库"
+      },
+      {
+        "prompt": "帮我把报告排版成一页纸，里面需要一张流程图",
+        "family": "editorial_document",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.667,
+        "matched_concepts": [
+          "diagram_job",
+          "source_artifact"
+        ],
+        "negative_pattern": "排版成一页纸"
+      }
+    ],
+    "adversarial": [
+      {
+        "prompt": "只讨论图表自动化能力，不生成任何文件",
+        "family": "brainstorm_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.667,
+        "matched_concepts": [
+          "diagram_job",
+          "source_artifact"
+        ],
+        "negative_pattern": "不生成任何文件"
+      },
+      {
+        "prompt": "只要解释 Mermaid 是什么，不需要渲染或修改",
+        "family": "summary_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.667,
+        "matched_concepts": [
+          "diagram_job",
+          "routing_quality"
+        ],
+        "negative_pattern": "只要解释"
+      }
+    ]
+  }
+}

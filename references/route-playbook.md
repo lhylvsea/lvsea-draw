@@ -20,6 +20,8 @@
 - 明确要求品牌化静态图、样式指南、Mermaid/Draw.io 重绘、可访问 HTML/SVG 或 diagram-design：`editorial-diagram`。
 - 如果同时明确要求 `.drawio` 或 Draw.io 编辑，格式约束优先，主路由仍为 `editable-drawio`，信息图或品牌图作为协作路由。
 - 如果请求是“把图放进 PPT/报告/一页纸”，`editorial-document` 负责版式，图形本体仍交给信息图或编辑图路由。
+- 如果 Mermaid 已经能渲染但用户认为太素、太寡淡、主题不统一或需要 PNG/ASCII 批量输出，优先 `mermaid-polish`；它只负责渲染美化，不替代事实建模。
+- 如果 Mermaid 同时要求品牌规范、可访问 SVG 或自包含 HTML，`editorial-diagram` 优先，`mermaid-polish` 作为协作渲染层。
 
 1. 明确要求 Draw.io、.drawio、XML、云厂商图标或 Draw.io 实时编辑：editable-drawio。
 2. 明确要求白板、思维导图、自由画或先讨论结构：whiteboard-workbench。
@@ -33,7 +35,8 @@
 10. 图解属于一页纸、PPT、白皮书、报告或 landing page：editorial-document，并把图形子任务交给更合适的路由。
 11. 明确要开发可编辑图产品、节点/边/端口/事件和业务交互：custom-graph-application。
 12. 只要求打开、预览、检查 SVG：preview-and-qa。
-13. 仍然不明确时，只问一个问题：最终要可编辑文件、可直接打开的 HTML，还是图片/PPT？
+13. Mermaid 美化、换主题、配色、渲染或“图表太寡淡”：mermaid-polish；若明确 `.drawio`/XML 或品牌可访问交付，分别服从 editable-drawio/editorial-diagram 的格式门。
+14. 仍然不明确时，只问一个问题：最终要可编辑文件、可直接打开的 HTML，还是图片/PPT？
 
 ## 主路由与协作路由
 
@@ -43,6 +46,7 @@
 | evidence-architecture | precise-technical-graphic、editorial-document | 不要将图上路径写成线上影响 |
 | precise-technical-graphic | preview-and-qa、editorial-document | 不要把结构检查等同视觉通过 |
 | editable-drawio | preview-and-qa、editorial-document | 不要在没有会话时声称实时预览 |
+| mermaid-polish | editorial-diagram、precise-technical-graphic、editable-drawio | 不要把主题渲染成功等同于事实、关系或视觉验收通过 |
 | whiteboard-workbench | editable-drawio、evidence-architecture | 不要让浏览器缓存成为唯一资产 |
 | handdrawn-argument | explainer-image-set、preview-and-qa | 不要用装饰替代关系和证据 |
 | explainer-image-set | evidence-architecture、precise-technical-graphic | 不要让生成图承载精确事实 |
@@ -61,6 +65,7 @@
 | infographic-composition | AntV Infographic / `antv-infographic` | diagram-design、precise-technical-graphic、interactive-widget | 保留 DSL；模板与主数据族必须匹配；没有真实 AntV 运行时不得声称已渲染 |
 | editable-drawio | Agents365 `drawio-skill` | `bruce-drawio`、Draw.io MCP | `.drawio` 是源文件；CLI/Graphviz/版本/导出逐项探测 |
 | editorial-diagram | `diagram-design` | infographic-composition、precise-technical-graphic、editorial-document | 先语义模式、密度和 style guide，再输出自包含 HTML/SVG |
+| mermaid-polish | `pretty-mermaid` | diagram-design、Fireworks、drawio-skill | 保留 `.mmd`；实际探测 Node/provider、主题、PNG/ASCII 和视觉回读，不静默联网安装 |
 
 ## 统一派发协议
 
@@ -82,6 +87,8 @@
 - missing_capabilities；
 - fallback_used；
 - remaining_risks。
+
+当主路由返回 canonical SVG 或静态 HTML 时，`output_contract` 必须额外包含：原主图源不变、`scripts/emit_editable_pptx.py` 生成的原生可编辑 PPTX、PPTX 报告和转换 trace。PPT Master 未发现或导出失败时返回 `missing_capabilities`/`remaining_risks`，不能静默省略该伴随文件。
 
 ## 典型组合
 
@@ -105,7 +112,13 @@ Technical Explainer 建事实台账 → Generative UI 生成静态图解组件�
 
 结构化培训要点、指标对比或阶段路线：先由 `infographic-composition` 生成可复核的 DSL，再按本机可用能力渲染 HTML/SVG；需要企业品牌、可访问静态图或 Mermaid/Draw.io 重绘时，增加 `editorial-diagram`，不要把两种源文件混成不可维护的单一产物。
 
+### Mermaid 渲染与美化
+
+Mermaid 源码先保持不变，再用 Pretty Mermaid 选择主题和颜色角色输出 SVG/PNG/ASCII。打印、GitHub、开发工具和高对比度场景分别使用适配主题；长标签优先调节间距和方向，不用缩小文字。若要品牌化、可访问或自包含 HTML，转给 diagram-design；若要可继续编辑的 `.drawio`，转给 drawio-skill。缺少 provider 或语法不支持时，交付 `.mmd` 和明确降级记录，不把空文件或静态规则当成渲染成功。
+
 代码库、Terraform/Kubernetes、SQL 或 OpenAPI 的正式可编辑图：先由 `drawio-skill` 解析并生成 `.drawio`，再执行 XML/边引用/CLI/PNG 回读检查；没有 CLI 时可以交付源文件，但必须标记导出未验证。
+
+科研汇报或技术报告的静态 SVG/HTML 图：先按内容路由生成并核对主图，再用 `scripts/emit_editable_pptx.py` 追加 PPTX；PPTX 的可编辑性、图片边界和视觉预览状态单独记录，不把 PPTX 反向当成事实源。
 
 ## 不应触发
 
