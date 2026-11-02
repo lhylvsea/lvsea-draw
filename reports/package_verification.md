@@ -1,10 +1,10 @@
 # Package Verification
 
 - OK: `True`
-- Package directory: `C:\Users\rabbit\Documents\Codex\2026-08-11\skill-agent-goal-boss-draw-qiaomu-2\outputs\lvsea-draw\dist`
+- Package directory: `C:\Users\rabbit\.codex\skills\lvsea-draw\dist`
 - Targets: `4 / 4` adapters present
 - Archive present: `True`
-- Archive SHA256: `1e2845bb6257076f8debed183909c90490c8efb03c5f55fb81eb3f02d3875bb8`
+- Archive SHA256: `3124289e96ba489b00519c808444c9bf0ff6b61131d320c5b03f4608adcaa961`
 - Nested SKILL.md entries: `0`
 - Failures: `0`
 - Warnings: `0`
@@ -13,7 +13,7 @@
 
 | Check | Status | Detail |
 | --- | --- | --- |
-| `package-manifest` | `pass` | Package manifest exists: C:\Users\rabbit\Documents\Codex\2026-08-11\skill-agent-goal-boss-draw-qiaomu-2\outputs\lvsea-draw\dist\manifest.json |
+| `package-manifest` | `pass` | Package manifest exists: C:\Users\rabbit\.codex\skills\lvsea-draw\dist\manifest.json |
 | `claude-adapter` | `pass` | Adapter exists for target: claude |
 | `generic-adapter` | `pass` | Adapter exists for target: generic |
 | `openai-adapter` | `pass` | Adapter exists for target: openai |

@@ -1,15 +1,15 @@
 {
   "ok": true,
   "schema_version": "2.0",
-  "generated_at": "2026-08-11",
-  "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
-  "package_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist",
+  "generated_at": "2026-08-18",
+  "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
+  "package_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist",
   "summary": {
     "target_count": 4,
     "adapter_count": 4,
     "archive_present": true,
-    "archive_sha256": "1e2845bb6257076f8debed183909c90490c8efb03c5f55fb81eb3f02d3875bb8",
-    "archive_entry_count": 97,
+    "archive_sha256": "3124289e96ba489b00519c808444c9bf0ff6b61131d320c5b03f4608adcaa961",
+    "archive_entry_count": 116,
     "nested_skill_entry_count": 0,
     "failure_count": 0,
     "warning_count": 0
@@ -18,7 +18,7 @@
     {
       "id": "package-manifest",
       "status": "pass",
-      "detail": "Package manifest exists: C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\manifest.json"
+      "detail": "Package manifest exists: C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist\\manifest.json"
     },
     {
       "id": "claude-adapter",
@@ -109,9 +109,9 @@
   "failures": [],
   "warnings": [],
   "artifacts": {
-    "manifest": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\manifest.json",
-    "archive": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\lvsea-draw.zip",
-    "json": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\package_verification.json",
-    "markdown": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\package_verification.md"
+    "manifest": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist\\manifest.json",
+    "archive": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist\\lvsea-draw.zip",
+    "json": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\package_verification.json",
+    "markdown": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\package_verification.md"
   }
 }

@@ -1,0 +1,57 @@
+{
+  "schema_version": "2.0",
+  "name": "lvsea-draw",
+  "version": "0.3.0",
+  "description": "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。",
+  "targets": [
+    "openai",
+    "claude",
+    "generic",
+    "agent-skills-compatible",
+    "vscode"
+  ],
+  "maturity": "production",
+  "owner": "lvsea",
+  "review_cadence": "monthly",
+  "trust_level": "local",
+  "license": "MIT",
+  "checksums": {
+    "package_sha256": "5d2b536a6c4df4e446af1e7f852cad80ac5f9b38d77cb4abfd867520b6f945fa",
+    "archive_sha256": "3124289e96ba489b00519c808444c9bf0ff6b61131d320c5b03f4608adcaa961"
+  },
+  "compatibility": {
+    "openai": "pass",
+    "claude": "pass",
+    "agent-skills": "pass",
+    "vscode": "pass",
+    "generic": "pass",
+    "agent-skills-compatible": "pass"
+  },
+  "source": {
+    "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
+    "skill_ir": "reports\\skill-ir.json",
+    "ir_schema_version": "2.0.0",
+    "canonical_metadata": "agents/interface.yaml"
+  },
+  "artifacts": {
+    "overview_html": "reports/skill-overview.html",
+    "review_studio_html": "reports/review-studio.html",
+    "trust_report": "reports/security_trust_report.md",
+    "conformance_matrix": "reports/conformance_matrix.md",
+    "compiled_targets": "reports/compiled_targets.md",
+    "package_verification": "reports/package_verification.md",
+    "install_simulation": "reports/install_simulation.md",
+    "adoption_drift": "reports/adoption_drift_report.md",
+    "review_waivers": "reports/review_waivers.md",
+    "review_annotations": "reports/review_annotations.md",
+    "package_metadata": "registry/packages/lvsea-draw.json"
+  },
+  "distribution": {
+    "archive_verified": true,
+    "archive_sha256": "3124289e96ba489b00519c808444c9bf0ff6b61131d320c5b03f4608adcaa961",
+    "package_verification": "reports/package_verification.json",
+    "install_simulated": true,
+    "install_simulation": "reports/install_simulation.json"
+  },
+  "generated_at": "2026-08-18"
+}

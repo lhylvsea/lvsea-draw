@@ -2,73 +2,79 @@
   "skill_name": "lvsea-draw",
   "design_system": "metric editorial",
   "primary_artifact": {
-    "key": "dashboard",
-    "label": "Dashboard or metrics page",
-    "direction": "Metric-first dashboard with stable dimensions, short labels, visible deltas, and narrative callouts only where they change interpretation.",
+    "key": "code_or_cli",
+    "label": "Code, CLI, or implementation guide",
+    "direction": "Execution-focused technical artifact with environment assumptions, copyable commands, expected outputs, and side effects made explicit.",
     "matched_keywords": [
-      "dashboard",
-      "table",
-      "图表"
+      "code",
+      "script",
+      "command",
+      "代码"
     ]
   },
   "artifact_families": [
     {
+      "key": "code_or_cli",
+      "label": "Code, CLI, or implementation guide",
+      "score": 4,
+      "matched_keywords": [
+        "code",
+        "script",
+        "command",
+        "代码"
+      ],
+      "direction": "Execution-focused technical artifact with environment assumptions, copyable commands, expected outputs, and side effects made explicit."
+    },
+    {
+      "key": "report",
+      "label": "Report or brief",
+      "score": 2,
+      "matched_keywords": [
+        "report",
+        "报告"
+      ],
+      "direction": "High-trust editorial report with a clear first-screen thesis, compact evidence blocks, and decisions separated from supporting detail."
+    },
+    {
       "key": "dashboard",
       "label": "Dashboard or metrics page",
-      "score": 3,
+      "score": 2,
       "matched_keywords": [
-        "dashboard",
         "table",
         "图表"
       ],
       "direction": "Metric-first dashboard with stable dimensions, short labels, visible deltas, and narrative callouts only where they change interpretation."
     },
     {
-      "key": "tutorial",
-      "label": "Tutorial or guide",
-      "score": 1,
-      "matched_keywords": [
-        "tutorial"
-      ],
-      "direction": "Progressive instructional layout with domain-specific section names, short success checks, and examples close to the user's real input."
-    },
-    {
-      "key": "report",
-      "label": "Report or brief",
-      "score": 1,
-      "matched_keywords": [
-        "report"
-      ],
-      "direction": "High-trust editorial report with a clear first-screen thesis, compact evidence blocks, and decisions separated from supporting detail."
-    },
-    {
-      "key": "review_viewer",
-      "label": "Review viewer",
-      "score": 1,
-      "matched_keywords": [
-        "review"
-      ],
-      "direction": "Side-by-side reviewer studio with explicit tradeoffs, evidence readiness, and fast paths for approving, blocking, or requesting one focused fix."
-    },
-    {
       "key": "visual_capture",
       "label": "Screenshot or visual evidence",
-      "score": 1,
+      "score": 2,
       "matched_keywords": [
-        "screenshot"
+        "screenshot",
+        "图片"
       ],
       "direction": "Evidence-led visual artifact that records source, viewport, crop intent, and the exact region the reader should inspect."
+    },
+    {
+      "key": "slide_like",
+      "label": "Slide-like narrative",
+      "score": 2,
+      "matched_keywords": [
+        "ppt",
+        "幻灯片"
+      ],
+      "direction": "Narrative page rhythm with strong section roles, controlled density, and a visual system chosen from the topic rather than a default template."
     }
   ],
   "layout_patterns": [
-    "metric board",
-    "ranked signals",
-    "comparison rows",
-    "interpretation",
-    "action queue",
-    "opening promise",
-    "task-specific sections",
-    "worked example"
+    "prerequisites",
+    "commands",
+    "expected output",
+    "failure handling",
+    "rollback or cleanup",
+    "thesis",
+    "evidence blocks",
+    "decision table"
   ],
   "design_tokens": {
     "type": [
@@ -93,14 +99,14 @@
     ]
   },
   "quality_gates": [
-    "Avoid paragraph-heavy table cells.",
-    "Keep charts tied to one analytical question each.",
-    "Preserve stable color meaning across metrics and entities.",
-    "Replace generic headings with learner- and domain-specific headings.",
-    "Pair every major step with a visible success check.",
-    "Do not add screenshots unless they are real, current, and action-relevant.",
+    "Name the working directory and required inputs for commands.",
+    "Mark destructive, networked, or external side-effect operations.",
+    "Prefer the smallest runnable snippet over broad framework scaffolding.",
     "Keep the first screen useful without requiring the reader to parse every detail.",
-    "Use tables only for comparisons; move explanations below the table."
+    "Use tables only for comparisons; move explanations below the table.",
+    "Keep source notes readable without flooding the body with markers.",
+    "Avoid paragraph-heavy table cells.",
+    "Keep charts tied to one analytical question each."
   ],
   "anti_patterns": [
     "Do not copy Kami's fixed parchment background as a default.",

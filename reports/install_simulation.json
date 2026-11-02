@@ -1,25 +1,25 @@
 {
   "ok": true,
   "schema_version": "2.0",
-  "generated_at": "2026-08-11",
-  "skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw",
-  "package_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist",
-  "install_root": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\install-simulation\\simulate-lvsea-draw",
-  "installed_skill_dir": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\install-simulation\\simulate-lvsea-draw\\lvsea-draw",
+  "generated_at": "2026-08-18",
+  "skill_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw",
+  "package_dir": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist",
+  "install_root": "[temporary-install-root]",
+  "installed_skill_dir": "[temporary-install-root]/lvsea-draw",
   "summary": {
     "archive_present": true,
-    "archive_entry_count": 97,
+    "archive_entry_count": 101,
     "nested_skill_entry_count": 0,
     "archive_extracted": true,
     "entrypoint_loaded": true,
     "manifest_loaded": true,
     "interface_loaded": true,
     "adapter_count": 4,
-    "installer_permission_enforced_count": 0,
+    "installer_permission_enforced_count": 8,
     "installer_permission_failure_count": 0,
     "permission_target_count": 4,
-    "permission_capability_count": 0,
-    "install_root_is_temp": false,
+    "permission_capability_count": 2,
+    "install_root_is_temp": true,
     "failure_count": 0,
     "warning_count": 0
   },
@@ -27,7 +27,7 @@
     {
       "id": "archive-present",
       "status": "pass",
-      "detail": "Package archive exists: C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\lvsea-draw.zip"
+      "detail": "Package archive exists: C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist\\lvsea-draw.zip"
     },
     {
       "id": "archive-safe-paths",
@@ -140,9 +140,49 @@
       "detail": "claude adapter exposes target permission contract for installer enforcement"
     },
     {
+      "id": "permission-claude-file_write-approved",
+      "status": "pass",
+      "detail": "claude capability file_write has active reviewer approval"
+    },
+    {
+      "id": "permission-claude-file_write-target-enforcement",
+      "status": "pass",
+      "detail": "claude capability file_write has target enforcement note"
+    },
+    {
+      "id": "permission-claude-subprocess-approved",
+      "status": "pass",
+      "detail": "claude capability subprocess has active reviewer approval"
+    },
+    {
+      "id": "permission-claude-subprocess-target-enforcement",
+      "status": "pass",
+      "detail": "claude capability subprocess has target enforcement note"
+    },
+    {
       "id": "permission-generic-contract",
       "status": "pass",
       "detail": "generic adapter exposes target permission contract for installer enforcement"
+    },
+    {
+      "id": "permission-generic-file_write-approved",
+      "status": "pass",
+      "detail": "generic capability file_write has active reviewer approval"
+    },
+    {
+      "id": "permission-generic-file_write-target-enforcement",
+      "status": "pass",
+      "detail": "generic capability file_write has target enforcement note"
+    },
+    {
+      "id": "permission-generic-subprocess-approved",
+      "status": "pass",
+      "detail": "generic capability subprocess has active reviewer approval"
+    },
+    {
+      "id": "permission-generic-subprocess-target-enforcement",
+      "status": "pass",
+      "detail": "generic capability subprocess has target enforcement note"
     },
     {
       "id": "permission-openai-contract",
@@ -150,17 +190,57 @@
       "detail": "openai adapter exposes target permission contract for installer enforcement"
     },
     {
+      "id": "permission-openai-file_write-approved",
+      "status": "pass",
+      "detail": "openai capability file_write has active reviewer approval"
+    },
+    {
+      "id": "permission-openai-file_write-target-enforcement",
+      "status": "pass",
+      "detail": "openai capability file_write has target enforcement note"
+    },
+    {
+      "id": "permission-openai-subprocess-approved",
+      "status": "pass",
+      "detail": "openai capability subprocess has active reviewer approval"
+    },
+    {
+      "id": "permission-openai-subprocess-target-enforcement",
+      "status": "pass",
+      "detail": "openai capability subprocess has target enforcement note"
+    },
+    {
       "id": "permission-vscode-contract",
       "status": "pass",
       "detail": "vscode adapter exposes target permission contract for installer enforcement"
+    },
+    {
+      "id": "permission-vscode-file_write-approved",
+      "status": "pass",
+      "detail": "vscode capability file_write has active reviewer approval"
+    },
+    {
+      "id": "permission-vscode-file_write-target-enforcement",
+      "status": "pass",
+      "detail": "vscode capability file_write has target enforcement note"
+    },
+    {
+      "id": "permission-vscode-subprocess-approved",
+      "status": "pass",
+      "detail": "vscode capability subprocess has active reviewer approval"
+    },
+    {
+      "id": "permission-vscode-subprocess-target-enforcement",
+      "status": "pass",
+      "detail": "vscode capability subprocess has target enforcement note"
     }
   ],
   "failures": [],
   "warnings": [],
   "artifacts": {
-    "archive": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\lvsea-draw.zip",
-    "package_manifest": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\dist\\manifest.json",
-    "json": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\install_simulation.json",
-    "markdown": "C:\\Users\\rabbit\\Documents\\Codex\\2026-08-11\\skill-agent-goal-boss-draw-qiaomu-2\\outputs\\lvsea-draw\\reports\\install_simulation.md"
+    "archive": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist\\lvsea-draw.zip",
+    "package_manifest": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\dist\\manifest.json",
+    "json": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\install_simulation.json",
+    "markdown": "C:\\Users\\rabbit\\.codex\\skills\\lvsea-draw\\reports\\install_simulation.md"
   }
 }

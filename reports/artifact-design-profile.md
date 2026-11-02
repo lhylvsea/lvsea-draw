@@ -5,47 +5,47 @@ Design system: `metric editorial`
 
 ## Primary Artifact Direction
 
-**Dashboard or metrics page**
+**Code, CLI, or implementation guide**
 
-Metric-first dashboard with stable dimensions, short labels, visible deltas, and narrative callouts only where they change interpretation.
+Execution-focused technical artifact with environment assumptions, copyable commands, expected outputs, and side effects made explicit.
 
 ## Matched Artifact Families
 
-### Dashboard or metrics page
-- Matched keywords: dashboard, table, 图表
-- Score: `3`
-- Direction: Metric-first dashboard with stable dimensions, short labels, visible deltas, and narrative callouts only where they change interpretation.
-
-### Tutorial or guide
-- Matched keywords: tutorial
-- Score: `1`
-- Direction: Progressive instructional layout with domain-specific section names, short success checks, and examples close to the user's real input.
+### Code, CLI, or implementation guide
+- Matched keywords: code, script, command, 代码
+- Score: `4`
+- Direction: Execution-focused technical artifact with environment assumptions, copyable commands, expected outputs, and side effects made explicit.
 
 ### Report or brief
-- Matched keywords: report
-- Score: `1`
+- Matched keywords: report, 报告
+- Score: `2`
 - Direction: High-trust editorial report with a clear first-screen thesis, compact evidence blocks, and decisions separated from supporting detail.
 
-### Review viewer
-- Matched keywords: review
-- Score: `1`
-- Direction: Side-by-side reviewer studio with explicit tradeoffs, evidence readiness, and fast paths for approving, blocking, or requesting one focused fix.
+### Dashboard or metrics page
+- Matched keywords: table, 图表
+- Score: `2`
+- Direction: Metric-first dashboard with stable dimensions, short labels, visible deltas, and narrative callouts only where they change interpretation.
 
 ### Screenshot or visual evidence
-- Matched keywords: screenshot
-- Score: `1`
+- Matched keywords: screenshot, 图片
+- Score: `2`
 - Direction: Evidence-led visual artifact that records source, viewport, crop intent, and the exact region the reader should inspect.
+
+### Slide-like narrative
+- Matched keywords: ppt, 幻灯片
+- Score: `2`
+- Direction: Narrative page rhythm with strong section roles, controlled density, and a visual system chosen from the topic rather than a default template.
 
 ## Layout Patterns To Prefer
 
-- metric board
-- ranked signals
-- comparison rows
-- interpretation
-- action queue
-- opening promise
-- task-specific sections
-- worked example
+- prerequisites
+- commands
+- expected output
+- failure handling
+- rollback or cleanup
+- thesis
+- evidence blocks
+- decision table
 
 ## Design Tokens
 
@@ -71,14 +71,14 @@ Metric-first dashboard with stable dimensions, short labels, visible deltas, and
 
 ## Quality Gates
 
-- Avoid paragraph-heavy table cells.
-- Keep charts tied to one analytical question each.
-- Preserve stable color meaning across metrics and entities.
-- Replace generic headings with learner- and domain-specific headings.
-- Pair every major step with a visible success check.
-- Do not add screenshots unless they are real, current, and action-relevant.
+- Name the working directory and required inputs for commands.
+- Mark destructive, networked, or external side-effect operations.
+- Prefer the smallest runnable snippet over broad framework scaffolding.
 - Keep the first screen useful without requiring the reader to parse every detail.
 - Use tables only for comparisons; move explanations below the table.
+- Keep source notes readable without flooding the body with markers.
+- Avoid paragraph-heavy table cells.
+- Keep charts tied to one analytical question each.
 
 ## Anti-Patterns
 

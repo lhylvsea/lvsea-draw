@@ -1,0 +1,9 @@
+{
+  "nodes": [
+    {
+      "name": "lvsea-draw",
+      "path": "."
+    }
+  ],
+  "shared_resources": []
+}

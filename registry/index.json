@@ -1,0 +1,22 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-08-18",
+  "package_count": 1,
+  "packages": [
+    {
+      "name": "lvsea-draw",
+      "version": "0.3.0",
+      "maturity": "production",
+      "owner": "lvsea",
+      "targets": [
+        "openai",
+        "claude",
+        "generic",
+        "agent-skills-compatible",
+        "vscode"
+      ],
+      "package_metadata": "registry/packages/lvsea-draw.json",
+      "package_sha256": "5d2b536a6c4df4e446af1e7f852cad80ac5f9b38d77cb4abfd867520b6f945fa"
+    }
+  ]
+}
