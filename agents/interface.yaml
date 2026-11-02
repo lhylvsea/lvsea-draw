@@ -1,7 +1,7 @@
 interface:
   display_name: "Lvsea Draw Boss"
-  short_description: "Route, validate, and add native editable PPTX companions to visual artifacts"
-  default_prompt: "Use $lvsea-draw to route this Chinese diagram, infographic, or visual explainer request to the best available provider and deliver an editable, validated artifact plus a native editable PPTX companion whenever a canonical SVG or static HTML visual is produced."
+  short_description: "Route, polish, validate, and add native editable PPTX companions to visual artifacts"
+  default_prompt: "Use $lvsea-draw to route this Chinese diagram, Mermaid, infographic, or visual explainer request to the best available provider; preserve the source, polish Mermaid themes when requested, and deliver a validated artifact plus a native editable PPTX companion whenever a canonical SVG or static HTML visual is produced."
 compatibility:
   canonical_format: "agent-skills"
   adapter_targets:

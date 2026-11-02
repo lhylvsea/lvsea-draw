@@ -1,0 +1,506 @@
+{
+  "ok": true,
+  "status": "pass",
+  "reason": "root SKILL.md is 4727 bytes within production budget",
+  "tier": "production",
+  "root_skill_bytes": 4727,
+  "root_budget_bytes": {
+    "root_warn": 14000,
+    "root_block": 20000
+  },
+  "resource_bytes": {
+    "references": 37867,
+    "scripts": 47029,
+    "evals": 9077,
+    "reports": 1084073
+  },
+  "total_measured_bytes": 1182773,
+  "files": [
+    {
+      "path": "references/editable-pptx-companion.md",
+      "bytes": 3607,
+      "on_demand": true
+    },
+    {
+      "path": "references/infographic-adapter.md",
+      "bytes": 3131,
+      "on_demand": true
+    },
+    {
+      "path": "references/local-adapters.md",
+      "bytes": 4022,
+      "on_demand": true
+    },
+    {
+      "path": "references/pretty-mermaid-adapter.md",
+      "bytes": 4653,
+      "on_demand": true
+    },
+    {
+      "path": "references/quality-contract.md",
+      "bytes": 4624,
+      "on_demand": true
+    },
+    {
+      "path": "references/route-playbook.md",
+      "bytes": 9462,
+      "on_demand": true
+    },
+    {
+      "path": "references/source-matrix.md",
+      "bytes": 8368,
+      "on_demand": true
+    },
+    {
+      "path": "scripts/emit_editable_pptx.py",
+      "bytes": 27376,
+      "on_demand": false
+    },
+    {
+      "path": "scripts/route_request.py",
+      "bytes": 19653,
+      "on_demand": false
+    },
+    {
+      "path": "evals/description.txt",
+      "bytes": 736,
+      "on_demand": false
+    },
+    {
+      "path": "evals/semantic_config.json",
+      "bytes": 3869,
+      "on_demand": false
+    },
+    {
+      "path": "evals/trigger_cases.json",
+      "bytes": 4472,
+      "on_demand": false
+    },
+    {
+      "path": "reports/adoption_drift_report.json",
+      "bytes": 1973,
+      "on_demand": true
+    },
+    {
+      "path": "reports/adoption_drift_report.md",
+      "bytes": 1111,
+      "on_demand": true
+    },
+    {
+      "path": "reports/artifact-design-profile.json",
+      "bytes": 4606,
+      "on_demand": true
+    },
+    {
+      "path": "reports/artifact-design-profile.md",
+      "bytes": 3733,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compile-openai.json",
+      "bytes": 19837,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compile-openai.md",
+      "bytes": 1251,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compiled-agent-skills.json",
+      "bytes": 20024,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compiled-agent-skills.md",
+      "bytes": 1019,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compiled-claude.json",
+      "bytes": 21940,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compiled-claude.md",
+      "bytes": 1174,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compiled-generic.json",
+      "bytes": 20919,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compiled-generic.md",
+      "bytes": 1063,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compiled-openai.json",
+      "bytes": 22502,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compiled-openai.md",
+      "bytes": 1251,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compiled-vscode.json",
+      "bytes": 21447,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compiled-vscode.md",
+      "bytes": 1116,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compiled_targets.json",
+      "bytes": 103865,
+      "on_demand": true
+    },
+    {
+      "path": "reports/compiled_targets.md",
+      "bytes": 4261,
+      "on_demand": true
+    },
+    {
+      "path": "reports/conformance-agent-skills.json",
+      "bytes": 2620,
+      "on_demand": true
+    },
+    {
+      "path": "reports/conformance-agent-skills.md",
+      "bytes": 476,
+      "on_demand": true
+    },
+    {
+      "path": "reports/conformance-claude.json",
+      "bytes": 2422,
+      "on_demand": true
+    },
+    {
+      "path": "reports/conformance-claude.md",
+      "bytes": 360,
+      "on_demand": true
+    },
+    {
+      "path": "reports/conformance-generic.json",
+      "bytes": 2428,
+      "on_demand": true
+    },
+    {
+      "path": "reports/conformance-generic.md",
+      "bytes": 361,
+      "on_demand": true
+    },
+    {
+      "path": "reports/conformance-openai.json",
+      "bytes": 2422,
+      "on_demand": true
+    },
+    {
+      "path": "reports/conformance-openai.md",
+      "bytes": 360,
+      "on_demand": true
+    },
+    {
+      "path": "reports/conformance-vscode.json",
+      "bytes": 2562,
+      "on_demand": true
+    },
+    {
+      "path": "reports/conformance-vscode.md",
+      "bytes": 464,
+      "on_demand": true
+    },
+    {
+      "path": "reports/conformance_matrix.json",
+      "bytes": 10468,
+      "on_demand": true
+    },
+    {
+      "path": "reports/conformance_matrix.md",
+      "bytes": 713,
+      "on_demand": true
+    },
+    {
+      "path": "reports/context-budget.json",
+      "bytes": 10658,
+      "on_demand": true
+    },
+    {
+      "path": "reports/creation-handoff.md",
+      "bytes": 2178,
+      "on_demand": true
+    },
+    {
+      "path": "reports/install-simulation.json",
+      "bytes": 3734,
+      "on_demand": true
+    },
+    {
+      "path": "reports/install-simulation.md",
+      "bytes": 2070,
+      "on_demand": true
+    },
+    {
+      "path": "reports/install_simulation.json",
+      "bytes": 5847,
+      "on_demand": true
+    },
+    {
+      "path": "reports/install_simulation.md",
+      "bytes": 2990,
+      "on_demand": true
+    },
+    {
+      "path": "reports/intent-confidence.json",
+      "bytes": 2388,
+      "on_demand": true
+    },
+    {
+      "path": "reports/intent-confidence.md",
+      "bytes": 965,
+      "on_demand": true
+    },
+    {
+      "path": "reports/intent-context.json",
+      "bytes": 1482,
+      "on_demand": true
+    },
+    {
+      "path": "reports/intent-dialogue.json",
+      "bytes": 4391,
+      "on_demand": true
+    },
+    {
+      "path": "reports/intent-dialogue.md",
+      "bytes": 4148,
+      "on_demand": true
+    },
+    {
+      "path": "reports/iteration-directions.json",
+      "bytes": 2706,
+      "on_demand": true
+    },
+    {
+      "path": "reports/iteration-directions.md",
+      "bytes": 3001,
+      "on_demand": true
+    },
+    {
+      "path": "reports/output-evidence.json",
+      "bytes": 1246,
+      "on_demand": true
+    },
+    {
+      "path": "reports/output-risk-profile.json",
+      "bytes": 6861,
+      "on_demand": true
+    },
+    {
+      "path": "reports/output-risk-profile.md",
+      "bytes": 2446,
+      "on_demand": true
+    },
+    {
+      "path": "reports/package-verify.json",
+      "bytes": 1806,
+      "on_demand": true
+    },
+    {
+      "path": "reports/package-verify.md",
+      "bytes": 982,
+      "on_demand": true
+    },
+    {
+      "path": "reports/package_verification.json",
+      "bytes": 4048,
+      "on_demand": true
+    },
+    {
+      "path": "reports/package_verification.md",
+      "bytes": 2169,
+      "on_demand": true
+    },
+    {
+      "path": "reports/prior-art-research.md",
+      "bytes": 1448,
+      "on_demand": true
+    },
+    {
+      "path": "reports/prompt-quality-profile.json",
+      "bytes": 5634,
+      "on_demand": true
+    },
+    {
+      "path": "reports/prompt-quality-profile.md",
+      "bytes": 4173,
+      "on_demand": true
+    },
+    {
+      "path": "reports/reference-scan.json",
+      "bytes": 7473,
+      "on_demand": true
+    },
+    {
+      "path": "reports/reference-scan.md",
+      "bytes": 6397,
+      "on_demand": true
+    },
+    {
+      "path": "reports/reference-synthesis.json",
+      "bytes": 9124,
+      "on_demand": true
+    },
+    {
+      "path": "reports/reference-synthesis.md",
+      "bytes": 4491,
+      "on_demand": true
+    },
+    {
+      "path": "reports/registry-audit.json",
+      "bytes": 3948,
+      "on_demand": true
+    },
+    {
+      "path": "reports/registry-audit.md",
+      "bytes": 1238,
+      "on_demand": true
+    },
+    {
+      "path": "reports/registry_audit.json",
+      "bytes": 3924,
+      "on_demand": true
+    },
+    {
+      "path": "reports/registry_audit.md",
+      "bytes": 986,
+      "on_demand": true
+    },
+    {
+      "path": "reports/release-check-local.json",
+      "bytes": 16619,
+      "on_demand": true
+    },
+    {
+      "path": "reports/review-studio.html",
+      "bytes": 59098,
+      "on_demand": true
+    },
+    {
+      "path": "reports/review-studio.json",
+      "bytes": 209257,
+      "on_demand": true
+    },
+    {
+      "path": "reports/review-viewer.html",
+      "bytes": 22261,
+      "on_demand": true
+    },
+    {
+      "path": "reports/review-viewer.json",
+      "bytes": 87553,
+      "on_demand": true
+    },
+    {
+      "path": "reports/review_annotations.json",
+      "bytes": 691,
+      "on_demand": true
+    },
+    {
+      "path": "reports/review_annotations.md",
+      "bytes": 549,
+      "on_demand": true
+    },
+    {
+      "path": "reports/review_waivers.json",
+      "bytes": 2350,
+      "on_demand": true
+    },
+    {
+      "path": "reports/review_waivers.md",
+      "bytes": 1155,
+      "on_demand": true
+    },
+    {
+      "path": "reports/runtime_permission_probes.json",
+      "bytes": 12134,
+      "on_demand": true
+    },
+    {
+      "path": "reports/runtime_permission_probes.md",
+      "bytes": 2082,
+      "on_demand": true
+    },
+    {
+      "path": "reports/security_trust_report.json",
+      "bytes": 3659,
+      "on_demand": true
+    },
+    {
+      "path": "reports/security_trust_report.md",
+      "bytes": 1699,
+      "on_demand": true
+    },
+    {
+      "path": "reports/skill-interpretation.html",
+      "bytes": 75387,
+      "on_demand": true
+    },
+    {
+      "path": "reports/skill-interpretation.json",
+      "bytes": 39731,
+      "on_demand": true
+    },
+    {
+      "path": "reports/skill-ir.json",
+      "bytes": 9249,
+      "on_demand": true
+    },
+    {
+      "path": "reports/skill-overview.html",
+      "bytes": 75305,
+      "on_demand": true
+    },
+    {
+      "path": "reports/skill-overview.json",
+      "bytes": 38645,
+      "on_demand": true
+    },
+    {
+      "path": "reports/system-model.json",
+      "bytes": 8407,
+      "on_demand": true
+    },
+    {
+      "path": "reports/system-model.md",
+      "bytes": 7103,
+      "on_demand": true
+    },
+    {
+      "path": "reports/trigger-eval.json",
+      "bytes": 9899,
+      "on_demand": true
+    },
+    {
+      "path": "reports/trust-check.json",
+      "bytes": 3627,
+      "on_demand": true
+    },
+    {
+      "path": "reports/trust-check.md",
+      "bytes": 1700,
+      "on_demand": true
+    },
+    {
+      "path": "reports/validation-summary.md",
+      "bytes": 2213,
+      "on_demand": true
+    }
+  ],
+  "missing_evidence": "context size does not prove output quality or runtime performance"
+}

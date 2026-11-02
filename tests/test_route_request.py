@@ -46,6 +46,23 @@ class RouteRequestTests(unittest.TestCase):
         self.assertEqual(plan["primary_executor"], "diagram-design")
         self.assertTrue(plan["provider_policy"])
 
+    def test_mermaid_polish(self) -> None:
+        plan = build_plan("Mermaid 已经画出来了，但图表太寡淡，请换主题和配色并输出 SVG/PNG")
+        self.assertEqual(plan["route"], "mermaid-polish", plan)
+        self.assertEqual(plan["primary_executor"], "pretty-mermaid")
+        self.assertIn("canonical .mmd source", plan["output_contract"])
+        self.assertIn("editorial-diagram", plan["fallback"])
+
+    def test_drawio_format_wins_over_mermaid_polish(self) -> None:
+        plan = build_plan("把 Mermaid 美化后转换成可继续修改的 Draw.io XML")
+        self.assertEqual(plan["route"], "editable-drawio", plan)
+        self.assertEqual(plan["primary_executor"], "drawio-skill")
+
+    def test_mermaid_batch_theme_request(self) -> None:
+        plan = build_plan("批量把 diagrams 目录的 Mermaid 渲染成 GitHub 深色 SVG 和终端 ASCII")
+        self.assertEqual(plan["route"], "mermaid-polish", plan)
+        self.assertEqual(plan["primary_executor"], "pretty-mermaid")
+
     def test_whiteboard(self) -> None:
         self.assert_route("先用白板做一个生产订单到入库的思维导图", "whiteboard-workbench")
 

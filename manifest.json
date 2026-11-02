@@ -1,8 +1,8 @@
 {
   "name": "lvsea-draw",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "owner": "lvsea",
-  "updated_at": "2026-08-18",
+  "updated_at": "2026-11-02",
   "status": "active",
   "maturity_tier": "production",
   "lifecycle_stage": "production",

@@ -1,0 +1,28 @@
+{
+  "evidence_kind": "provider_backed",
+  "ok": true,
+  "provider": "pretty-mermaid",
+  "provider_source_commit": "e234ab73c2992f03c36db04fd55ebb90abca9c45",
+  "commands": [
+    "npm test",
+    "npm run validate",
+    "node scripts/themes.mjs",
+    "node scripts/render.mjs --input assets/example_diagrams/flowchart.mmd --output flowchart.svg --theme github-light",
+    "node scripts/render.mjs --input assets/example_diagrams/flowchart.mmd --output flowchart.png --format png --width 640 --theme dracula",
+    "node scripts/render.mjs --input assets/example_diagrams/flowchart.mmd --output flowchart.txt --format ascii --color-mode none"
+  ],
+  "observed": {
+    "node": "24.13.0",
+    "themes": 15,
+    "example_diagrams": 6,
+    "formats": ["svg", "png", "ascii"],
+    "svg_non_empty": true,
+    "png_non_empty": true,
+    "ascii_non_empty": true
+  },
+  "limitations": [
+    "This proves the local provider and representative fixtures, not every user Mermaid syntax.",
+    "Visual readback for the representative render was structural/non-empty; human brand approval is not claimed.",
+    "The upstream documentation validator required LF line endings on Windows; the installed local provider SKILL.md was normalized before validation."
+  ]
+}

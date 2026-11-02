@@ -1,6 +1,6 @@
 # 上游能力矩阵
 
-研究日期：2026-08-18。用户给出的 excalidraw-diagram-skill 链接重复出现一次，按一个来源处理。下表记录的是能力抽取，不是把上游源码或素材打包进 lvsea-draw。
+研究日期：2026-11-01（既有来源快照保留原研究版本）。用户给出的 excalidraw-diagram-skill 链接重复出现一次，按一个来源处理。下表记录的是能力抽取，不是把上游源码或素材打包进 lvsea-draw。
 
 | 来源与研究快照 | 保留的精华 | 不直接采用 | 默认路由 |
 | --- | --- | --- | --- |
@@ -20,6 +20,7 @@
 | [AntV Infographic](https://github.com/antvis/Infographic)，69eae2ee | 声明式、AI 友好的 Infographic DSL；template/data/theme 分层；list/sequence/compare/hierarchy/relation/chart 结构族；模板、主题、编辑器和 SVG 输出思路 | 不复制上游模板、运行时代码、图标和站点素材；不把可选 CDN 或未安装 Skill 写成离线渲染能力 | infographic-composition |
 | [Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill/)，2ee141e0 | 11 类 Draw.io 预设；Mermaid、代码库、Terraform/Kubernetes、SQL/OpenAPI、C4 导入；官方图形/云图标检索；自检、自动修复、多页、viewer、热力图和导出策略 | 不复制 Skill 源码、脚本、图标库或桌面 CLI；不在未探测 CLI/Graphviz/版本时声称导入、PNG/SVG/PPTX 成功 | editable-drawio |
 | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design)，e48df3fb | 27 种静态图类型；语义模式优先；自包含 HTML、可访问 SVG、尺寸/受众/细节调节；品牌 style guide 首次确认门；Mermaid/Draw.io 重绘与可选可访问动效 | 不复制模板、图标、品牌资产或上游默认主题；不把“静态结构检查”当作浏览器/图片视觉通过 | editorial-diagram |
+| [imxv/Pretty-mermaid-skills](https://github.com/imxv/Pretty-mermaid-skills)，e234ab73 | 基于 `beautiful-mermaid` 的本地无浏览器渲染；15 个主题；Flowchart、Sequence、State、Class、ER、XY Chart 六类图；SVG、PNG、ASCII/Unicode、批量渲染；显式颜色角色与布局间距参数 | 不复制上游脚本、运行时、主题图库、示例图或 npm 依赖；不静默联网安装；不把主题成功当成语义、事实或视觉验收成功 | mermaid-polish |
 | [ppt-master](https://cnb.cool/lvsea2008/ppt-master)，本机快照 2026-08-18 | SVG 到原生 DrawingML PPTX、`flat` 结构、转换 trace、PPTX postflight 和 SVG quality checker；适合把静态科研/技术图追加为可编辑汇报页 | 不把图片嵌入 PPT 冒充原生编辑；不把未发现的本地安装、字体或 LibreOffice/Poppler 预览写成已验证；不复制上游脚本或模板 | editable-pptx-companion |
 
 ## 组合原则
@@ -33,6 +34,7 @@
 6. Infographic 负责信息结构和 DSL 源文件，diagram-design 负责品牌化、可访问的静态图；两者共享事实台账，但不混写源格式。
 7. drawio-skill 负责可编辑 `.drawio` 和代码/IaC/SQL/OpenAPI 导入；CLI、Graphviz、版本与导出是独立能力门，不因 XML 生成通过而自动通过。
 8. Diagram Design 的“删除无效节点、控制密度、每条连线有语义、首次品牌确认”补强所有静态图路线；它不是用装饰替代关系的模板机。
+9. Pretty Mermaid 负责 Mermaid 的主题渲染和多格式派生物；`.mmd` 仍是事实与关系源，品牌可访问交付和 Draw.io 可编辑交付分别由 diagram-design 与 drawio-skill 负责。
 
 ## 研究边界
 

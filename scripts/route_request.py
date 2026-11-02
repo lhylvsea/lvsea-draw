@@ -93,6 +93,25 @@ ROUTES: dict[str, dict[str, Any]] = {
         "fallback": ["editorial-diagram", "precise-technical-graphic", "interactive-widget"],
         "provider_policy": "Prefer @antv/infographic or an installed AntV Infographic skill; otherwise fall back without claiming AntV rendering.",
     },
+    "mermaid-polish": {
+        "executor": "pretty-mermaid",
+        "patterns": [
+            (r"pretty[\s-]*mermaid|mermaid.*(美化|主题|配色|渲染|render|theme|style|寡淡|太素|漂亮|好看|美观)", 8),
+            (r"(美化|主题|配色|渲染|重绘|漂亮|好看|美观).*(mermaid|\.mmd|flowchart|sequence|state|class|er|xychart)", 7),
+            (r"mermaid|\.mmd|flowchart|sequencediagram|statediagram|classdiagram|erdiagram|xychart-beta", 3),
+            (r"svg|png|ascii|unicode|终端|批量", 1),
+        ],
+        "outputs": ["canonical .mmd source", "themed SVG", "optional PNG", "optional ASCII/Unicode preview"],
+        "validation": [
+            "Mermaid source is preserved and the renderer exits successfully",
+            "SVG starts with <svg and has a non-empty viewBox or dimensions",
+            "theme, font, edge contrast, padding, and label fit are checked",
+            "PNG/ASCII output is validated when requested",
+            "visual readback for CJK labels, long edges, and crowded layouts",
+        ],
+        "fallback": ["editorial-diagram", "precise-technical-graphic", "editable-drawio"],
+        "provider_policy": "Prefer an installed pretty-mermaid provider and its bundled beautiful-mermaid CLI. If it is absent or the requested Mermaid syntax is unsupported, keep the .mmd source and fall back without claiming a Pretty Mermaid render.",
+    },
     "interactive-widget": {
         "executor": "generative-ui-mcp",
         "patterns": [
@@ -226,6 +245,12 @@ def secondary_routes(text: str, primary: str) -> list[str]:
         candidates.append("interactive-widget")
     if primary == "infographic-composition" and re.search(r"ppt|slides|报告|一页纸|白皮书", normalized):
         candidates.append("editorial-document")
+    if primary == "mermaid-polish" and re.search(r"品牌|style\s*guide|可访问|accessible|自包含|品牌规范", normalized):
+        candidates.append("editorial-diagram")
+    if primary == "editorial-diagram" and re.search(r"pretty[\s-]*mermaid|mermaid|\.mmd", normalized):
+        candidates.append("mermaid-polish")
+    if primary == "editable-drawio" and re.search(r"pretty[\s-]*mermaid|mermaid|\.mmd", normalized) and re.search(r"美化|主题|配色|渲染|寡淡|太素|漂亮|好看", normalized):
+        candidates.append("mermaid-polish")
     if primary == "editorial-diagram" and re.search(r"ppt|slides|报告|一页纸|白皮书", normalized):
         candidates.append("editorial-document")
     if primary == "codebase-knowledge-graph" and re.search(r"架构|流程|地图|可视化", normalized):
@@ -256,6 +281,18 @@ def build_plan(text: str) -> dict[str, Any]:
         matched: list[str] = []
     else:
         primary, score, matched = scored[0]
+
+    # Explicit editable formats and accessibility/brand constraints outrank a
+    # renderer preference. Mermaid polish is a rendering layer, not a reason
+    # to discard a requested Draw.io source or accessible static artifact.
+    if re.search(r"draw\.?io|\.drawio|xml", normalized) and re.search(r"可编辑|继续修改|导出|转换|转成|生成", normalized):
+        primary = "editable-drawio"
+        score = next((item[1] for item in scored if item[0] == primary), score)
+        matched = next((item[2] for item in scored if item[0] == primary), matched)
+    elif re.search(r"品牌|style\s*guide|可访问|accessible|自包含|品牌规范", normalized) and re.search(r"mermaid|\.mmd|draw\.?io", normalized):
+        primary = "editorial-diagram"
+        score = next((item[1] for item in scored if item[0] == primary), score)
+        matched = next((item[2] for item in scored if item[0] == primary), matched)
 
     ambiguous = not scored or score < 4 or (len(scored) > 1 and scored[0][1] - scored[1][1] < 1.5)
     generic_request = bool(re.fullmatch(r"(帮我)?(画个图|做个图|做可视化|画图|可视化)", normalized))

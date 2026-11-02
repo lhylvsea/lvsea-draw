@@ -1,131 +1,214 @@
 {
-  "schema_version": "2.0.0",
-  "name": "lvsea-draw",
-  "title": "Lvsea Draw Boss",
-  "job_to_be_done": "Turn broad diagram and visualization requests into a routed, validated, editable deliverable",
-  "trigger_surface": {
-    "description": "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。",
+  "schema_version": "3.0.0-lvsea",
+  "generated_at": "2026-11-01",
+  "package": {
+    "name": "lvsea-draw",
+    "version": "0.4.0",
+    "owner": "lvsea",
+    "maturity_tier": "production",
+    "lifecycle_stage": "production",
+    "upstream_inspiration": null
+  },
+  "intent": {
+    "description": "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、Mermaid、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、Mermaid 美化、Mermaid 主题/配色/渲染、Pretty Mermaid、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。",
+    "job_to_be_done": "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、Mermaid、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、Mermaid 美化、Mermaid 主题/配色/渲染、Pretty Mermaid、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。",
+    "target_users": [],
+    "inputs": [],
+    "outputs": [],
+    "exclusions": []
+  },
+  "triggers": {
     "should_trigger": [
       "画一张有证据的系统架构图并保留可编辑源文件",
       "把这段流程做成可继续修改的 Draw.io XML",
+      "把 Mermaid 转成可继续修改的 Draw.io XML，不要只给图片",
       "把这个仓库转成代码知识图谱和技术解读图",
       "生成一个交互式 HTML 图表组件",
       "把这篇技术报告拆成 16:9 图片组并建立事实台账",
       "用白板先梳理安全生产异常闭环",
       "把 SVG 生成 GIF 并做几何和视觉验收",
-      "把培训要点做成中文信息图和数据故事，保留 Infographic DSL 并导出 SVG"
+      "把培训要点做成中文信息图和数据故事，保留 Infographic DSL 并导出 SVG",
+      "用 Agents365 drawio-skill 把 Terraform 和 SQL 生成可继续修改的多页 drawio",
+      "按品牌规范把 Mermaid 重绘成自包含 HTML 和可访问 SVG",
+      "Mermaid 已经画出来了，但图表太寡淡，请用 Pretty Mermaid 换主题和配色，保留 mmd 并输出 SVG/PNG",
+      "把 diagrams 目录里的 Mermaid 批量渲染成 GitHub 深色 SVG 和终端 ASCII",
+      "把这个科研流程 SVG 转成原生可编辑 PPTX，并在每次视觉输出时附带一份"
     ],
     "should_not_trigger": [
       "只要总结一下流程图是什么",
       "翻译一下这段画图说明",
       "不要生成文件，只给我几个头脑风暴方向",
-      "只看一下这张已有图片，不要修改",
-      "Do not claim facts, runtime topology, browser interaction, MCP availability, or visual quality without evidence"
+      "只看一下这张已有图片，不要修改"
     ],
-    "edge_cases": [
+    "near_neighbor": [
       "我要做一个复杂的 React 图编辑器，但还没有决定用什么库",
       "帮我把报告排版成一页纸，里面需要一张流程图"
+    ],
+    "adversarial": [
+      "只讨论图表自动化能力，不生成任何文件",
+      "只要解释 Mermaid 是什么，不需要渲染或修改"
     ]
   },
   "workflow": {
-    "steps": [
-      "Understand the request.",
-      "Execute the main task.",
-      "Validate the result."
-    ],
-    "decision_points": [
-      "Ask one focused clarification when the real job, output, or exclusion boundary is unclear.",
-      "Escalate visible tradeoffs when benchmark patterns conflict with local privacy, naming, or governance constraints.",
-      "Do not silently broaden the skill into adjacent jobs just because the examples are nearby."
-    ],
-    "failure_modes": [
-      "Tables can render as dense grids with weak hierarchy or poor mobile readability.",
-      "Long bullets can make the output look complete while hiding the actual decision logic.",
-      "Commands can omit environment assumptions, working directory, or rollback notes.",
-      "Code snippets can look runnable while missing required inputs.",
-      "Footnote markers or dense citation notes can interrupt the reading flow.",
-      "Evidence can be over-attached to obvious statements and under-attached to risky claims.",
-      "Users start invoking the skill for adjacent one-off or explanation-only requests.",
-      "Outputs remain valid but become generic, cluttered, or weakly aligned with the user's domain.",
-      "Borrowed benchmark patterns no longer fit the local job or add ceremony without payoff.",
-      "Skill usage becomes team-critical while ownership, review cadence, or rollback evidence stays informal."
-    ]
+    "router_rules": [],
+    "core_workflow": [],
+    "modes_and_gates": [],
+    "output_contract": [],
+    "failure_modes": []
   },
   "resources": {
     "references": [
-      "references\\editable-pptx-companion.md",
-      "references\\infographic-adapter.md",
-      "references\\local-adapters.md",
-      "references\\quality-contract.md",
-      "references\\route-playbook.md",
-      "references\\source-matrix.md"
+      "references/editable-pptx-companion.md",
+      "references/infographic-adapter.md",
+      "references/local-adapters.md",
+      "references/pretty-mermaid-adapter.md",
+      "references/quality-contract.md",
+      "references/route-playbook.md",
+      "references/source-matrix.md"
     ],
     "scripts": [
-      "scripts\\emit_editable_pptx.py",
-      "scripts\\route_request.py"
+      "scripts/emit_editable_pptx.py",
+      "scripts/route_request.py"
     ],
-    "assets": [],
+    "evals": [
+      "evals/description.txt",
+      "evals/semantic_config.json",
+      "evals/trigger_cases.json"
+    ],
     "reports": [
-      "reports/intent-context.json",
-      "reports/intent-confidence.json",
-      "reports/intent-confidence.md",
-      "reports/reference-synthesis.json",
-      "reports/reference-synthesis.md",
-      "reports/output-risk-profile.json",
-      "reports/output-risk-profile.md",
+      "reports/adoption_drift_report.json",
+      "reports/adoption_drift_report.md",
       "reports/artifact-design-profile.json",
       "reports/artifact-design-profile.md",
-      "reports/prompt-quality-profile.json",
-      "reports/prompt-quality-profile.md",
-      "reports/system-model.json",
-      "reports/system-model.md",
-      "reports/iteration-directions.json",
-      "reports/iteration-directions.md",
-      "reports/skill-overview.json",
-      "reports/skill-overview.html",
-      "reports/review_annotations.json",
-      "reports/review_annotations.md",
+      "reports/compile-openai.json",
+      "reports/compile-openai.md",
+      "reports/compiled-agent-skills.json",
+      "reports/compiled-agent-skills.md",
+      "reports/compiled-claude.json",
+      "reports/compiled-claude.md",
+      "reports/compiled-generic.json",
+      "reports/compiled-generic.md",
+      "reports/compiled-openai.json",
+      "reports/compiled-openai.md",
+      "reports/compiled-vscode.json",
+      "reports/compiled-vscode.md",
+      "reports/compiled_targets.json",
+      "reports/compiled_targets.md",
+      "reports/conformance-agent-skills.json",
+      "reports/conformance-agent-skills.md",
+      "reports/conformance-claude.json",
+      "reports/conformance-claude.md",
+      "reports/conformance-generic.json",
+      "reports/conformance-generic.md",
+      "reports/conformance-openai.json",
+      "reports/conformance-openai.md",
+      "reports/conformance-vscode.json",
+      "reports/conformance-vscode.md",
       "reports/conformance_matrix.json",
       "reports/conformance_matrix.md",
+      "reports/context-budget.json",
+      "reports/creation-handoff.md",
+      "reports/install-simulation.json",
+      "reports/install-simulation.md",
+      "reports/install_simulation.json",
+      "reports/install_simulation.md",
+      "reports/intent-confidence.json",
+      "reports/intent-confidence.md",
+      "reports/intent-context.json",
+      "reports/intent-dialogue.json",
+      "reports/intent-dialogue.md",
+      "reports/iteration-directions.json",
+      "reports/iteration-directions.md",
+      "reports/output-evidence.json",
+      "reports/output-risk-profile.json",
+      "reports/output-risk-profile.md",
+      "reports/package-verify.json",
+      "reports/package-verify.md",
+      "reports/package_verification.json",
+      "reports/package_verification.md",
+      "reports/prior-art-research.md",
+      "reports/prompt-quality-profile.json",
+      "reports/prompt-quality-profile.md",
+      "reports/reference-scan.json",
+      "reports/reference-scan.md",
+      "reports/reference-synthesis.json",
+      "reports/reference-synthesis.md",
+      "reports/registry-audit.json",
+      "reports/registry-audit.md",
+      "reports/registry_audit.json",
+      "reports/registry_audit.md",
+      "reports/release-check-local.json",
+      "reports/review-studio.html",
+      "reports/review-studio.json",
+      "reports/review-viewer.html",
+      "reports/review-viewer.json",
+      "reports/review_annotations.json",
+      "reports/review_annotations.md",
+      "reports/review_waivers.json",
+      "reports/review_waivers.md",
+      "reports/runtime_permission_probes.json",
+      "reports/runtime_permission_probes.md",
       "reports/security_trust_report.json",
       "reports/security_trust_report.md",
-      "reports/runtime_permission_probes.json",
-      "reports/runtime_permission_probes.md"
-    ]
-  },
-  "eval_plan": {
-    "trigger": [
-      "evals\\semantic_config.json",
-      "evals\\trigger_cases.json"
+      "reports/skill-interpretation.html",
+      "reports/skill-interpretation.json",
+      "reports/skill-ir.json",
+      "reports/skill-overview.html",
+      "reports/skill-overview.json",
+      "reports/system-model.json",
+      "reports/system-model.md",
+      "reports/trigger-eval.json",
+      "reports/trust-check.json",
+      "reports/trust-check.md",
+      "reports/validation-summary.md"
     ],
-    "output": [],
-    "adversarial": [],
-    "baseline": "without_skill"
+    "schemas": []
   },
   "risk": {
-    "output_risk": "high",
-    "execution_risk": "medium",
-    "trust_boundary": "team"
+    "permissions": {}
   },
   "governance": {
     "owner": "lvsea",
     "maturity": "production",
+    "lifecycle_stage": "production",
     "review_cadence": "monthly",
-    "review_due": ""
+    "review_due": null,
+    "rollback_boundary": "feature branch and immutable semver release; local sync is recoverable"
   },
-  "targets": [
-    "openai",
-    "claude",
-    "generic",
-    "agent-skills-compatible",
-    "vscode"
-  ],
-  "source_files": [
-    "SKILL.md",
-    "manifest.json",
-    "agents/interface.yaml",
-    "reports/intent-context.json",
-    "reports/output-risk-profile.json",
-    "reports/system-model.json"
-  ]
+  "portability": {
+    "canonical_format": "agent-skills",
+    "adapter_targets": [
+      "openai",
+      "claude",
+      "generic",
+      "vscode"
+    ],
+    "activation": {
+      "mode": "manual",
+      "paths": []
+    },
+    "execution": {
+      "context": "inline",
+      "shell": "bash"
+    },
+    "trust": {
+      "source_tier": "local",
+      "remote_inline_execution": "forbid",
+      "remote_metadata_policy": "allow-metadata-only"
+    },
+    "permissions": {},
+    "degradation": {
+      "openai": "metadata-adapter",
+      "claude": "neutral-source-plus-adapter",
+      "generic": "neutral-source",
+      "vscode": "agent-skills-source-with-vscode-notes"
+    }
+  },
+  "evidence_boundary": {
+    "local_validation_is_evidence": true,
+    "trigger_fixture_is_evidence": true,
+    "provider_or_human_output_evidence": true,
+    "missing_external_or_human_evidence_label": "missing evidence",
+    "public_claim_policy": "claim only what named package, trigger, runtime, install, provider, or human evidence supports"
+  }
 }

@@ -1,6 +1,6 @@
 ---
 name: lvsea-draw
-description: "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。"
+description: "中文优先的 Draw 总调度 Skill：根据来源、关系语义、编辑性、目标格式和质量风险，为架构图、流程图、时序图、数据流图、UML、信息图、白板、Draw.io、Excalidraw、Mermaid、SVG/PNG/GIF、HTML、知识图谱和技术解读图选择合适的本地或外部工作流，保留事实与可编辑源文件并完成验证；静态 SVG/HTML 视觉默认追加一份原生可编辑 PPTX 伴随产物。Use when users ask to 画图、制作架构图、流程图、信息图、可视化、技术解读图、白板、Mermaid 美化、Mermaid 主题/配色/渲染、Pretty Mermaid、AntV Infographic、diagram-design、drawio-skill、SVG 转可编辑 PPTX，或统一派发多个绘图 Skill。"
 ---
 
 # Lvsea Draw Boss
@@ -9,7 +9,7 @@ description: "中文优先的 Draw 总调度 Skill：根据来源、关系语义
 
 ## 触发与输入
 
-触发词包括：架构图、流程图、时序图、数据流图、信息图、数据故事、技术解读图、白板、Draw.io、Excalidraw、SVG/PNG/GIF、交互式 HTML、图编辑器、可编辑 PPTX、SVG 转 PPTX、每次附带 PPTX。
+触发词包括：架构图、流程图、时序图、数据流图、信息图、数据故事、技术解读图、白板、Draw.io、Excalidraw、Mermaid、Mermaid 美化、主题、配色、渲染、图表太寡淡、Pretty Mermaid、SVG/PNG/GIF、交互式 HTML、图编辑器、可编辑 PPTX、SVG 转 PPTX、每次附带 PPTX。
 
 从请求中提取：目的与受众、来源、关系语义、目标格式、编辑性、证据风险和交付目录。没有关键缺口时直接执行；默认中文、真实项目文件、可继续编辑、16:9、高信息密度和实际验证。
 
@@ -21,11 +21,12 @@ description: "中文优先的 Draw 总调度 Skill：根据来源、关系语义
 - Draw.io/XML：`editable-drawio` → drawio-skill，缺失时明确降级。
 - 白板/思维导图/手绘论证：`whiteboard-workbench` / `handdrawn-argument`。
 - 信息图/数据故事：`infographic-composition`；品牌静态图：`editorial-diagram`。
+- Mermaid 已能渲染但过于寡淡：`mermaid-polish` → Pretty Mermaid；需要品牌规范、可访问 SVG 或自包含 HTML 时协作 `editorial-diagram`。
 - 交互组件/动画网页：`interactive-widget` / `animated-explainer-html`。
 - PPT/报告版式：`editorial-document`，图形本体仍交给更合适的图形路由。
 - 仅预览检查：`preview-and-qa`；要开发图编辑产品才进入 `custom-graph-application`。
 
-先运行 `scripts/route_request.py`，再读取 `references/route-playbook.md` 和主路由 Skill 的入口说明。
+先运行 `scripts/route_request.py`，再读取 `references/route-playbook.md`、对应适配器说明和主路由 Skill 的入口说明。
 
 ## 统一交付契约
 

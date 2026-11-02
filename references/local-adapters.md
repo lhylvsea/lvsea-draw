@@ -18,6 +18,7 @@
 | SVG Preview | 只确认了在线预览页面，不将其当本地生成能力 | 网络、隐私、SVG 是否包含敏感内容 |
 | Agents365 drawio-skill | `C:\Users\rabbit\.codex\skills\drawio-skill\SKILL.md`，本机已发现直接入口 | draw.io Desktop CLI、Graphviz、版本（Mermaid/ELK 能力）、真实导入与 PNG/SVG/PPTX 导出；缺失时转 `bruce-drawio` |
 | cathrynlavery diagram-design | `C:\Users\rabbit\.codex\skills\diagram-design\SKILL.md`，本机已发现直接入口 | style guide、品牌确认门、浏览器渲染、SVG 可访问性和 PNG 导出；默认主题不能直接视为品牌交付 |
+| Pretty Mermaid | 本次安装后应发现 `C:\Users\rabbit\.codex\skills\pretty-mermaid\SKILL.md`；上游 provider 使用 Node.js 16+、`beautiful-mermaid` 与 `@resvg/resvg-js` | `node --version`、`npm` 依赖、主题列表、代表性 `.mmd` 的 SVG/PNG/ASCII 输出、CJK/长标签视觉回读；缺失时转 `editorial-diagram` 或精确 SVG |
 | AntV Infographic | 本机未发现 `C:\Users\rabbit\.codex\skills\antv-infographic\SKILL.md`；上游提供可选 `infographic-*` Skill 和 `@antv/infographic` 包 | Node/npm 包、模板注册、字体、渲染器、SVG 导出和是否允许网络/CDN；未探测到时转 `diagram-design` 或精确 SVG |
 | PPT Master | `C:\Users\rabbit\.codex\skills\ppt-master`，已发现 `scripts\svg_to_pptx.py` 与 `scripts\svg_quality_checker.py` | Python 依赖、SVG 兼容性、字体、LibreOffice/Poppler 预览和实际 PPTX 对象回读；未探测到时伴随 PPTX 标记为 blocked |
 
